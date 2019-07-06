@@ -38,7 +38,7 @@ export default class Chat extends Component {
                 <View style={{flexGrow:20, backgroundColor:'#fff'}}>
                 <BotView/>
 
-                <UserTextBox/>
+                <UserTextBox />
                 </View>
                 <ScrollView horizontal={true} contentContainerStyle={{flexGrow:1, backgroundColor: '#E2E2E2', flexDirection:'row', flexWrap:'wrap', padding:10, paddingLeft:10}}>
                     {this.state.data.map((item, index) => {
