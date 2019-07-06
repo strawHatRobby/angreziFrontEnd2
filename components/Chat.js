@@ -15,6 +15,7 @@ import {
 import {Constants} from 'expo'
 import BotView from './BotView';
 import UserTextBox from './UserTextBox';
+import TitleBar from './TitleBar';
 
 
 export default class Chat extends Component {
@@ -33,22 +34,11 @@ export default class Chat extends Component {
 	render(){
 		return(
 			<View style={styles.container}>
-                <View style={{flexGrow:1, flexDirection:'row', padding:10, paddingBottom:2, paddingTop:0, alignItems:'center', justifyContent:'space-between', backgroundColor:'#39454F'}}>
-                    <Text style={{fontSize:40, color:'#fff'}}>
-                        Yasharth
-                    </Text>
-                    <ActivityIndicator size="large" color="#fff" />
-                </View>
+                <TitleBar/>
                 <View style={{flexGrow:20, backgroundColor:'#fff'}}>
-
                 <BotView/>
 
                 <UserTextBox/>
-                
-
-
-
-
                 </View>
                 <ScrollView horizontal={true} contentContainerStyle={{flexGrow:1, backgroundColor: '#E2E2E2', flexDirection:'row', flexWrap:'wrap', padding:10, paddingLeft:10}}>
                     {this.state.data.map((item, index) => {

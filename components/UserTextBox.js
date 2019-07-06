@@ -19,7 +19,7 @@ export default class UserTextBox extends Component {
                         </Text>
                         </View>
 
-                        <View style={{ padding:10,  paddingLeft:20, borderRadius:8, borderTopStartRadius:0, backgroundColor:'#BED6F6'}}>
+                        <View style={{ padding:10,  paddingLeft:20, borderRadius:8, borderTopEndRadius:0, backgroundColor:'#BED6F6'}}>
                             <Text style={{fontSize:11,flexWrap:'nowrap', fontFamily:'Times New Roman', color:'#776666', marginBottom:5}}>2:25 PM</Text>
                                 <Text style={{fontSize:18,flexWrap:'wrap',fontFamily:'Times New Roman'}}>
                                 You Rob!
