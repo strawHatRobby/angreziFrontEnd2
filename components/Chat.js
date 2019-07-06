@@ -5,9 +5,15 @@ import {Constants} from 'expo'
 export default class Chat extends Component {
     
     state = {
-        text: ''
+        text: '',
+        data : [
+            'This is indeed true that your beauty knows no bound',
+            'Yes',
+            'No'
+        ]
     }
   
+   
     
 	render(){
 		return(
@@ -22,21 +28,17 @@ export default class Chat extends Component {
 				<Text>Yello</Text>
                 </View>
                 <ScrollView horizontal={true} contentContainerStyle={{flexGrow:1, backgroundColor: '#E2E2E2', flexDirection:'row', flexWrap:'wrap', padding:10, paddingLeft:10}}>
-                    <TouchableOpacity onPress={() => {}} style={{margin:10, marginLeft:0, marginRight:0, borderRadius:10, padding:10, justifyContent:'center', alignItems:'center', flexDirection:'row', flexWrap:'wap', backgroundColor:"#BED6F6"}}>                    
-                    <Text>
-                        This is indeed true that your beauty knows no bound
-                    </Text>
+                    {this.state.data.map((item, index) => {
+                        return (
+                    <TouchableOpacity key={index} onPress={() => {}} style={[ {margin:10, marginLeft:10, marginRight:0, borderRadius:10, padding:10, justifyContent:'center', alignItems:'center', flexDirection:'row', flexWrap:'wap', backgroundColor:"#BED6F6"}, {  borderTopEndRadius: index === this.state.data.length-1 ? 0 : 10}]}>                    
+                        <Text>
+                            {item}
+                        </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => {}} style={{margin:10, marginRight:0, borderRadius:10, padding:10, justifyContent:'center', alignItems:'center', flexDirection:'row', flexWrap:'wap', backgroundColor:"#BED6F6"}}>                    
-                    <Text>
-                        Yes
-                    </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => {}} style={{margin:10, marginRight:0, borderRadius:10, borderTopEndRadius:0, padding:10, justifyContent:'center', alignItems:'center', flexDirection:'row', flexWrap:'wap', backgroundColor:"#BED6F6"}}>                    
-                    <Text>
-                        Yes
-                    </Text>
-                    </TouchableOpacity>
+                        )
+                    })
+                    
+                   }
                     </ScrollView>
 			</View>
 			)
