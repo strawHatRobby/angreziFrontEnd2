@@ -10,7 +10,8 @@ import {
     TextInput,
     View,
     TouchableOpacity,
-    TouchableWithoutFeedback
+    TouchableWithoutFeedback,
+    Modal
 } from 'react-native';
 import {Constants} from 'expo'
 import BotView from './BotView';
@@ -22,6 +23,7 @@ export default class Chat extends Component {
     
     state = {
         text: '',
+        showModal: false,
         data : [
             'This is indeed true that your beauty knows no bound',
             'Yes',
@@ -30,10 +32,38 @@ export default class Chat extends Component {
     }
   
    
-    
+    componentDidMount(){
+        
+            this.setState({
+                showModal: true
+            })    
+        
+        
+    }
 	render(){
 		return(
 			<View style={styles.container}>
+
+
+                    <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={this.state.showModal}
+                    onRequestClose={() => Alert.alert('Done')}
+                    >
+                        <View style={{flexDirection:'column', flexGrow:1, justifyContent:'flex-end', backgroundColor:'rgba(255,255,255,0.5)'}}>
+                        <View style={{justifyContent:'center', alignItems: 'center', height: Dimensions.get('window').height/1.8, backgroundColor:'#fff',
+                                    shadowOffset:{  width: -1,  height: -1  },
+                                    shadowColor: '#a5a5a5',
+                                    shadowOpacity: 0.5,
+                                    borderTopStartRadius:15, borderTopEndRadius:15 }}>
+                        <Text>Hello World</Text>
+                        <Button title="done"
+                        onPress={() => {this.setState({showModal: false})}}/>
+                        </View>
+                        </View>
+                    </Modal>
+                 
                 <TitleBar/>
                 <View style={{flexGrow:20, backgroundColor:'#fff'}}>
                 <BotView/>
