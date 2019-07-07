@@ -59,15 +59,18 @@ export default class Chat extends Component {
                                     shadowColor: '#a5a5a5',
                                     shadowOpacity: 0.5,
                                     borderTopStartRadius:25, borderTopEndRadius:25 }}>
-                        
+                        <TouchableOpacity style={{justifyContent:'center', alignItems:'center', position:'absolute', top:-10, right:0, height:25, width:25, borderRadius:25, borderColor:'#a5a5a5', borderWidth:1, backgroundColor:'#f00'}} onPress={() => {this.setState({showModal:false})}}>
+                            <Text style={{fontSize:15, fontWeight:'bold', color:'#fff'}}>
+                                    x
+                                </Text>
+                            </TouchableOpacity>
                 <View style={{width:70, marginTop:15, borderBottomColor:'#D9D6D6', borderBottomWidth:1}}/>
-                        <TouchableOpacity title="done"
-                        style={{paddingTop:10, borderBottomColor:'##707070', borderBottomWidth:1, paddingBottom:5}}
-                        onPress={() => {this.setState({showModal: false})}}>
+                        <View
+                        style={{paddingTop:10, borderBottomColor:'##707070', borderBottomWidth:1, paddingBottom:5}}>
                             <Text style={{fontFamily:'Times New Roman', fontWeight:'bold', fontSize:30}}>
                                 'Cacophony' in News
                             </Text>
-                        </TouchableOpacity>
+                        </View>
                         <ScrollView
                         horizontal={true} contentContainerStyle={{flexGrow:1, alignItems:'center', justifyContent:'center', backgroundColor: '#fff', flexDirection:'row', flexWrap:'wrap'}}
                         >
