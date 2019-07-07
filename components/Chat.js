@@ -20,6 +20,7 @@ import UserTextBox from './UserTextBox';
 import TitleBar from './TitleBar';
 
 
+
 export default class Chat extends Component {
     
     state = {
@@ -57,11 +58,16 @@ export default class Chat extends Component {
                                     shadowOffset:{  width: -1,  height: -1  },
                                     shadowColor: '#a5a5a5',
                                     shadowOpacity: 0.5,
-                                    borderTopStartRadius:15, borderTopEndRadius:15 }}>
+                                    borderTopStartRadius:25, borderTopEndRadius:25 }}>
                         
-                        <Text>Hello World</Text>
-                        <Button title="done"
-                        onPress={() => {this.setState({showModal: false})}}/>
+                <View style={{width:70, marginTop:15, borderBottomColor:'#D9D6D6', borderBottomWidth:1}}/>
+                        <TouchableOpacity title="done"
+                        style={{paddingTop:10, borderBottomColor:'##707070', borderBottomWidth:1, paddingBottom:5}}
+                        onPress={() => {this.setState({showModal: false})}}>
+                            <Text style={{fontFamily:'Times New Roman', fontWeight:'bold', fontSize:30}}>
+                                'Cacophony' in News
+                            </Text>
+                        </TouchableOpacity>
                         <ScrollView
                         horizontal={true} contentContainerStyle={{flexGrow:1, alignItems:'center', justifyContent:'center', backgroundColor: '#fff', flexDirection:'row', flexWrap:'wrap'}}
                         >
