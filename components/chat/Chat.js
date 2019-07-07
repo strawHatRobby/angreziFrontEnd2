@@ -15,10 +15,10 @@ import {
     Modal
 } from 'react-native';
 import {Constants} from 'expo'
-import BotView from './chat/BotView';
-import UserTextBox from './chat/UserTextBox';
-import TitleBar from './chat/TitleBar';
-import NewsModal from './chat/NewsModal';
+import BotView from './BotView';
+import UserTextBox from './UserTextBox';
+import TitleBar from './TitleBar';
+import NewsModal from './NewsModal';
 
 
 
