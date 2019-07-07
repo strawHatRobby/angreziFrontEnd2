@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     Image,
+    ImageBackground,
     ScrollView,
     ActivityIndicator,
     Button,
@@ -57,9 +58,50 @@ export default class Chat extends Component {
                                     shadowColor: '#a5a5a5',
                                     shadowOpacity: 0.5,
                                     borderTopStartRadius:15, borderTopEndRadius:15 }}>
+                        
                         <Text>Hello World</Text>
                         <Button title="done"
                         onPress={() => {this.setState({showModal: false})}}/>
+                        <ScrollView
+                        horizontal={true} contentContainerStyle={{flexGrow:1, alignItems:'center', justifyContent:'center', backgroundColor: '#fff', flexDirection:'row', flexWrap:'wrap'}}
+                        >
+
+                            <ImageBackground source={{uri:'https://images.alphacoders.com/278/278733.jpg'}} style={{height:250, margin:20,  width:350 }} imageStyle={{borderRadius:25}}>
+                                <View style={{flex:1, justifyContent:'space-between', backgroundColor:'rgba(0,0,0,0.1)', borderRadius:25, borderBottomEndRadius:0, borderBottomStartRadius:0}}>
+                                    <View style={{width: 350, padding:15, borderRadius:25, borderBottomStartRadius:0}}>
+                                        <Text style={{fontFamily:'Times New Roman', fontWeight:'500', fontSize:26, color:'#fff'}}>
+                                            Cacophony of Birds
+                                            </Text>
+                                    </View>
+                                    <View style={{width: 350, padding:15, paddingBottom:0, borderRadius:25, borderBottomStartRadius:0}}>
+                                        <Text style={{fontFamily:'Arial', fontWeight:'bold', fontSize:14, color:'#fff'}}>
+                                        Greyhound divisively hello coldly wonderfully marginally far…
+                                            </Text>
+                                            <View style={{flexDirection:'row', alignItems: 'flex-start', width:350}}>
+                                            <Button title="Save" color="#fff" onPress={() => {}}/>
+                                            <Button title="Read More" color="#fff" onPress={() => {}}/>
+                                            </View>
+                                    </View>
+                                    </View>
+                                    <View style={{width:350, justifyContent:'flex-end', alignItems:'flex-end', flexDirection:'row', borderBottomEndRadius:25, borderBottomStartRadius:25, backgroundColor:'rgba(0,0,0,0.1)'}}>
+                                                <Text style={{color:'#fff', fontWeight:'600', padding:8, paddingTop:0, fontSize:15, fontFamily:'Arial'}}>
+                                                on decanchronicles.com
+                                                </Text>
+                                            </View>
+                            </ImageBackground>   
+
+
+                            <ImageBackground source={{uri:'https://tinyurl.com/y6oxq7wq'}} style={{height:250, margin:20,  width:350 }} imageStyle={{borderRadius:25}}>
+                                    <View style={{width: 350, padding:15, borderRadius:25, borderBottomStartRadius:0, backgroundColor:'rgba(0,0,0,0.0)'}}>
+                                        <Text style={{fontFamily:'Times New Roman', fontWeight:'500', fontSize:26, color:'#fff'}}>
+                                            Cacophony of Birds
+                                            </Text>
+                                    </View>
+                            </ImageBackground>    
+                            
+                            
+
+                        </ScrollView>
                         </View>
                         </View>
                     </Modal>
