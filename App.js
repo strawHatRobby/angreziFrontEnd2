@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Chat from './components/chat/Chat';
-
+import Levels from './components/Levels';
 export default function App() {
   return (
 <Chat/>
