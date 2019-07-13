@@ -19,6 +19,7 @@ import BotView from './BotView';
 import UserTextBox from './UserTextBox';
 import TitleBar from './TitleBar';
 import NewsModal from './NewsModal';
+import { Ionicons } from '@expo/vector-icons';
 
 
 
@@ -26,6 +27,7 @@ export default class Chat extends Component {
     
     state = {
         text: '',
+        showOptions: false,
         showModal: false,
         data : [
             'This is indeed true that your beauty knows no bound',
@@ -56,6 +58,8 @@ export default class Chat extends Component {
 
                 <UserTextBox />
                 </ScrollView>
+                {
+                    this.state.showOptions &&
                 <ScrollView horizontal={true}  showsHorizontalScrollIndicator={false} contentContainerStyle={{flexGrow:1, backgroundColor: '#E2E2E2', flexDirection:'row', flexWrap:'wrap', padding:10, paddingLeft:10}}>
                     {this.state.data.map((item, index) => {
                         return (
@@ -69,6 +73,39 @@ export default class Chat extends Component {
                     
                    }
                     </ScrollView>
+                }
+
+<View style={{flexGrow:10, 
+    backgroundColor:'#fff', borderTopEndRadius:10, borderTopStartRadius:10,
+    shadowOffset:{  width: -1,  height: -0.5  },
+    shadowColor: '#a5a5a5',
+    shadowOpacity: 0.25,
+    justifyContent:'space-between',
+    flexDirection:'row',
+    flexWrap:'nowrap',
+    padding:5,
+    paddingBottom:2,
+    paddingTop:2
+
+    }}>
+        <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
+                <Ionicons size={35} name='network'/>
+            </TouchableOpacity>
+            <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
+                <Ionicons size={35} name='network'/>
+            </TouchableOpacity>
+            <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
+                <Ionicons size={35} name='network'/>
+            </TouchableOpacity>
+            <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
+                <Ionicons size={35} name='network'/>
+            </TouchableOpacity>
+            <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
+                <Ionicons size={35} name='network'/>
+            </TouchableOpacity>
+
+</View>
+
 			</View>
 			)
 	}
