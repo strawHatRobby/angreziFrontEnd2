@@ -4,7 +4,7 @@ import { StyleSheet, Text, Dimensions, ImageBackground,Button, ScrollView, Modal
 export default class NewsModal extends Component {
     
     state = {
-        showModal: true
+        showModal: false
     }
   
     

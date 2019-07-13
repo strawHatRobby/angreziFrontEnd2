@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Chat from './components/chat/Chat';
 import Levels from './components/Levels';
+import YouTubeWindow from './components/YouTube';
+
 export default function App() {
   return (
 <Chat/>

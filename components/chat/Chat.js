@@ -38,7 +38,7 @@ export default class Chat extends Component {
     componentDidMount(){
         
             this.setState({
-                showModal: true
+                showModal: false
             })    
         
         
@@ -51,12 +51,12 @@ export default class Chat extends Component {
                 <NewsModal show={this.state.showModal}/>
                  
                 <TitleBar/>
-                <View style={{flexGrow:20, backgroundColor:'#fff'}}>
+                <ScrollView contentContainerStyle={{flexGrow:20, backgroundColor:'#fff'}}>
                 <BotView/>
 
                 <UserTextBox />
-                </View>
-                <ScrollView horizontal={true} contentContainerStyle={{flexGrow:1, backgroundColor: '#E2E2E2', flexDirection:'row', flexWrap:'wrap', padding:10, paddingLeft:10}}>
+                </ScrollView>
+                <ScrollView horizontal={true}  showsHorizontalScrollIndicator={false} contentContainerStyle={{flexGrow:1, backgroundColor: '#E2E2E2', flexDirection:'row', flexWrap:'wrap', padding:10, paddingLeft:10}}>
                     {this.state.data.map((item, index) => {
                         return (
                     <TouchableOpacity key={index} onPress={() => {}} style={[ {margin:10, marginLeft:10, marginRight:0, borderRadius:10, padding:10, justifyContent:'center', alignItems:'center', flexDirection:'row', flexWrap:'wap', backgroundColor:"#BED6F6"}, {  borderTopEndRadius: index === this.state.data.length-1 ? 0 : 10}]}>                    
