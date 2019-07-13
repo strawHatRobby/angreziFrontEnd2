@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'quotes';
+  src:  url('fonts/quotes.eot?u5qrs0');
+  src:  url('fonts/quotes.eot?u5qrs0#iefix') format('embedded-opentype'),
+    url('fonts/quotes.ttf?u5qrs0') format('truetype'),
+    url('fonts/quotes.woff?u5qrs0') format('woff'),
+    url('fonts/quotes.svg?u5qrs0#quotes') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="angrezi-"], [class*=" angrezi-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'quotes' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.angrezi-quotes:before {
+  content: "\e900";
+}
+.angrezi-bullhorn:before {
+  content: "\e91a";
+}

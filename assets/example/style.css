@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'example';
+  src:  url('fonts/example.eot?u5vbd9');
+  src:  url('fonts/example.eot?u5vbd9#iefix') format('embedded-opentype'),
+    url('fonts/example.ttf?u5vbd9') format('truetype'),
+    url('fonts/example.woff?u5vbd9') format('woff'),
+    url('fonts/example.svg?u5vbd9#example') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="angrezi-"], [class*=" angrezi-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'example' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.angrezi-example:before {
+  content: "\e900";
+}
+.angrezi-bullhorn:before {
+  content: "\e91a";
+}

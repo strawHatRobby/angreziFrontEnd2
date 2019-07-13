@@ -20,6 +20,11 @@ import UserTextBox from './UserTextBox';
 import TitleBar from './TitleBar';
 import NewsModal from './NewsModal';
 import { Ionicons } from '@expo/vector-icons';
+import NewsIcon from '../../CustomIcon';
+import VideoIcon from '../../VideoIcon';
+import ExampleIcon from '../../Examples';
+import SkipIcon from '../../SkipIcon';
+import QuotesIcon from '../../QuotesIcon';
 
 
 
@@ -28,7 +33,7 @@ export default class Chat extends Component {
     state = {
         text: '',
         showOptions: false,
-        showModal: false,
+        showModal: true,
         data : [
             'This is indeed true that your beauty knows no bound',
             'Yes',
@@ -89,19 +94,19 @@ export default class Chat extends Component {
 
     }}>
         <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-                <Ionicons size={35} name='network'/>
+        <NewsIcon name='news' color={'#a5a5a5'} size={40} /> 
             </TouchableOpacity>
             <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-                <Ionicons size={35} name='network'/>
+            <VideoIcon name='video' size={40} color={'#a5a5a5'}/> 
             </TouchableOpacity>
             <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-                <Ionicons size={35} name='network'/>
+            <ExampleIcon name='example' size={40} color={'#a5a5a5'}/> 
             </TouchableOpacity>
             <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-                <Ionicons size={35} name='network'/>
+            <QuotesIcon name='quotes' size={40} color={'#a5a5a5'}/> 
             </TouchableOpacity>
             <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-                <Ionicons size={35} name='network'/>
+            <SkipIcon name='skip' size={40} color={'#a5a5a5'}/> 
             </TouchableOpacity>
 
 </View>
