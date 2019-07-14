@@ -27,12 +27,8 @@ export default class BotView extends Component {
                         </Text>
                         </View>
 
-                       
-<BotQuestions/>
-                       <Quotes/>
-                       <Synonym/>
-                       <Sentence/>
-                        <Definition/>
+          
+
 
                 </View>
 

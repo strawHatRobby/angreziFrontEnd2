@@ -18,7 +18,7 @@ export default class ChatBar extends Component {
     
 	render(){
 		return(
-            <View style={[{flexGrow:10, 
+            <View style={[{ 
                 backgroundColor:'#fff', borderTopEndRadius:10, borderTopStartRadius:10,
                 shadowOffset:{  width: -1,  height: -0.5  },
                 shadowColor: '#a5a5a5',
