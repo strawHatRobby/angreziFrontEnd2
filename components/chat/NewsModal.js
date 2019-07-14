@@ -149,7 +149,7 @@ export default class NewsModal extends Component {
          style={ { overflow: 'hidden',  height:250, borderRadius:25}}
          javaScriptEnabled={true}
          domStorageEnabled={true}
-         source={{uri: 'https://www.youtube.com/embed/dFKhWe2bBkM' }}
+         source={{uri: 'https://www.youtube.com/embed/HdPzOWlLrbE?start=225&end=268&cc_load_policy=1' }}
  />
 
 </View>
