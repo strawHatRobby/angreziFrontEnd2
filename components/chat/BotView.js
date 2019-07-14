@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
+import Quotes from './Quotes';
 
 export default class BotView extends Component {
     
@@ -51,7 +52,8 @@ export default class BotView extends Component {
                             
 
                         </View>
-                        
+
+                       <Quotes/>
                         
 
                 </View>

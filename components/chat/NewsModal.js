@@ -6,6 +6,7 @@ import VideoIcon from '../../VideoIcon';
 import ExampleIcon from '../../Examples';
 import SkipIcon from '../../SkipIcon';
 import QuotesIcon from '../../QuotesIcon';
+import ChatBar from './ChatBar';
 
 
 export default class NewsModal extends Component {
@@ -15,38 +16,21 @@ export default class NewsModal extends Component {
         
         onStartShouldSetPanResponder: () => true,
         onPanResponderMove: (event, gestureState) => {
-            checkSwipeDirection = (gestureState) => {
-                if( 
-                    (Math.abs(gestureState.dx) > Math.abs(gestureState.dy * 3) ) &&
-                    (Math.abs(gestureState.vx) > Math.abs(gestureState.vy * 3) )
-                ) {
-                    this._swipeDirection = "horizontal";
-                    console.log("Horizontal");
-                } else {
-                    this._swipeDirection = "vertical";
-                    console.log("Vertical")
-                }
-            }
-            canMove = () => {
-                if(this._swipeDirection === "horizontal") {
-                    console.log("horizontal");
-                    return true;
-                } else {
-                    console.log("vertical");
-                    return false;
-                }
-            }
-            if(!this._swipeDirection) checkSwipeDirection(gestureState);
+           
             const height = Dimensions.get('window').height/2;
            console.log(gestureState);
            this.position.setValue({ x: 0, y: gestureState.dy })
            if(gestureState.dy > 250){
                this.setState({showModal: false})
            }
+          
         },
         onPanResponderRelease: (evt, gestureState) => {
-            
-           this._swipeDirection = null
+            if(gestureState.vx === 0 && gestureState.dy){
+                this.position.setValue({ x: 0, y: 0 })
+            }
+
+           
         } 
     })
     
@@ -64,7 +48,7 @@ export default class NewsModal extends Component {
                     animationType="slide"
                     transparent={true}
                     visible={this.state.showModal}
-                    onRequestClose={() => Alert.alert('Done')}
+                    onRequestClose={() => this.setState({showModal:false})}
                     
                     >
 
@@ -81,7 +65,7 @@ export default class NewsModal extends Component {
                             </TouchableOpacity> */}
 
 
-                            <View style={{flexGrow:10,
+                            {/* <View style={{flexGrow:10,
             position:'absolute',
             top:-55,
             borderBottomColor:'#a5a5a5',
@@ -116,7 +100,8 @@ export default class NewsModal extends Component {
             <SkipIcon name='skip' size={40} color={'rgba(165, 165, 165, 0.5)'}/> 
             </TouchableOpacity>
 
-</View>
+</View> */}
+<ChatBar modalEnabled={true}/>
                 <TouchableOpacity onPress={() => {this.setState({showModal: false})}} style={{width:70, marginTop:15, borderBottomColor:'#D9D6D6', borderBottomWidth:1}}/>
                         <View
                         style={{paddingTop:10, borderBottomColor:'##707070', borderBottomWidth:1, paddingBottom:5}}>

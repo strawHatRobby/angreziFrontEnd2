@@ -19,13 +19,8 @@ import BotView from './BotView';
 import UserTextBox from './UserTextBox';
 import TitleBar from './TitleBar';
 import NewsModal from './NewsModal';
-import { Ionicons } from '@expo/vector-icons';
-import NewsIcon from '../../CustomIcon';
-import VideoIcon from '../../VideoIcon';
-import ExampleIcon from '../../Examples';
-import SkipIcon from '../../SkipIcon';
-import QuotesIcon from '../../QuotesIcon';
 
+import ChatBar from './ChatBar';
 
 
 export default class Chat extends Component {
@@ -80,36 +75,7 @@ export default class Chat extends Component {
                     </ScrollView>
                 }
 
-<View style={{flexGrow:10, 
-    backgroundColor:'#fff', borderTopEndRadius:10, borderTopStartRadius:10,
-    shadowOffset:{  width: -1,  height: -0.5  },
-    shadowColor: '#a5a5a5',
-    shadowOpacity: 0.25,
-    justifyContent:'space-between',
-    flexDirection:'row',
-    flexWrap:'nowrap',
-    padding:5,
-    paddingBottom:2,
-    paddingTop:2
-
-    }}>
-        <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-        <NewsIcon name='news' color={'#a5a5a5'} size={40} /> 
-            </TouchableOpacity>
-            <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-            <VideoIcon name='video' size={40} color={'#a5a5a5'}/> 
-            </TouchableOpacity>
-            <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-            <ExampleIcon name='example' size={40} color={'#a5a5a5'}/> 
-            </TouchableOpacity>
-            <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-            <QuotesIcon name='quotes' size={40} color={'#a5a5a5'}/> 
-            </TouchableOpacity>
-            <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-            <SkipIcon name='skip' size={40} color={'#a5a5a5'}/> 
-            </TouchableOpacity>
-
-</View>
+<ChatBar modalEnabled={false}/>
 
 			</View>
 			)
