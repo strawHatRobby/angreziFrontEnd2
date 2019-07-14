@@ -44,7 +44,7 @@ width: Dimensions.get('window').width} : {}]}>
                         <VideoIcon name='video' size={40} color={'#a5a5a5'}/> 
                         </TouchableOpacity>
                         {
-                                true && 
+                                this.state.showExamplesType && 
 
                                 <View style={{position:'absolute'}} >
                                      <View style={{ width: 0,
@@ -84,7 +84,6 @@ width: Dimensions.get('window').width} : {}]}>
                                             <View style={{flexDirection:'row', justifyContent:'center', alignItems:'center', flexWrap:'nowrap'}}>
                                             <TouchableOpacity onPress={() => {}} style={{ justifyContent:'center', alignItems:'center', padding:5}}>
                                     <Text style={{color:'#4F83B6', fontWeight:'700', fontSize:15}}>
-                                                
                                             Synonyms
                                             </Text>
                                             </TouchableOpacity>
@@ -96,9 +95,8 @@ width: Dimensions.get('window').width} : {}]}>
                                 </View>
 </View>
                             }
-                        <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
+                        <TouchableOpacity onPress= {()=> {this.setState({showExamplesType: !this.state.showExamplesType})}} style={{padding:5, justifyContent:'center', alignItems:'center'}}>
                         <ExampleIcon name='example' size={40} color={'#a5a5a5'}/> 
-                            
                         </TouchableOpacity>
                         <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
                         <QuotesIcon name='quotes' size={40} color={'#a5a5a5'}/> 
