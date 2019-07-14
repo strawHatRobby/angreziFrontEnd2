@@ -76,50 +76,8 @@ class News extends Component {
                                     borderTopStartRadius:0, borderTopEndRadius:0},  this.state.position.getLayout()]}
                                     
                                     >
-                        {/* <TouchableOpacity style={{justifyContent:'center', alignItems:'center', position:'absolute', top:-10, right:0, height:25, width:25, borderRadius:25, borderColor:'#a5a5a5', borderWidth:1, backgroundColor:'#f00'}} onPress={() => {this.setState({showModal:false})}}>
-                            <Text style={{fontSize:15, fontWeight:'bold', color:'#fff'}}>
-                                    x
-                                </Text>
-                            </TouchableOpacity> */}
-
-
-                            {/* <View style={{flexGrow:10,
-            position:'absolute',
-            top:-55,
-            borderBottomColor:'#a5a5a5',
-            borderBottomWidth:0.5,
-            left:0,
-    backgroundColor:'#fff', borderTopEndRadius:10, borderTopStartRadius:10,
-    shadowOffset:{  width: -1,  height: -0.9  },
-    shadowColor: '#a5a5a5',
-    shadowOpacity: 0.25,
-    justifyContent:'space-between',
-    flexDirection:'row',
-    flexWrap:'nowrap',
-    padding:5,
-    paddingBottom:2,
-    paddingTop:2,
-    width: Dimensions.get('window').width
-
-    }}>
-        <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-        <NewsIcon name='news' color={'#000'} size={40} /> 
-            </TouchableOpacity>
-            <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-            <VideoIcon name='video' size={40} color={'rgba(165, 165, 165, 0.5)'}/> 
-            </TouchableOpacity>
-            <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-            <ExampleIcon name='example' size={40} color={'rgba(165, 165, 165, 0.5)'}/> 
-            </TouchableOpacity>
-            <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-            <QuotesIcon name='quotes' size={40} color={'rgba(165, 165, 165, 0.5)'}/> 
-            </TouchableOpacity>
-            <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-            <SkipIcon name='skip' size={40} color={'rgba(165, 165, 165, 0.5)'}/> 
-            </TouchableOpacity>
-
-</View> */}
 <ChatBar modalEnabled={true}/>
+
                 <TouchableOpacity onPress={() => {this.setState({showModal: false})}} style={{width:70, marginTop:15, borderBottomColor:'#D9D6D6', borderBottomWidth:1}}/>
                         <View
                         style={{paddingTop:10, borderBottomColor:'##707070', borderBottomWidth:1, paddingBottom:5}}>

@@ -12,7 +12,8 @@ export default class ChatBar extends Component {
     
     state = {
         modalEnabled: false,
-        showExamplesType: false
+        showExamplesType: false,
+        activeIcon: null
     }
   
     
@@ -37,11 +38,25 @@ export default class ChatBar extends Component {
                 borderBottomColor:'#a5a5a5',
                 borderBottomWidth:0.5,
 width: Dimensions.get('window').width} : {}]}>
-                    <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-                    <NewsIcon name='news' color={'#000'} size={40} /> 
+                    <TouchableOpacity 
+                    onPress={() => {
+                            this.setState({
+                                activeIcon: 'news',
+                                showExamplesType: false
+                            })
+                    }} 
+                     style={{padding:5, justifyContent:'center', alignItems:'center'}}>
+                    <NewsIcon name='news' color={this.state.activeIcon === 'news' ? '#000': '#a5a5a5'} size={40} /> 
                         </TouchableOpacity>
-                        <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-                        <VideoIcon name='video' size={40} color={'#a5a5a5'}/> 
+                        <TouchableOpacity 
+                        onPress={() => {
+                            this.setState({
+                                activeIcon: 'video',
+                                showExamplesType: false
+                            })
+                    }} 
+                        style={{padding:5, justifyContent:'center', alignItems:'center'}}>
+                        <VideoIcon name='video' size={40} color={this.state.activeIcon === 'video' ? '#000': '#a5a5a5'}/> 
                         </TouchableOpacity>
                         {
                                 this.state.showExamplesType && 
@@ -95,14 +110,32 @@ width: Dimensions.get('window').width} : {}]}>
                                 </View>
 </View>
                             }
-                        <TouchableOpacity onPress= {()=> {this.setState({showExamplesType: !this.state.showExamplesType})}} style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-                        <ExampleIcon name='example' size={40} color={'#a5a5a5'}/> 
+                        <TouchableOpacity onPress= {()=> {this.setState({
+                            showExamplesType: !this.state.showExamplesType,
+                            activeIcon: 'example'
+                            })}} 
+                            style={{padding:5, justifyContent:'center', alignItems:'center'}}>
+                        <ExampleIcon name='example' size={40} color={this.state.activeIcon === 'example' && this.state.showExamplesType ? '#000': '#a5a5a5'}/> 
                         </TouchableOpacity>
-                        <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-                        <QuotesIcon name='quotes' size={40} color={'#a5a5a5'}/> 
+                        <TouchableOpacity 
+                         onPress={() => {
+                            this.setState({
+                                activeIcon: 'quotes',
+                                showExamplesType: false
+                            })
+                    }}
+                        style={{padding:5, justifyContent:'center', alignItems:'center'}}>
+                        <QuotesIcon name='quotes' size={40} color={this.state.activeIcon === 'quotes' ? '#000': '#a5a5a5'}/> 
                         </TouchableOpacity>
-                        <TouchableOpacity style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-                        <SkipIcon name='skip' size={40} color={'#a5a5a5'}/> 
+                        <TouchableOpacity 
+                         onPress={() => {
+                            this.setState({
+                                activeIcon: 'skip',
+                                showExamplesType: false
+                            })
+                    }}
+                        style={{padding:5, justifyContent:'center', alignItems:'center'}}>
+                        <SkipIcon name='skip' size={40} color={this.state.activeIcon === 'skip' ? '#000': '#a5a5a5'}/> 
                         </TouchableOpacity>
             
             </View>
