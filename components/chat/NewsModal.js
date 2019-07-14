@@ -9,19 +9,44 @@ import QuotesIcon from '../../QuotesIcon';
 
 
 export default class NewsModal extends Component {
-    position = new Animated.ValueXY()
+    position = new Animated.ValueXY();
+    _swipeDirection = null
     panResponder = PanResponder.create({
+        
         onStartShouldSetPanResponder: () => true,
-        onPanResponderMove: (event, gesture) => {
+        onPanResponderMove: (event, gestureState) => {
+            checkSwipeDirection = (gestureState) => {
+                if( 
+                    (Math.abs(gestureState.dx) > Math.abs(gestureState.dy * 3) ) &&
+                    (Math.abs(gestureState.vx) > Math.abs(gestureState.vy * 3) )
+                ) {
+                    this._swipeDirection = "horizontal";
+                    console.log("Horizontal");
+                } else {
+                    this._swipeDirection = "vertical";
+                    console.log("Vertical")
+                }
+            }
+            canMove = () => {
+                if(this._swipeDirection === "horizontal") {
+                    console.log("horizontal");
+                    return true;
+                } else {
+                    console.log("vertical");
+                    return false;
+                }
+            }
+            if(!this._swipeDirection) checkSwipeDirection(gestureState);
             const height = Dimensions.get('window').height/2;
-           console.log(gesture);
-           this.position.setValue({ x: 0, y: gesture.dy })
-           if(gesture.dy > 250){
+           console.log(gestureState);
+           this.position.setValue({ x: 0, y: gestureState.dy })
+           if(gestureState.dy > 250){
                this.setState({showModal: false})
            }
         },
         onPanResponderRelease: (evt, gestureState) => {
-            this.position.setValue({ x: 0, y: 0 })
+            
+           this._swipeDirection = null
         } 
     })
     
