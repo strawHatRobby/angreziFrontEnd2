@@ -56,7 +56,7 @@ export default class NewsModal extends Component {
                         <View style={{flexDirection:'column', flexGrow:1, justifyContent:'flex-end', backgroundColor:'rgba(255,255,255,0.5)'}}>
                         <Animated.View style={[{justifyContent:'center', alignItems: 'center', height: Dimensions.get('window').height/1.8, backgroundColor:'#fff',
                                     borderTopStartRadius:0, borderTopEndRadius:0},  this.state.position.getLayout()]}
-                                    {...this.state.panResponder.panHandlers}
+                                    
                                     >
                         {/* <TouchableOpacity style={{justifyContent:'center', alignItems:'center', position:'absolute', top:-10, right:0, height:25, width:25, borderRadius:25, borderColor:'#a5a5a5', borderWidth:1, backgroundColor:'#f00'}} onPress={() => {this.setState({showModal:false})}}>
                             <Text style={{fontSize:15, fontWeight:'bold', color:'#fff'}}>
