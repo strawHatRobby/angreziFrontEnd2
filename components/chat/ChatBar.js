@@ -6,7 +6,7 @@ import VideoIcon from '../../VideoIcon';
 import ExampleIcon from '../../Examples';
 import SkipIcon from '../../SkipIcon';
 import QuotesIcon from '../../QuotesIcon';
-
+import ExampleOptions from './ExampleOptions';
 
 export default class ChatBar extends Component {
     
@@ -61,54 +61,7 @@ width: Dimensions.get('window').width} : {}]}>
                         {
                                 this.state.showExamplesType && 
 
-                                <View style={{position:'absolute'}} >
-                                     <View style={{ width: 0,
-    height: 0,
-    top:-10,
-    left: 175,
-    zIndex:1,
-    backgroundColor: 'transparent',
-    borderStyle: 'solid',
-    borderLeftWidth: 8,
-    borderRightWidth: 8,
-    borderBottomWidth: 16,
-    shadowOffset:{  width: -1,  height: -0.5  },
-                shadowColor: '#000',
-                shadowOpacity: 0.2,
-    transform: [
-        {rotate: '180deg'}
-      ],
-    borderLeftColor: 'transparent',
-    borderRightColor: 'transparent',
-    borderBottomColor: 'white'}}/>
-                                    <View style={{ position:'absolute', zIndex:0, 
-                                    shadowOffset:{  width: -1,  height: -1  },
-                                    shadowColor: '#000',
-                                    shadowOpacity: 0.75,
-                                    top:-70, left:90, width:180, height:60, backgroundColor:'#fff', borderRadius:10}}>
-
-                                        <View style={{flexDirection:'row', justifyContent:'center', alignItems:'center', flexWrap:'nowrap', borderBottomColor:'#E3E3E3', borderBottomWidth:1}}>
-                                            <TouchableOpacity onPress={() => {}} style={{ justifyContent:'center', alignItems:'center', padding:5}}>
-                                    <Text style={{color:'#4F83B6', fontWeight:'700', fontSize:15}}>
-                                                
-                                            Use it in a sentence
-                                            </Text>
-                                            </TouchableOpacity>
-                                            </View>
-
-                                            <View style={{flexDirection:'row', justifyContent:'center', alignItems:'center', flexWrap:'nowrap'}}>
-                                            <TouchableOpacity onPress={() => {}} style={{ justifyContent:'center', alignItems:'center', padding:5}}>
-                                    <Text style={{color:'#4F83B6', fontWeight:'700', fontSize:15}}>
-                                            Synonyms
-                                            </Text>
-                                            </TouchableOpacity>
-                                            </View>
-                                   
-
-                                        
-
-                                </View>
-</View>
+                               <ExampleOptions/>
                             }
                         <TouchableOpacity onPress= {()=> {this.setState({
                             showExamplesType: !this.state.showExamplesType,
