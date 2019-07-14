@@ -12,7 +12,7 @@ export default class ChatBar extends Component {
     
     state = {
         modalEnabled: false,
-        showExamplesType: true
+        showExamplesType: false
     }
   
     

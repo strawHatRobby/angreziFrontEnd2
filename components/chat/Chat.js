@@ -19,16 +19,28 @@ import BotView from './BotView';
 import UserTextBox from './UserTextBox';
 import TitleBar from './TitleBar';
 import NewsModal from './NewsModal';
+import { BlurView } from 'expo-blur';
 
 import ChatBar from './ChatBar';
 
+
+const {height, width} = Dimensions.get('window');
 
 export default class Chat extends Component {
     
     state = {
         text: '',
+        showTutorial: true,
         showOptions: false,
         showModal: true,
+        chatScreen : [
+           
+                    
+                <BotView/>,
+
+                <UserTextBox />
+           
+        ],
         data : [
             'This is indeed true that your beauty knows no bound',
             'Yes',
@@ -47,18 +59,22 @@ export default class Chat extends Component {
     }
 	render(){
 		return(
-			<View style={styles.container}>
+			<View style={[styles.container]}>
+               
 
+              
 
                 <NewsModal show={this.state.showModal}/>
                  
                 <TitleBar/>
                 <ScrollView contentContainerStyle={{flexGrow:20, backgroundColor:'#fff'}}>
-                <BotView/>
-
-                <UserTextBox />
+                        {
+                            this.state.chatScreen.map((item) => {
+                                return item
+                            })
+                        }
                 </ScrollView>
-                {
+                {/* {
                     this.state.showOptions &&
                 <ScrollView horizontal={true}  showsHorizontalScrollIndicator={false} contentContainerStyle={{flexGrow:1, backgroundColor: '#E2E2E2', flexDirection:'row', flexWrap:'wrap', padding:10, paddingLeft:10}}>
                     {this.state.data.map((item, index) => {
@@ -73,11 +89,13 @@ export default class Chat extends Component {
                     
                    }
                     </ScrollView>
-                }
+                } */}
 
 <ChatBar modalEnabled={false}/>
 
-			</View>
+        
+            </View>
+            
 			)
 	}
 }
@@ -86,6 +104,10 @@ export default class Chat extends Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      paddingTop: Constants.statusBarHeight
+      paddingTop: Constants.statusBarHeight,
     },
+    notBlurred: {
+        ...StyleSheet.absoluteFill,
+        top: Constants.statusBarHeight,
+      }
   });

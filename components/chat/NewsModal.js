@@ -7,9 +7,27 @@ import ExampleIcon from '../../Examples';
 import SkipIcon from '../../SkipIcon';
 import QuotesIcon from '../../QuotesIcon';
 import ChatBar from './ChatBar';
+import showNews from './redux/action';
+import {connect} from 'react-redux';
 
 
-export default class NewsModal extends Component {
+const mapStateToProps = (state) => {
+    return {
+        toggleNews: state.showNews
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        showNewsModal: () => {
+        dispatch(showNews())
+    }
+}
+}
+class News extends Component {
+    componentDidMount(){
+
+    }
     position = new Animated.ValueXY();
     _swipeDirection = null
     panResponder = PanResponder.create({
@@ -35,7 +53,7 @@ export default class NewsModal extends Component {
     })
     
     state = {
-        showModal: true,
+        showModal: false,
         panResponder: this.panResponder,
         position: this.position
     }
@@ -47,9 +65,9 @@ export default class NewsModal extends Component {
 			 <Modal
                     animationType="slide"
                     transparent={true}
-                    visible={this.state.showModal}
+                    visible={false}
                     onRequestClose={() => this.setState({showModal:false})}
-                    
+
                     >
 
            
@@ -149,7 +167,7 @@ export default class NewsModal extends Component {
          style={ { overflow: 'hidden',  height:250, borderRadius:25}}
          javaScriptEnabled={true}
          domStorageEnabled={true}
-         source={{uri: 'https://www.youtube.com/embed/HdPzOWlLrbE?start=225&end=268&cc_load_policy=1' }}
+         source={{uri: 'https://www.youtube.com/embed/HdPzOWlLrbE?start=225&end=268&cc_load_policy=1&loop=1' }}
  />
 
 </View>
@@ -164,3 +182,5 @@ export default class NewsModal extends Component {
 			)
 	}
 }
+
+export default NewsModal = connect(mapStateToProps, mapDispatchToProps)(News);
