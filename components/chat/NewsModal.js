@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, Dimensions, ImageBackground,Button, ScrollView, Modal, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, WebView, Platform, Animated, PanResponder, Text, Modal, Dimensions, ImageBackground,Button, ScrollView,  View, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import NewsIcon from '../../CustomIcon';
 import VideoIcon from '../../VideoIcon';
@@ -9,9 +9,26 @@ import QuotesIcon from '../../QuotesIcon';
 
 
 export default class NewsModal extends Component {
+    position = new Animated.ValueXY()
+    panResponder = PanResponder.create({
+        onStartShouldSetPanResponder: () => true,
+        onPanResponderMove: (event, gesture) => {
+            const height = Dimensions.get('window').height/2;
+           console.log(gesture);
+           this.position.setValue({ x: 0, y: gesture.dy })
+           if(gesture.dy > 250){
+               this.setState({showModal: false})
+           }
+        },
+        onPanResponderRelease: (evt, gestureState) => {
+            this.position.setValue({ x: 0, y: 0 })
+        } 
+    })
     
     state = {
-        showModal: true
+        showModal: true,
+        panResponder: this.panResponder,
+        position: this.position
     }
   
     
@@ -23,12 +40,15 @@ export default class NewsModal extends Component {
                     transparent={true}
                     visible={this.state.showModal}
                     onRequestClose={() => Alert.alert('Done')}
+                    
                     >
 
            
                         <View style={{flexDirection:'column', flexGrow:1, justifyContent:'flex-end', backgroundColor:'rgba(255,255,255,0.5)'}}>
-                        <View style={{justifyContent:'center', alignItems: 'center', height: Dimensions.get('window').height/1.8, backgroundColor:'#fff',
-                                    borderTopStartRadius:0, borderTopEndRadius:0}}>
+                        <Animated.View style={[{justifyContent:'center', alignItems: 'center', height: Dimensions.get('window').height/1.8, backgroundColor:'#fff',
+                                    borderTopStartRadius:0, borderTopEndRadius:0},  this.state.position.getLayout()]}
+                                    {...this.state.panResponder.panHandlers}
+                                    >
                         {/* <TouchableOpacity style={{justifyContent:'center', alignItems:'center', position:'absolute', top:-10, right:0, height:25, width:25, borderRadius:25, borderColor:'#a5a5a5', borderWidth:1, backgroundColor:'#f00'}} onPress={() => {this.setState({showModal:false})}}>
                             <Text style={{fontSize:15, fontWeight:'bold', color:'#fff'}}>
                                     x
@@ -112,18 +132,22 @@ export default class NewsModal extends Component {
                             </ImageBackground>   
 
 
-                            <ImageBackground source={{uri:'https://tinyurl.com/y6oxq7wq'}} style={{height:250, margin:20,  width:350 }} imageStyle={{borderRadius:25}}>
-                                    <View style={{width: 350, padding:15, borderRadius:25, borderBottomStartRadius:0, backgroundColor:'rgba(0,0,0,0.0)'}}>
-                                        <Text style={{fontFamily:'Times New Roman', fontWeight:'500', fontSize:26, color:'#fff'}}>
-                                            Cacophony of Birds
-                                            </Text>
-                                    </View>
-                            </ImageBackground>    
+                           
+        <View style={{height:250, margin:20, width:350, borderRadius:50}}>
+ 
+ <WebView
+         style={ { overflow: 'hidden',  height:250, borderRadius:25}}
+         javaScriptEnabled={true}
+         domStorageEnabled={true}
+         source={{uri: 'https://www.youtube.com/embed/dFKhWe2bBkM' }}
+ />
+
+</View>
                             
                             
 
                         </ScrollView>
-                        </View>
+                        </Animated.View>
                         </View>
                     </Modal>
 
