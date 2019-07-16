@@ -3,11 +3,16 @@ import { StyleSheet, Text, View } from 'react-native';
 import Chat from './components/chat/Chat';
 import Levels from './components/Levels';
 import YouTubeWindow from './components/YouTube';
-import chatBarReducer from './components/chat/redux/reducer';
-import { createStore } from 'redux';
+import chatBarReducer from './components/chat/redux/chatBarReducer';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-
-const store = createStore(chatBarReducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+import createSagaMiddleware from 'redux-saga';
+function* hello(){
+  console.log('hello');
+}
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(chatBarReducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(hello);
 
 export default function App() {
   return (
