@@ -109,12 +109,11 @@ class ChatBarComponent extends Component {
 
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (store) => {
     return {
-        showNewsModal: state.showNewsModal,
-        showVideoModal: state.showVideoModal,
-        showModal: state.showModal
-        
+        showNewsModal: store.chatBar.showNewsModal,
+        showVideoModal: store.chatBar.showVideoModal,
+        showModal: store.chatBar.showModal
     }
 }
 
