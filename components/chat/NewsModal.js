@@ -72,13 +72,13 @@ class News extends Component {
                         <View
                         style={{paddingTop:10, borderBottomColor:'##707070', borderBottomWidth:1, paddingBottom:5}}>
                             <Text style={{fontFamily:'Times New Roman', fontWeight:'bold', fontSize:30}}>
-                                'Cacophony' in News
+                                {`Cacophony' in ${this.props.showNewsModal ? 'News': 'Videos'}`}
                             </Text>
                         </View>
                         
 
-                            {!this.props.showNewsModal && <VideoContent/>}
-                            {this.props.showVideoModal && <NewsContent/>}
+                            {this.props.showVideoModal && <VideoContent/>}
+                            {this.props.showNewsModal && <NewsContent/>}
                             
 
                         
@@ -101,9 +101,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onShowNewsModal: () => dispatch(showNews()),
-        onShowVideoModal: () => dispatch(showVideo()),
-        onShowModal: () => dispatch(showModal())
+        onShowNewsModal: (show) => dispatch(showNews(show)),
+        onShowVideoModal: (show) => dispatch(showVideo(show)),
+        onShowModal: (show) => dispatch(showModal(show))
     }
 }
 

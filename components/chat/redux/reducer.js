@@ -3,7 +3,7 @@ import {showNews, showModal, showVideo} from './actions';
 
 const initialState = {
     showNewsModal: false,
-    showVideoModal: true,
+    showVideoModal: false,
     showModal: false
 }
 export default chatBarReducer = (state = initialState, action ) => {
@@ -11,17 +11,17 @@ export default chatBarReducer = (state = initialState, action ) => {
         case 'SHOW_NEWS_MODAL':
         return {
             ...state,
-            showNewsModal: false
+            showNewsModal: action.payload
         }
         case 'SHOW_VIDEO_MODAL':
         return {
             ...state,
-            showVideoModal: false
+            showVideoModal: action.payload
         }
         case 'SHOW_MODAL':
                 return {
                     ...state,
-                    showModal: !state.showModal
+                    showModal: action.payload
                 }
         default: 
         return state

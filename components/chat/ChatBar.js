@@ -43,8 +43,9 @@ class ChatBarComponent extends Component {
                 width: Dimensions.get('window').width} : {}]}>
                     <TouchableOpacity 
                     onPress={() => {
-                            this.props.onShowModal(),
-                            this.props.onShowNewsModal(),
+                            this.props.onShowModal(true);
+                            this.props.onShowNewsModal(true);
+                            this.props.onShowVideoModal(false);
                             this.setState({
                                 activeIcon: 'news',
                                 showExamplesType: false
@@ -55,8 +56,9 @@ class ChatBarComponent extends Component {
                         </TouchableOpacity>
                         <TouchableOpacity 
                         onPress={() => {
-                            this.props.onShowModal(),
-                            this.props.onShowVideoModal(),
+                            this.props.onShowModal(true);
+                            this.props.onShowVideoModal(true);
+                            this.props.onShowNewsModal(false)
                             this.setState({
                                 activeIcon: 'video',
                                 showExamplesType: false
@@ -79,6 +81,7 @@ class ChatBarComponent extends Component {
                         </TouchableOpacity>
                         <TouchableOpacity 
                          onPress={() => {
+                             this.props.onShowModal(false);
                             this.setState({
                                 activeIcon: 'quotes',
                                 showExamplesType: false
@@ -89,6 +92,7 @@ class ChatBarComponent extends Component {
                         </TouchableOpacity>
                         <TouchableOpacity 
                          onPress={() => {
+                            this.props.onShowModal(false);
                             this.setState({
                                 activeIcon: 'skip',
                                 showExamplesType: false
@@ -116,9 +120,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onShowNewsModal: () => dispatch(showNews()),
-        onShowVideoModal: () => dispatch(showVideo()),
-        onShowModal: () => dispatch(showModal())
+        onShowNewsModal: (show) => dispatch(showNews(show)),
+        onShowVideoModal: (show) => dispatch(showVideo(show)),
+        onShowModal: (show) => dispatch(showModal(show))
     }
 }
 
