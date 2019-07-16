@@ -3,7 +3,8 @@ import { addQuoteToScreen } from './chatScreenActions';
 const initialState = {
     quotes: '',
     chatScreenContent: [],
-    progress: 0
+    progress: 0,
+    userSelected: ''
 }
 
 export default chatScreenReducer = (state = initialState, action ) => {
@@ -33,7 +34,11 @@ export default chatScreenReducer = (state = initialState, action ) => {
                     progress: newProg
                 }   
             }
-            
+        case 'USER_RESPONDED_WITH':
+            return {
+                ...state,
+                userSelected: action.payload   
+            }
         default:
             return state
     }

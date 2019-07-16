@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { userRespondedWith, addToScreen } from '../chat/redux/chatScreenActions';
+import { connect } from 'react-redux';
+import UserTextBox from '../chat/UserTextBox';
 
-export default class BotQuestions extends Component {
+
+class BotQuestionsComponent extends Component {
     
     state = {
         
@@ -22,7 +26,11 @@ export default class BotQuestions extends Component {
                    this.props.options.map((item, index) => {
                        return (
                         <View key={index} style={{padding:5, paddingBottom:0, backgroundColor:'rgba(255,255,255,0.77)'}}>
-                        <TouchableOpacity style={{justifyContent:'center', alignItems:'center',padding:8}}>
+                        <TouchableOpacity onPress={() => {
+                            this.props.setUserResponseTo(item);
+                            this.props.onAddNewContent(<UserTextBox said={item}/>)
+                        }}
+                         style={{justifyContent:'center', alignItems:'center',padding:8}}>
                             
                             <Text style={{fontSize:18, color: '#6099E6',flexWrap:'wrap',  fontFamily:'Times New Roman'}}>
                                         {item}
@@ -43,3 +51,20 @@ export default class BotQuestions extends Component {
 			)
 	}
 }
+
+const mapStateToProps = (store) => {
+  return   {
+    userSelected: store.chatScreen.userSelected,
+    chatScreenContent: store.chatScreen.chatScreenContent
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setUserResponseTo: (answer) => dispatch(userRespondedWith(answer)),
+        onAddNewContent: (data) => dispatch(addToScreen(data))
+    }
+
+}
+
+export default BotQuestion = connect(mapStateToProps,mapDispatchToProps)(BotQuestionsComponent);

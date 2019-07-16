@@ -28,7 +28,9 @@ import {addToScreen} from './redux/chatScreenActions';
 
 {/* Chat Components Imported after this line, TODO: move to index.js later */}
 import BotQuestions from '../chatQuestions/BotQuestions';
-
+import Sentence from '../chatQuestions/Sentence';
+import Synonym from '../chatQuestions/Synonym';
+import Definition from '../chatQuestions/Definition';
 
 const {height, width} = Dimensions.get('window');
 
@@ -46,8 +48,14 @@ class ChatScreen extends Component {
             this.props.onAddNewContent(<BotQuestions say={"Are you ready ?"} options={["Yes", "No"]}/>)
         }, 1500)
         setTimeout(() => {
-                this.props.onAddNewContent(<UserTextBox said={"Yes"}/> )
-        }, 2000)
+            this.props.onAddNewContent(<Sentence say={"Are you ready ?"} options={["Yes", "No"]}/>)
+        }, 3500)
+        setTimeout(() => {
+            this.props.onAddNewContent(<Synonym say={"Are you ready ?"} options={["Yes", "No"]}/>)
+        }, 3500)
+        setTimeout(() => {
+            this.props.onAddNewContent(<Definition say={"Are you ready ?"} options={["Yes", "No"]}/>)
+        }, 3500)
     } 
 	render(){
 		return(

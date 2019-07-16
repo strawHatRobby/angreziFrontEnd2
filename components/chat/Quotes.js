@@ -15,7 +15,7 @@ export default class Quotes extends Component {
 	render(){
         
 		return(
-            <View style={{ padding:10, paddingLeft:20, margin:10,marginLeft:0, borderRadius:8, borderTopStartRadius:0, backgroundColor:'#BEDBE9'}}>
+            <View style={{ padding:10, margin:10,marginLeft:10, borderRadius:8, borderTopStartRadius:0, backgroundColor:'#BEDBE9'}}>
             <Text style={{fontSize:11,flexWrap:'nowrap', fontFamily:'Times New Roman', color:'#776666', marginBottom:5}}>2:25 PM</Text>
             <QuotesIcon name="quotes" size={30} color={'#000'}/>
             
