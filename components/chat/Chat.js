@@ -21,9 +21,9 @@ import TitleBar from './TitleBar';
 import NewsModal from './NewsModal';
 import VideoModal from './VideoModal';
 import { BlurView } from 'expo-blur';
-
+import {connect} from 'react-redux';
 import ChatBar from './ChatBar';
-
+import {addToScreen} from './redux/chatScreenActions';
 
 
 {/* Chat Components Imported after this line, TODO: move to index.js later */}
@@ -32,28 +32,21 @@ import BotQuestions from '../chatQuestions/BotQuestions';
 
 const {height, width} = Dimensions.get('window');
 
-export default class Chat extends Component {
+class ChatScreen extends Component {
     
     state = {
-        chatScreenContent : [   
-        ]
+        
     }
 
     componentDidMount(){ 
         setTimeout(() => {
-            this.setState({
-               chatScreenContent: [...this.state.chatScreenContent,<BotView say={"Hey Yeasharth"}/> ]
-            }) 
+            this.props.onAddNewContent(<BotView say={"Hey Yasharth ?"}/>)
         }, 500);
         setTimeout(() => {
-            this.setState({
-               chatScreenContent: [...this.state.chatScreenContent,<BotQuestions say={"Are you ready ?"} options={["Yes", "No"]}/> ]
-            }) 
+            this.props.onAddNewContent(<BotQuestions say={"Are you ready ?"} options={["Yes", "No"]}/>)
         }, 1500)
         setTimeout(() => {
-            this.setState({
-               chatScreenContent: [...this.state.chatScreenContent,<UserTextBox said={"Yes"}/> ]
-            }) 
+                this.props.onAddNewContent(<UserTextBox said={"Yes"}/> )
         }, 2000)
     } 
 	render(){
@@ -63,7 +56,7 @@ export default class Chat extends Component {
                 <TitleBar/>
                     <ScrollView contentContainerStyle={{flexGrow:20, backgroundColor:'#fff'}}>
                             {
-                                this.state.chatScreenContent.map((item) => {
+                                this.props.chatScreenContent.map((item) => {
                                     return item
                                 })
                             }
@@ -74,6 +67,19 @@ export default class Chat extends Component {
 	}
 }
 
+const mapStateToProps = (store) => {
+    return {
+        chatScreenContent: store.chatScreen.chatScreenContent
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onAddNewContent: (data) => dispatch(addToScreen(data))
+    }
+}
+
+const Chat = connect(mapStateToProps, mapDispatchToProps)(ChatScreen);
 
 const styles = StyleSheet.create({
     container: {
@@ -85,3 +91,5 @@ const styles = StyleSheet.create({
         top: Constants.statusBarHeight,
       }
   });
+
+  export default Chat;
