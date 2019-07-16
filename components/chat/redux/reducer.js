@@ -1,7 +1,8 @@
-import showNews from './actions';
+import {showNews, showVideo} from './actions';
+
 const initialState = {
     showNewsModal: false,
-    showVideo: false
+    showVideoModal: false
 }
 export default chatBarReducer = (state = initialState, action ) => {
     switch(action.type){
@@ -9,6 +10,12 @@ export default chatBarReducer = (state = initialState, action ) => {
         return {
             ...state,
             showNewsModal: !state.showNewsModal
+        }
+        case 'SHOW_VIDEO_MODAL':
+            console.log('SHOW_VIDEO clicked');
+        return {
+            ...state,
+            showVideoModal: !state.showVideoModal
         }
         default: 
         return state

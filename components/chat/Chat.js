@@ -19,6 +19,7 @@ import BotView from './BotView';
 import UserTextBox from './UserTextBox';
 import TitleBar from './TitleBar';
 import NewsModal from './NewsModal';
+import VideoModal from './VideoModal';
 import { BlurView } from 'expo-blur';
 
 import ChatBar from './ChatBar';
@@ -27,6 +28,7 @@ import ChatBar from './ChatBar';
 
 {/* Chat Components Imported after this line, TODO: move to index.js later */}
 import BotQuestions from '../chatQuestions/BotQuestions';
+
 
 const {height, width} = Dimensions.get('window');
 
@@ -57,7 +59,8 @@ export default class Chat extends Component {
 	render(){
 		return(
 			<View style={[styles.container]}>
-             <NewsModal show={this.state.showModal}/>                 
+             <NewsModal/>
+             <VideoModal/>                 
                 <TitleBar/>
                     <ScrollView contentContainerStyle={{flexGrow:20, backgroundColor:'#fff'}}>
                             {

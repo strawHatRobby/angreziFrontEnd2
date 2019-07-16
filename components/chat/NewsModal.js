@@ -7,7 +7,7 @@ import ExampleIcon from '../../Examples';
 import SkipIcon from '../../SkipIcon';
 import QuotesIcon from '../../QuotesIcon';
 import ChatBar from './ChatBar';
-import showNews from './redux/action';
+import {showNews} from './redux/action';
 import {connect} from 'react-redux';
 
 

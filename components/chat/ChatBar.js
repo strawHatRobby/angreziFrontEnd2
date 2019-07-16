@@ -8,6 +8,8 @@ import SkipIcon from '../../SkipIcon';
 import QuotesIcon from '../../QuotesIcon';
 import ExampleOptions from './ExampleOptions';
 import { connect } from 'react-redux';
+import { showNews, showVideo } from './redux/action';
+
 
 class ChatBarComponent extends Component {
     
@@ -52,6 +54,7 @@ class ChatBarComponent extends Component {
                         </TouchableOpacity>
                         <TouchableOpacity 
                         onPress={() => {
+                            this.props.onShowVideoModal(),
                             this.setState({
                                 activeIcon: 'video',
                                 showExamplesType: false
@@ -102,13 +105,16 @@ class ChatBarComponent extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        showNewsModal: state.showNewsModal
+        showNewsModal: state.showNewsModal,
+        showVideoModal: state.showVideoModal
+        
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onShowNewsModal: () => dispatch(showNews())
+        onShowNewsModal: () => dispatch(showNews()),
+        onShowVideoModal: () => dispatch(showVideo())
     }
 }
 
