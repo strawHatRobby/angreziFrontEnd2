@@ -10,7 +10,7 @@ import ExampleOptions from './ExampleOptions';
 import { connect } from 'react-redux';
 import { showNews, showVideo, showModal } from './redux/action';
 import Quotes from './Quotes';
-import { addQuoteToScreen, addToScreen, incrementProgressBar } from './redux/chatScreenActions';
+import { addQuoteToScreen, addToScreen, incrementProgressBar , showExampleType} from './redux/chatScreenActions';
 
 
 class ChatBarComponent extends Component {
@@ -48,9 +48,9 @@ class ChatBarComponent extends Component {
                             this.props.onShowModal(true);
                             this.props.onShowNewsModal(true);
                             this.props.onShowVideoModal(false);
+                            this.props.onShowExampleType(false);
                             this.setState({
-                                activeIcon: 'news',
-                                showExamplesType: false
+                                activeIcon: 'news'
                             })
                     }} 
                      style={{padding:5, justifyContent:'center', alignItems:'center'}}>
@@ -60,22 +60,23 @@ class ChatBarComponent extends Component {
                         onPress={() => {
                             this.props.onShowModal(true);
                             this.props.onShowVideoModal(true);
-                            this.props.onShowNewsModal(false)
+                            this.props.onShowNewsModal(false);
+                            this.props.onShowExampleType(false);
                             this.setState({
-                                activeIcon: 'video',
-                                showExamplesType: false
+                                activeIcon: 'video'
                             })
                     }} 
                         style={{padding:5, justifyContent:'center', alignItems:'center'}}>
                         <VideoIcon name='video' size={40} color={this.state.activeIcon === 'video' ? '#000': '#a5a5a5'}/> 
                         </TouchableOpacity>
                         {
-                                this.state.showExamplesType && 
+                                this.props.showExamplesType && 
 
                                <ExampleOptions/>
                             }
-                        <TouchableOpacity onPress= {()=> {this.setState({
-                            showExamplesType: !this.state.showExamplesType,
+                        <TouchableOpacity onPress= {()=> {
+                            this.props.onShowExampleType(true);
+                            this.setState({
                             activeIcon: 'example'
                             })}} 
                             style={{padding:5, justifyContent:'center', alignItems:'center'}}>
@@ -85,6 +86,7 @@ class ChatBarComponent extends Component {
                          onPress={() => {
                              this.props.onShowModal(false);
                              this.props.onAddQuotes('Hello Mrs. Robinson');
+                             this.props.onShowExampleType(false);
                              setTimeout(() => this.props.onAddNewContent(<Quotes saying={this.props.quotes}/>,2000));
                             this.setState({
                                 activeIcon: 'quotes',
@@ -98,9 +100,9 @@ class ChatBarComponent extends Component {
                          onPress={() => {
                             this.props.incrementProgress()
                             this.props.onShowModal(false);
+                            this.props.onShowExampleType(false);
                             this.setState({
-                                activeIcon: 'skip',
-                                showExamplesType: false
+                                activeIcon: 'skip'
                             })
                     }}
                         style={{padding:5, justifyContent:'center', alignItems:'center'}}>
@@ -120,7 +122,8 @@ const mapStateToProps = (store) => {
         showVideoModal: store.chatBar.showVideoModal,
         showModal: store.chatBar.showModal,
         quotes: store.chatScreen.quotes,
-        chatScreenContent: store.chatScreen.chatScreenContent
+        chatScreenContent: store.chatScreen.chatScreenContent,
+        showExamplesType: store.chatScreen.showExamplesType
     }
 }
 
@@ -131,7 +134,8 @@ const mapDispatchToProps = (dispatch) => {
         onShowModal: (show) => dispatch(showModal(show)),
         onAddQuotes: (quote) => dispatch(addQuoteToScreen(quote)),
         onAddNewContent: (data) => dispatch(addToScreen(data)),
-        incrementProgress: () => dispatch(incrementProgressBar())
+        incrementProgress: () => dispatch(incrementProgressBar()),
+        onShowExampleType: (val) => dispatch(showExampleType(val))
     }
 }
 

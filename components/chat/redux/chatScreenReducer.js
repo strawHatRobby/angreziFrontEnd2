@@ -4,7 +4,8 @@ const initialState = {
     quotes: '',
     chatScreenContent: [],
     progress: 0,
-    userSelected: ''
+    userSelected: '',
+    showExamplesType: false
 }
 
 export default chatScreenReducer = (state = initialState, action ) => {
@@ -38,6 +39,11 @@ export default chatScreenReducer = (state = initialState, action ) => {
             return {
                 ...state,
                 userSelected: action.payload   
+            }
+        case 'SHOW_EXAMPLE_TYPES':
+            return {
+                ...state,
+                showExamplesType: action.payload
             }
         default:
             return state

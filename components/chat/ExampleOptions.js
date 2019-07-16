@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
+import UserTextBox from './UserTextBox';
+import { userRespondedWith, addToScreen, showExampleType } from './redux/chatScreenActions';
+import { showModal } from './redux/action';
 
-export default class ExampleOptions extends Component {
+
+class ExampleOptionsComponent extends Component {
     
     state = {
         
@@ -41,7 +46,14 @@ borderBottomColor: 'white'}}/>
     ['Use it in a sentence', 'Synonyms', 'Explain it more'].map((option, index) => {
         return (
         <View key={index} style={{flexDirection:'row', justifyContent:'center', alignItems:'center', flexWrap:'nowrap', borderBottomColor:'#E3E3E3', borderBottomWidth:1}}>
-        <TouchableOpacity onPress={() => {}} style={{ justifyContent:'center', alignItems:'center', padding:5}}>
+        <TouchableOpacity 
+        onPress={() => {
+            this.props.setUserResponseTo(option);
+            this.props.onAddNewContent(<UserTextBox said={option}/>)
+            this.props.onShowExampleType(false),
+            this.props.onShowModal(false)
+        }}
+        style={{ justifyContent:'center', alignItems:'center', padding:5}}>
 <Text style={{color:'#4F83B6', fontWeight:'700', fontSize:15}}>
             {option}
         </Text>
@@ -57,3 +69,26 @@ borderBottomColor: 'white'}}/>
 			)
 	}
 }
+
+
+
+const mapStateToProps = (store) => {
+    return   {
+      userSelected: store.chatScreen.userSelected,
+      chatScreenContent: store.chatScreen.chatScreenContent,
+      showExamplesType: store.chatScreen.showExamplesType,
+      showModal: store.chatBar.showModal,
+      }
+  }
+  
+  const mapDispatchToProps = (dispatch) => {
+      return {
+          setUserResponseTo: (answer) => dispatch(userRespondedWith(answer)),
+          onAddNewContent: (data) => dispatch(addToScreen(data)),
+          onShowExampleType: (val) => dispatch(showExampleType(val)),
+          onShowModal: (show) => dispatch(showModal(show)),
+      }
+  
+  }
+
+export default ExampleOptions = connect(mapStateToProps,mapDispatchToProps)(ExampleOptionsComponent);

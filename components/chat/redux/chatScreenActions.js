@@ -2,6 +2,14 @@ const ADD_QUOTE_TO_SCREEN = 'ADD_QUOTE_TO_SCREEN';
 const ADD_TO_SCREEN = 'ADD_TO_SCREEN';
 const INCREMENT_PROGRESS_BAR = 'INCREMENT_PROGRESS_BAR';
 const USER_RESPONDED_WITH = 'USER_RESPONDED_WITH';
+const SHOW_EXAMPLE_TYPES = 'SHOW_EXAMPLE_TYPES'
+
+export const showExampleType = (payload) => {
+    return {
+        type: SHOW_EXAMPLE_TYPES,
+        payload
+    }
+}
 
 export const userRespondedWith = (payload) => {
     return {
