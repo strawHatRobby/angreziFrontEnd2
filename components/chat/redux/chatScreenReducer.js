@@ -1,7 +1,7 @@
-import { addQouteToScreen } from './chatScreenActions';
+import { addQuoteToScreen } from './chatScreenActions';
 
 const initialState = {
-    qoutes: '',
+    quotes: '',
     chatScreenContent: []
 }
 

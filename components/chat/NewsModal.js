@@ -89,12 +89,13 @@ class News extends Component {
 			)
 	}
 }
-
 const mapStateToProps = (store) => {
     return {
         showNewsModal: store.chatBar.showNewsModal,
         showVideoModal: store.chatBar.showVideoModal,
-        showModal: store.chatBar.showModal
+        showModal: store.chatBar.showModal,
+        quotes: store.chatScreen.quotes,
+        chatScreenContent: store.chatScreen.chatScreenContent
     }
 }
 
@@ -102,7 +103,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onShowNewsModal: (show) => dispatch(showNews(show)),
         onShowVideoModal: (show) => dispatch(showVideo(show)),
-        onShowModal: (show) => dispatch(showModal(show))
+        onShowModal: (show) => dispatch(showModal(show)),
+        onAddQuotes: (quote) => dispatch(quote),
+        onAddNewContent: (data) => dispatch(addToScreen(data))
     }
 }
 
