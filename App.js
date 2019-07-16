@@ -12,9 +12,7 @@ const store = createStore(chatBarReducer,  window.__REDUX_DEVTOOLS_EXTENSION__ &
 export default function App() {
   return (
     <Provider store={store}>
-    
 <Chat/>
-
 </Provider>
   );
 }

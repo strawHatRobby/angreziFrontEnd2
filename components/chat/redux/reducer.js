@@ -1,6 +1,6 @@
 import showNews from './actions';
 const initialState = {
-    showNews: false,
+    showNewsModal: false,
     showVideo: false
 }
 export default chatBarReducer = (state = initialState, action ) => {
@@ -8,7 +8,7 @@ export default chatBarReducer = (state = initialState, action ) => {
         case 'SHOW_NEWS_MODAL':
         return {
             ...state,
-            showNews: !state.showNews
+            showNewsModal: !state.showNewsModal
         }
         default: 
         return state

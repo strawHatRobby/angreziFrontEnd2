@@ -7,8 +7,9 @@ import ExampleIcon from '../../Examples';
 import SkipIcon from '../../SkipIcon';
 import QuotesIcon from '../../QuotesIcon';
 import ExampleOptions from './ExampleOptions';
+import { connect } from 'react-redux';
 
-export default class ChatBar extends Component {
+class ChatBarComponent extends Component {
     
     state = {
         modalEnabled: false,
@@ -37,9 +38,10 @@ export default class ChatBar extends Component {
                     left:0,
                 borderBottomColor:'#a5a5a5',
                 borderBottomWidth:0.5,
-width: Dimensions.get('window').width} : {}]}>
+                width: Dimensions.get('window').width} : {}]}>
                     <TouchableOpacity 
                     onPress={() => {
+                            this.props.onShowNewsModal(),
                             this.setState({
                                 activeIcon: 'news',
                                 showExamplesType: false
@@ -93,5 +95,22 @@ width: Dimensions.get('window').width} : {}]}>
             
             </View>
 			)
-	}
+    }
+    
+
 }
+
+const mapStateToProps = (state) => {
+    return {
+        showNewsModal: state.showNewsModal
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onShowNewsModal: () => dispatch(showNews())
+    }
+}
+
+export default ChatBar = connect(mapStateToProps, mapDispatchToProps)(ChatBarComponent);
+

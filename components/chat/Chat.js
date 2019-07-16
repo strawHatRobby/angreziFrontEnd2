@@ -24,78 +24,50 @@ import { BlurView } from 'expo-blur';
 import ChatBar from './ChatBar';
 
 
+
+{/* Chat Components Imported after this line, TODO: move to index.js later */}
+import BotQuestions from '../chatQuestions/BotQuestions';
+
 const {height, width} = Dimensions.get('window');
 
 export default class Chat extends Component {
     
     state = {
-        text: '',
-        showTutorial: true,
-        showOptions: false,
-        showModal: true,
-        chatScreen : [
-           
-                    
-                <BotView/>,
-
-                <UserTextBox />
-           
-        ],
-        data : [
-            'This is indeed true that your beauty knows no bound',
-            'Yes',
-            'No'
+        chatScreenContent : [   
         ]
     }
-  
-   
-    componentDidMount(){
-        
+
+    componentDidMount(){ 
+        setTimeout(() => {
             this.setState({
-                showModal: false
-            })    
-        
-        
-    }
+               chatScreenContent: [...this.state.chatScreenContent,<BotView say={"Hey Yeasharth"}/> ]
+            }) 
+        }, 500);
+        setTimeout(() => {
+            this.setState({
+               chatScreenContent: [...this.state.chatScreenContent,<BotQuestions say={"Are you ready ?"} options={["Yes", "No"]}/> ]
+            }) 
+        }, 1500)
+        setTimeout(() => {
+            this.setState({
+               chatScreenContent: [...this.state.chatScreenContent,<UserTextBox said={"Yes"}/> ]
+            }) 
+        }, 2000)
+    } 
 	render(){
 		return(
 			<View style={[styles.container]}>
-               
-
-              
-
-                <NewsModal show={this.state.showModal}/>
-                 
+             <NewsModal show={this.state.showModal}/>                 
                 <TitleBar/>
-                <ScrollView contentContainerStyle={{flexGrow:20, backgroundColor:'#fff'}}>
-                        {
-                            this.state.chatScreen.map((item) => {
-                                return item
-                            })
-                        }
-                </ScrollView>
-                {/* {
-                    this.state.showOptions &&
-                <ScrollView horizontal={true}  showsHorizontalScrollIndicator={false} contentContainerStyle={{flexGrow:1, backgroundColor: '#E2E2E2', flexDirection:'row', flexWrap:'wrap', padding:10, paddingLeft:10}}>
-                    {this.state.data.map((item, index) => {
-                        return (
-                    <TouchableOpacity key={index} onPress={() => {}} style={[ {margin:10, marginLeft:10, marginRight:0, borderRadius:10, padding:10, justifyContent:'center', alignItems:'center', flexDirection:'row', flexWrap:'wap', backgroundColor:"#BED6F6"}, {  borderTopEndRadius: index === this.state.data.length-1 ? 0 : 10}]}>                    
-                        <Text>
-                            {item}
-                        </Text>
-                    </TouchableOpacity>
-                        )
-                    })
-                    
-                   }
+                    <ScrollView contentContainerStyle={{flexGrow:20, backgroundColor:'#fff'}}>
+                            {
+                                this.state.chatScreenContent.map((item) => {
+                                    return item
+                                })
+                            }
                     </ScrollView>
-                } */}
-
-<ChatBar modalEnabled={false}/>
-
-        
+                <ChatBar modalEnabled={false}/>
             </View>
-            
 			)
 	}
 }

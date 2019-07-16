@@ -11,19 +11,7 @@ import showNews from './redux/action';
 import {connect} from 'react-redux';
 
 
-const mapStateToProps = (state) => {
-    return {
-        toggleNews: state.showNews
-    }
-}
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        showNewsModal: () => {
-        dispatch(showNews())
-    }
-}
-}
 class News extends Component {
     componentDidMount(){
 
@@ -65,7 +53,7 @@ class News extends Component {
 			 <Modal
                     animationType="slide"
                     transparent={true}
-                    visible={false}
+                    visible={this.props.showNewsModal}
                     onRequestClose={() => this.setState({showModal:false})}
 
                     >
@@ -141,4 +129,18 @@ class News extends Component {
 	}
 }
 
-export default NewsModal = connect(mapStateToProps, mapDispatchToProps)(News);
+const mapStateToProps = (state) => {
+    return {
+        showNewsModal: state.showNewsModal
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onShowNewsModal: () => dispatch(showNews())
+    }
+}
+
+const NewsModal = connect(mapStateToProps, mapDispatchToProps)(News);
+
+export default NewsModal;
