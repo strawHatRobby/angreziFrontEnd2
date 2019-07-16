@@ -2,7 +2,8 @@ import { addQuoteToScreen } from './chatScreenActions';
 
 const initialState = {
     quotes: '',
-    chatScreenContent: []
+    chatScreenContent: [],
+    progress: 0
 }
 
 export default chatScreenReducer = (state = initialState, action ) => {
@@ -16,6 +17,21 @@ export default chatScreenReducer = (state = initialState, action ) => {
             return {
                 ...state,
                 quotes: action.payload
+            }
+        case 'INCREMENT_PROGRESS_BAR':
+            if (state.progress < 100){
+                const newProg = state.progress + 10;
+                return {
+                    ...state,
+                    progress: newProg
+                }
+            }
+            else {
+                const newProg = state.progress;
+                return {
+                    ...state,
+                    progress: newProg
+                }   
             }
             
         default:

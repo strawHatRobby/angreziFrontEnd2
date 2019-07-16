@@ -54,7 +54,12 @@ class ChatScreen extends Component {
 			<View style={[styles.container]}>
              <NewsModal/>
                 <TitleBar/>
-                    <ScrollView contentContainerStyle={{flexGrow:20, backgroundColor:'#fff'}}>
+                    <ScrollView contentContainerStyle={{flexGrow:20, backgroundColor:'#fff'}}
+                    ref={ref => this.scrollView = ref}
+                    onContentSizeChange={(contentWidth, contentHeight)=>{        
+                        this.scrollView.scrollToEnd({animated: true});
+                    }}
+                    >
                             {
                                 this.props.chatScreenContent.map((item) => {
                                     return item

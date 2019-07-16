@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
-export default class TitleBar extends Component {
+import { incrementProgressBar } from './redux/chatScreenActions';
+import { connect } from 'react-redux';
+class TitleBarComponent extends Component {
     
     state = {
         
@@ -17,7 +19,7 @@ export default class TitleBar extends Component {
                     <AnimatedCircularProgress
                     size={40}
                     width={7}
-                    fill={10}
+                    fill={this.props.progress}
                     style={{padding:10, paddingRight:5}}
                     tintColor="#fff"
                     onAnimationComplete={() => console.log('onAnimationComplete')}
@@ -27,3 +29,16 @@ export default class TitleBar extends Component {
 			)
 	}
 }
+
+const mapStateToProps = (store) => {
+   return{ progress: store.chatScreen.progress}
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+    }
+}
+const TitleBar = connect(mapStateToProps, mapDispatchToProps)(TitleBarComponent);
+
+export default TitleBar;

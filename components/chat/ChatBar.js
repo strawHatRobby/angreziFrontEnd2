@@ -10,7 +10,7 @@ import ExampleOptions from './ExampleOptions';
 import { connect } from 'react-redux';
 import { showNews, showVideo, showModal } from './redux/action';
 import Quotes from './Quotes';
-import { addQuoteToScreen, addToScreen } from './redux/chatScreenActions';
+import { addQuoteToScreen, addToScreen, incrementProgressBar } from './redux/chatScreenActions';
 
 
 class ChatBarComponent extends Component {
@@ -96,6 +96,7 @@ class ChatBarComponent extends Component {
                         </TouchableOpacity>
                         <TouchableOpacity 
                          onPress={() => {
+                            this.props.incrementProgress()
                             this.props.onShowModal(false);
                             this.setState({
                                 activeIcon: 'skip',
@@ -129,7 +130,8 @@ const mapDispatchToProps = (dispatch) => {
         onShowVideoModal: (show) => dispatch(showVideo(show)),
         onShowModal: (show) => dispatch(showModal(show)),
         onAddQuotes: (quote) => dispatch(addQuoteToScreen(quote)),
-        onAddNewContent: (data) => dispatch(addToScreen(data))
+        onAddNewContent: (data) => dispatch(addToScreen(data)),
+        incrementProgress: () => dispatch(incrementProgressBar())
     }
 }
 
