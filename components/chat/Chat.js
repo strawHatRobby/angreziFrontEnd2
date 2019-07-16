@@ -60,7 +60,6 @@ export default class Chat extends Component {
 		return(
 			<View style={[styles.container]}>
              <NewsModal/>
-             <VideoModal/>                 
                 <TitleBar/>
                     <ScrollView contentContainerStyle={{flexGrow:20, backgroundColor:'#fff'}}>
                             {

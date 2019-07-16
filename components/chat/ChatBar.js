@@ -8,7 +8,7 @@ import SkipIcon from '../../SkipIcon';
 import QuotesIcon from '../../QuotesIcon';
 import ExampleOptions from './ExampleOptions';
 import { connect } from 'react-redux';
-import { showNews, showVideo } from './redux/action';
+import { showNews, showVideo, showModal } from './redux/action';
 
 
 class ChatBarComponent extends Component {
@@ -43,6 +43,7 @@ class ChatBarComponent extends Component {
                 width: Dimensions.get('window').width} : {}]}>
                     <TouchableOpacity 
                     onPress={() => {
+                            this.props.onShowModal(),
                             this.props.onShowNewsModal(),
                             this.setState({
                                 activeIcon: 'news',
@@ -54,6 +55,7 @@ class ChatBarComponent extends Component {
                         </TouchableOpacity>
                         <TouchableOpacity 
                         onPress={() => {
+                            this.props.onShowModal(),
                             this.props.onShowVideoModal(),
                             this.setState({
                                 activeIcon: 'video',
@@ -106,7 +108,8 @@ class ChatBarComponent extends Component {
 const mapStateToProps = (state) => {
     return {
         showNewsModal: state.showNewsModal,
-        showVideoModal: state.showVideoModal
+        showVideoModal: state.showVideoModal,
+        showModal: state.showModal
         
     }
 }
@@ -114,7 +117,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onShowNewsModal: () => dispatch(showNews()),
-        onShowVideoModal: () => dispatch(showVideo())
+        onShowVideoModal: () => dispatch(showVideo()),
+        onShowModal: () => dispatch(showModal())
     }
 }
 

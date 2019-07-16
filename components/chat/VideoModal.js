@@ -7,7 +7,7 @@ import ExampleIcon from '../../Examples';
 import SkipIcon from '../../SkipIcon';
 import QuotesIcon from '../../QuotesIcon';
 import ChatBar from './ChatBar';
-import {showVideo} from './redux/action';
+import {showVideo, showModal} from './redux/action';
 import {connect} from 'react-redux';
 
 
@@ -104,15 +104,18 @@ class Video extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        showVideoModal: state.showVideoModal
+        showVideoModal: state.showVideoModal,
+        showModal: state.showModal
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onShowVideoModal: () => dispatch(showVideo())
+        onShowVideoModal: () => dispatch(showVideo()),
+        onShowModal: () => dispatch(showModal())
     }
 }
+
 
 const VideoModal = connect(mapStateToProps, mapDispatchToProps)(Video);
 
