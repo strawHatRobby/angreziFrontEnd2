@@ -39,7 +39,10 @@ class ChatScreen extends Component {
     state = {
         
     }
-
+    getPresentDate = () => {
+        const date = new Date();
+        return date.toDateString();
+    }
     componentDidMount(){ 
         setTimeout(() => {
             this.props.onAddNewContent(<BotView say={"Hey Yasharth ?"}/>)
@@ -68,6 +71,11 @@ class ChatScreen extends Component {
                         this.scrollView.scrollToEnd({animated: true});
                     }}
                     >
+                        <View style={{width:Dimensions.get('window').width, height:30, justifyContent:'center', alignItems:'center', backgroundColor:'transparent', marginTop:5}}>
+                        <View style={{flexDirection:'row', flexWrap:'wrap', width:115, height:30, backgroundColor:'#f1f1f1', justifyContent:'center', alignItems:'center', borderRadius:2, padding:2}}>
+                           <Text style={{fontSize:12, color:'#000'}}> {this.getPresentDate()}</Text>
+                        </View>
+                        </View>
                             {
                                 this.props.chatScreenContent.map((item) => {
                                     return item

@@ -11,13 +11,21 @@ class BotQuestionsComponent extends Component {
         
     }
   
-    
+    getDate = () => {
+        let date = new Date();
+        date.setSeconds(0);
+        date = date.toLocaleTimeString()
+        date = date.replace(':00 ',' ')
+        return date
+    }
 	render(){
 		return(
             <View style={{margin:15, marginBottom:5, marginTop:0, alignItems:'flex-start'}}>
             <View style={{ borderRadius:8, borderTopStartRadius:0, backgroundColor:'#F6DCBE'}}>
             <View style={{padding:10,  paddingLeft:20}}>
-            <Text style={{fontSize:11,flexWrap:'nowrap', fontFamily:'Times New Roman', color:'#776666', marginBottom:5}}>2:25 PM</Text>
+            <Text style={{fontSize:11,flexWrap:'nowrap', fontFamily:'Times New Roman', color:'#776666', marginBottom:5}}>
+            {this.getDate()}
+            </Text>
                 <Text style={{fontSize:18,flexWrap:'wrap',fontFamily:'Times New Roman'}}>
                     {this.props.say}
                 </Text>
