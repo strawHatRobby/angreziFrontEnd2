@@ -62,6 +62,7 @@ class News extends Component {
                     style={{backgroundColor:'transparent'}}
                     swipeToClose={true}
                     swipeArea={height/2}
+                    useNativeDriver={true}
                     >
 
            
