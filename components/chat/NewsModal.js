@@ -61,8 +61,9 @@ class News extends Component {
                     backdropOpacity={0.51}
                     style={{backgroundColor:'transparent'}}
                     swipeToClose={true}
-                    swipeArea={height/2}
+                    swipeArea={(height/2)+100}
                     useNativeDriver={true}
+                    backButtonClose={true}
                     >
 
            
