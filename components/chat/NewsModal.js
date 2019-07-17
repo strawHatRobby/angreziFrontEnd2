@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, WebView, Platform, Animated, PanResponder, Text, Modal, Dimensions, ImageBackground,Button, ScrollView,  View, TouchableOpacity } from 'react-native';
+import { StyleSheet, WebView, Platform, Animated, PanResponder, Text,  Dimensions, ImageBackground,Button, ScrollView,  View, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import NewsIcon from '../../CustomIcon';
 import VideoIcon from '../../VideoIcon';
@@ -12,8 +12,8 @@ import {connect} from 'react-redux';
 import NewsContent from './NewsContent';
 import VideoContent from './VideoContent';
 
-
-
+import Modal from 'react-native-modalbox';
+const {width, height} = Dimensions.get('window');
 class News extends Component {
     componentDidMount(){
 
@@ -55,9 +55,13 @@ class News extends Component {
 			 <Modal
                     animationType="slide"
                     transparent={true}
-                    visible={this.props.showModal}
-                    onRequestClose={this.props.showModal}
-
+                    isOpen={this.props.showModal}
+                    onClosed={(alsef) => this.props.onShowModal(false)}
+                    backdrop={true}
+                    backdropOpacity={0.51}
+                    style={{backgroundColor:'transparent'}}
+                    swipeToClose={true}
+                    swipeArea={height/2}
                     >
 
            

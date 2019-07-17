@@ -6,6 +6,7 @@ import {
     ScrollView,
     ActivityIndicator,
     Button,
+    Animated,
     Dimensions,
     Text,
     TextInput,
@@ -37,7 +38,25 @@ const {height, width} = Dimensions.get('window');
 class ChatScreen extends Component {
     
     state = {
-        
+        position: new Animated.Value(0),
+        showToolTip: false
+    }
+    onComponentDidMount = () => {
+        this.springAction()
+    }
+    springAction = () => {
+        Animated.timing(this.state.position, {
+            toValue:50,
+            duration:300
+        }).start(() => {
+            Animated.timing(this.state.position, {
+                toValue:0,
+                duration:300
+            }).start(() => this.springAction);
+        });
+    }
+    moveUp = {
+        top: this.state.position
     }
     getPresentDate = () => {
         const date = new Date();
@@ -76,6 +95,15 @@ class ChatScreen extends Component {
                            <Text style={{fontSize:12, color:'#000'}}> {this.getPresentDate()}</Text>
                         </View>
                         </View>
+
+                        
+                       { this.state.showToolTip && <Animated.View style={{zIndex:4, flexDirection:'row', flexWrap:'wrap', position:'absolute', top:this.state.position, left:40, width:200, height:70, backgroundColor:'#f6345d', alignItems:'flex-start', justifyContent:'flex-start', padding:10, borderRadius:10}}>
+                            <Text style={{color:'#fff', fontSize:14}}>
+                                Press Here to see magic
+                                </Text>
+
+                        </Animated.View>}
+
                             {
                                 this.props.chatScreenContent.map((item) => {
                                     return item
