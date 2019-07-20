@@ -24,7 +24,7 @@ import VideoModal from './VideoModal';
 import { BlurView } from 'expo-blur';
 import {connect} from 'react-redux';
 import ChatBar from './ChatBar';
-import {addToScreen} from './redux/chatScreenActions';
+import {addToScreen, showExampleType} from './redux/chatScreenActions';
 
 
 {/* Chat Components Imported after this line, TODO: move to index.js later */}
@@ -91,6 +91,9 @@ class ChatScreen extends Component {
              <NewsModal/>
                 <TitleBar/>
                     <ScrollView contentContainerStyle={{flexGrow:20, marginBottom:10, backgroundColor:'#fff'}}
+                    onScroll={
+                        () => this.props.onShowExampleType(false)
+                    }
                     ref={ref => this.scrollView = ref}
                     onContentSizeChange={(contentWidth, contentHeight)=>{        
                         this.scrollView.scrollToEnd({animated: true});
@@ -141,13 +144,15 @@ class ChatScreen extends Component {
 
 const mapStateToProps = (store) => {
     return {
-        chatScreenContent: store.chatScreen.chatScreenContent
+        chatScreenContent: store.chatScreen.chatScreenContent,
+        showExampleType: store.chatScreen.showExampleType
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAddNewContent: (data) => dispatch(addToScreen(data))
+        onAddNewContent: (data) => dispatch(addToScreen(data)),
+        onShowExampleType: (val) => dispatch(showExampleType(val))
     }
 }
 
