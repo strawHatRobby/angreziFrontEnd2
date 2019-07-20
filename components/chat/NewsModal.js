@@ -77,7 +77,7 @@ class News extends Component {
                 <TouchableOpacity onPress={() => {this.setState({showModal: false})}} style={{width:70, marginTop:15, borderBottomColor:'#D9D6D6', borderBottomWidth:1}}/>
                         <View
                         style={{paddingTop:10, borderBottomColor:'##707070', borderBottomWidth:1, paddingBottom:5}}>
-                            <Text style={{fontFamily:'Times New Roman', fontWeight:'bold', fontSize:30}}>
+                            <Text style={{fontFamily:Platform.OS === 'ios' ? 'Times New Roman' : 'Roboto', fontWeight:'bold', fontSize:30}}>
                                 {`Cacophony' in ${this.props.showNewsModal ? 'News': 'Videos'}`}
                             </Text>
                         </View>

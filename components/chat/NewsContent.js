@@ -15,12 +15,12 @@ export default class NewsContent extends Component {
 			<ImageBackground source={{uri:'https://www.freegreatpicture.com/files/photo106/52992-parrot.jpg'}} style={{height:250, margin:20, marginLeft:10, width:350 }} imageStyle={{borderRadius:25}}>
                                 <View style={{flex:1, justifyContent:'space-between', backgroundColor:'rgba(0,0,0,0.1)', borderRadius:25, borderBottomEndRadius:0, borderBottomStartRadius:0}}>
                                     <View style={{width: 350, padding:15, borderRadius:25, borderBottomStartRadius:0}}>
-                                        <Text style={{fontFamily:'Times New Roman', fontWeight:'800', fontSize:26, color:'#fff'}}>
+                                        <Text style={{fontFamily:Platform.OS === 'ios' ? 'Times New Roman' : 'Roboto', fontWeight:'800', fontSize:26, color:'#fff'}}>
                                             Cacophony of Birds
                                             </Text>
                                     </View>
                                     <View style={{width: 350, padding:15, paddingBottom:0, borderRadius:25, borderBottomStartRadius:0}}>
-                                        <Text style={{backgroundColor:'rgba(0,0,0,0.05)', fontFamily:'Times New Roman', fontWeight:'bold', fontSize:14, color:'#fff'}}>
+                                        <Text style={{backgroundColor:'rgba(0,0,0,0.05)', fontFamily:Platform.OS === 'ios' ? 'Times New Roman' : 'Roboto', fontWeight:'bold', fontSize:14, color:'#fff'}}>
                                         Greyhound divisively hello coldly wonderfully marginally far…
                                             </Text>
                                             <View style={{flexDirection:'row', margin:10, marginLeft:0,  alignItems: 'flex-start', width:350}}>
@@ -34,7 +34,7 @@ export default class NewsContent extends Component {
                                     </View>
                                     </View>
                                     <View style={{width:350, justifyContent:'flex-end', alignItems:'flex-end', flexDirection:'row', borderBottomEndRadius:25, borderBottomStartRadius:25, backgroundColor:'rgba(0,0,0,0.1)'}}>
-                                                <Text style={{color:'#fff', fontWeight:'800', padding:8, paddingTop:0, fontSize:15, fontFamily:'Times New Roman'}}>
+                                                <Text style={{color:'#fff', fontWeight:'800', padding:8, paddingTop:0, fontSize:15, fontFamily:Platform.OS === 'ios' ? 'Times New Roman' : 'Roboto'}}>
                                                 on decanchronicles.com
                                                 </Text>
                                             </View>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Platform, Image, Text, View, TouchableOpacity } from 'react-native';
 import Quotes from './Quotes';
 import Synonym from '../chatQuestions/Synonym';
 import Sentence from '../chatQuestions/Sentence';
@@ -23,8 +23,8 @@ class BotBox extends Component {
                     {this.state.shouldShowBotImage && <Image source={{uri: 'https://cdn-images-1.medium.com/max/1200/0*oz2e-hQtsHOWzoB4.'}} style={{height:40, width:40, borderRadius:20, marginBottom:5}}/>}
                     
                         <View style={{ padding:10, paddingLeft:20, margin:10, marginTop: 5,marginLeft:0, marginBottom:0, borderRadius:8, borderTopStartRadius:0, backgroundColor:'#F6DCBE'}}>
-                        <Text style={{fontSize:11,flexWrap:'nowrap', fontFamily:'Times New Roman', color:'#776666', marginBottom:0}}>{getDate()}</Text>
-                        <Text style={{fontSize:18,flexWrap:'wrap',fontFamily:'Times New Roman'}}>
+                        <Text style={{fontSize:11,flexWrap:'nowrap', fontFamily:Platform.OS === 'ios' ? 'Times New Roman' : 'Roboto', color:'#776666', marginBottom:0}}>{getDate()}</Text>
+                        <Text style={{fontSize:18,flexWrap:'wrap',fontFamily:Platform.OS === 'ios' ? 'Times New Roman' : 'Roboto'}}>
                         {this.props.say}
                         </Text>
                         </View>

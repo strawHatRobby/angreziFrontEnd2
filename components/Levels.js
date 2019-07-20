@@ -19,7 +19,7 @@ export default class Levels extends Component {
                     <TouchableOpacity onPress={() => this.setState({deckColor:'#EEB370'})} style={{width:230, height:250, backgroundColor:'#EEB370', margin:10, borderRadius:15}}>
                         <View style={{flex:1, alignItems:'flex-start', justifyContent:'space-between'}}>
                             <View style={{margin:10, justifyContent:'center', alignItems:'center', backgroundColor:'rgba(255,255,255,0.5)', height:50, width:50, borderRadius:25}}>
-                                    <Text style={{fontSize:25, fontFamily:'Times New Roman', fontWeight:'600', color:'#fff'}}>1</Text>
+                                    <Text style={{fontSize:25, fontFamily:Platform.OS === 'ios' ? 'Times New Roman' : 'Roboto', fontWeight:'600', color:'#fff'}}>1</Text>
                             </View>
                             <View style={{postion:'absolute', bottom:10}}>
                             <ProgressViewIOS trackTintColor='#fff' progressViewStyle={'bar'} progressTintColor='#F6DCBE' progress={0.5} style={{margin:15, width:200, height:5}}/>
@@ -29,7 +29,7 @@ export default class Levels extends Component {
                     <TouchableOpacity onPress={() => this.setState({deckColor:'#70DDEE'})} style={{width:230, height:250, backgroundColor:'#70DDEE', margin:10, borderRadius:15}}>
                              <View style={{flex:1, alignItems:'flex-start', justifyContent:'space-between'}}>
                              <View style={{margin:10, justifyContent:'center', alignItems:'center', backgroundColor:'rgba(255,255,255,0.5)', height:50, width:50, borderRadius:25}}>
-                                    <Text style={{fontSize:25, fontFamily:'Times New Roman', fontWeight:'600', color:'#fff'}}>2</Text>
+                                    <Text style={{fontSize:25, fontFamily:Platform.OS === 'ios' ? 'Times New Roman' : 'Roboto', fontWeight:'600', color:'#fff'}}>2</Text>
                             </View>
                             <View style={{postion:'absolute', bottom:10}}>
                             <ProgressViewIOS trackTintColor='#fff' progressViewStyle={'bar'} progressTintColor='#B5F1FA' progress={0.5} style={{margin:15, width:200, height:5}}/>
@@ -39,7 +39,7 @@ export default class Levels extends Component {
                     <TouchableOpacity onPress={() => this.setState({deckColor:'#EF3346'})} style={{width:230, height:250, backgroundColor:'#EF3346', margin:10, borderRadius:15}}>
                              <View style={{flex:1, alignItems:'flex-start', justifyContent:'space-between'}}>
                              <View style={{margin:10, justifyContent:'center', alignItems:'center', backgroundColor:'rgba(255,255,255,0.5)', height:50, width:50, borderRadius:25}}>
-                                    <Text style={{fontSize:25, fontFamily:'Times New Roman', fontWeight:'600', color:'#fff'}}>3</Text>
+                                    <Text style={{fontSize:25, fontFamily:Platform.OS === 'ios' ? 'Times New Roman' : 'Roboto', fontWeight:'600', color:'#fff'}}>3</Text>
                             </View>
                             <View style={{postion:'absolute', bottom:10}}>
                             <ProgressViewIOS trackTintColor='#fff' progressViewStyle={'bar'} progressTintColor='#FD9EA7' progress={0.5} style={{margin:15, width:200, height:5}}/>

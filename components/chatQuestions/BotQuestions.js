@@ -36,10 +36,10 @@ class BotQuestionsComponent extends Component {
             <View style={{margin:15, marginBottom:5, marginTop:0, alignItems:'flex-start'}}>
             <View style={{ borderRadius:8, borderTopStartRadius:0, backgroundColor:'#F6DCBE'}}>
             <View style={{padding:10,  paddingLeft:20}}>
-            <Text style={{fontSize:11,flexWrap:'nowrap', fontFamily:'Times New Roman', color:'#776666', marginBottom:5}}>
+            <Text style={{fontSize:11,flexWrap:'nowrap', fontFamily:Platform.OS === 'ios' ? 'Times New Roman' : 'Roboto', color:'#776666', marginBottom:5}}>
             {this.getDate()}
             </Text>
-                <Text style={{fontSize:18,flexWrap:'wrap',fontFamily:'Times New Roman'}}>
+                <Text style={{fontSize:18,flexWrap:'wrap',fontFamily:Platform.OS === 'ios' ? 'Times New Roman' : 'Roboto'}}>
                     {this.props.say}
                 </Text>
                 </View>
@@ -58,7 +58,7 @@ class BotQuestionsComponent extends Component {
                         }}
                          style={{justifyContent:'center', alignItems:'center',padding:8}}>
                             
-                            <Text style={{fontSize:18, color: '#6099E6',flexWrap:'wrap',  fontFamily:'Times New Roman'}}>
+                            <Text style={{fontSize:18, color: '#6099E6',flexWrap:'wrap',  fontFamily:Platform.OS === 'ios' ? 'Times New Roman' : 'Roboto'}}>
                                         {item}
                                 </Text>
                             
