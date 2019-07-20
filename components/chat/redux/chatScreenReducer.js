@@ -10,6 +10,10 @@ const initialState = {
 
 export default chatScreenReducer = (state = initialState, action ) => {
     switch(action.type){
+        case 'GET_QUOTE':
+            return {
+                ...state
+            }
         case 'ADD_TO_SCREEN':
             return {
                 ...state,

@@ -20,7 +20,7 @@ export default class NewsContent extends Component {
                                             </Text>
                                     </View>
                                     <View style={{width: 350, padding:15, paddingBottom:0, borderRadius:25, borderBottomStartRadius:0}}>
-                                        <Text style={{backgroundColor:'rgba(0,0,0,0.05)', fontFamily:'Arial', fontWeight:'bold', fontSize:14, color:'#fff'}}>
+                                        <Text style={{backgroundColor:'rgba(0,0,0,0.05)', fontFamily:'Times New Roman', fontWeight:'bold', fontSize:14, color:'#fff'}}>
                                         Greyhound divisively hello coldly wonderfully marginally far…
                                             </Text>
                                             <View style={{flexDirection:'row', margin:10, marginLeft:0,  alignItems: 'flex-start', width:350}}>
@@ -34,7 +34,7 @@ export default class NewsContent extends Component {
                                     </View>
                                     </View>
                                     <View style={{width:350, justifyContent:'flex-end', alignItems:'flex-end', flexDirection:'row', borderBottomEndRadius:25, borderBottomStartRadius:25, backgroundColor:'rgba(0,0,0,0.1)'}}>
-                                                <Text style={{color:'#fff', fontWeight:'800', padding:8, paddingTop:0, fontSize:15, fontFamily:'Arial'}}>
+                                                <Text style={{color:'#fff', fontWeight:'800', padding:8, paddingTop:0, fontSize:15, fontFamily:'Times New Roman'}}>
                                                 on decanchronicles.com
                                                 </Text>
                                             </View>

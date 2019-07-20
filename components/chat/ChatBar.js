@@ -9,8 +9,9 @@ import QuotesIcon from '../../QuotesIcon';
 import ExampleOptions from './ExampleOptions';
 import { connect } from 'react-redux';
 import { showNews, showVideo, showModal } from './redux/action';
+
 import Quotes from './Quotes';
-import { addQuoteToScreen, addToScreen, incrementProgressBar , showExampleType} from './redux/chatScreenActions';
+import { addQuoteToScreen, addToScreen, incrementProgressBar , showExampleType, getQuote} from './redux/chatScreenActions';
 
 
 class ChatBarComponent extends Component {
@@ -85,9 +86,10 @@ class ChatBarComponent extends Component {
                         <TouchableOpacity 
                          onPress={() => {
                              this.props.onShowModal(false);
-                             this.props.onAddQuotes('Hello Mrs. Robinson');
+                             this.props.getQuotes();
+
                              this.props.onShowExampleType(false);
-                             setTimeout(() => this.props.onAddNewContent(<Quotes saying={this.props.quotes}/>,2000));
+                             this.props.onAddNewContent(<Quotes saying={this.props.quotes}/>)
                             this.setState({
                                 activeIcon: 'quotes',
                                 showExamplesType: false
@@ -135,7 +137,8 @@ const mapDispatchToProps = (dispatch) => {
         onAddQuotes: (quote) => dispatch(addQuoteToScreen(quote)),
         onAddNewContent: (data) => dispatch(addToScreen(data)),
         incrementProgress: () => dispatch(incrementProgressBar()),
-        onShowExampleType: (val) => dispatch(showExampleType(val))
+        onShowExampleType: (val) => dispatch(showExampleType(val)),
+        getQuotes: () => dispatch(getQuote())
     }
 }
 
