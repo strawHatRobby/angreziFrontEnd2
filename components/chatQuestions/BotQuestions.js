@@ -6,9 +6,9 @@ import UserTextBox from '../chat/UserTextBox';
 
 
 class BotQuestionsComponent extends Component {
-    
+  
     state = {
-        
+        answerSelected: false
     }
   
     getDate = () => {
@@ -34,9 +34,14 @@ class BotQuestionsComponent extends Component {
                    this.props.options.map((item, index) => {
                        return (
                         <View key={index} style={{padding:5, paddingBottom:0, backgroundColor:'rgba(255,255,255,0.77)'}}>
-                        <TouchableOpacity onPress={() => {
+                        <TouchableOpacity
+                         disabled={this.state.answerSelected ? true : false}
+                            onPress={() => {
                             this.props.setUserResponseTo(item);
                             this.props.onAddNewContent({type:'user', data: item})
+                            this.setState({
+                                answerSelected: true
+                            })
                         }}
                          style={{justifyContent:'center', alignItems:'center',padding:8}}>
                             
