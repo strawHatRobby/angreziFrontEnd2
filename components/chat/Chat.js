@@ -64,20 +64,13 @@ class ChatScreen extends Component {
     }
     componentDidMount(){ 
         setTimeout(() => {
-            this.props.onAddNewContent(<BotView say={"Hey Yasharth ?"}/>)
+            this.props.onAddNewContent({type: 'bot', data: 'Hey Yasharth'})
         }, 500);
+
         setTimeout(() => {
-            this.props.onAddNewContent(<BotQuestions say={"Are you ready ?"} options={["Yes", "No"]}/>)
-        }, 1500)
-        setTimeout(() => {
-            this.props.onAddNewContent(<Sentence say={"Are you ready ?"} options={["Yes", "No"]}/>)
-        }, 3500)
-        setTimeout(() => {
-            this.props.onAddNewContent(<Synonym say={"Are you ready ?"} options={["Yes", "No"]}/>)
-        }, 3500)
-        setTimeout(() => {
-            this.props.onAddNewContent(<Definition say={"Are you ready ?"} options={["Yes", "No"]}/>)
-        }, 3500)
+            this.props.onAddNewContent({type: 'botQuestion', data: 'Ready to Play?', options:['Yes','No']})
+        }, 1000)
+       
     } 
 	render(){
 		return(
@@ -105,8 +98,17 @@ class ChatScreen extends Component {
                         </Animated.View>}
 
                             {
-                                this.props.chatScreenContent.map((item) => {
-                                    return item
+                                this.props.chatScreenContent.map((item, index) => {
+                                    switch(item.type){
+                                        case 'bot':
+                                            return <BotView key={index} say={item.data} />
+                                        case 'botQuestion':
+                                            return <BotQuestions key={index} say={item.data} options={item.options}/>
+                                        case 'user':
+                                                return <UserTextBox key={index} said={item.data}/>
+                                        default:
+                                            return <BotView key={index} say={"Not Working"}/>
+                                    }
                                 })
                             }
                     </ScrollView>

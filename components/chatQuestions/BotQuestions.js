@@ -36,7 +36,7 @@ class BotQuestionsComponent extends Component {
                         <View key={index} style={{padding:5, paddingBottom:0, backgroundColor:'rgba(255,255,255,0.77)'}}>
                         <TouchableOpacity onPress={() => {
                             this.props.setUserResponseTo(item);
-                            this.props.onAddNewContent(<UserTextBox said={item}/>)
+                            this.props.onAddNewContent({type:'user', data: item})
                         }}
                          style={{justifyContent:'center', alignItems:'center',padding:8}}>
                             
