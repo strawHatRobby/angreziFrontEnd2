@@ -97,7 +97,6 @@ class ChatBarComponent extends Component {
                              this.props.getQuotes();
                              this.props.onShowExampleType(false);
                              
-                             this.props.onAddNewContent({ type:'quotes', data:this.props.quotes})
                             this.setState({
                                 activeIcon: 'quotes',
                                 showExamplesType: false

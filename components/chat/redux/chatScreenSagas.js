@@ -13,8 +13,9 @@ function* fetchQuotes() {
 
     const json = yield call(fetchStuff);
 
-    yield put(addQuoteToScreen( json.value.joke))      
-    // yield put(addToScreen({ type: 'quote', data:json.value.joke} ));
+    // yield put(addQuoteToScreen( json.value.joke))      
+    
+    yield put(addToScreen({ type: 'quotes', data:json.value.joke} ));
     }
     catch(err){
         yield put(addToScreen({ type: 'bot', data:'you are offline!'} ));
@@ -24,6 +25,6 @@ function* fetchQuotes() {
   }
 
 export function* actionWatcher() {
-    console.log("Ran")
+    console.log("Saga Ran")
     yield takeLatest('GET_QUOTE', fetchQuotes)
 }

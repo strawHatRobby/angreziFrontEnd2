@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
 import { StyleSheet, Platform, Text, View, TouchableOpacity } from 'react-native';
 import QuotesIcon from '../../QuotesIcon';
+import { connect } from 'react-redux';
 
 
-export default class Quotes extends Component {
+class Quote extends Component {
     
     state = {
-        
+        quote: ''
 }
-    // componentDidMount = () =>{
-    //     console.log("value is " + JSON.stringify(this.props));
-    // }
+    componentDidMount = () =>{
+        this.setState({
+            quote: this.props.quotes
+        })
+    }
     
 	render(){
         
 		return(
+
             <View style={{ padding:10, marginTop:5,marginLeft:10, marginRight:30,marginBottom:0, borderRadius:8, borderTopStartRadius:0, backgroundColor:'#BEDBE9'}}>
             <Text style={{fontSize:11,flexWrap:'nowrap', fontFamily:Platform.OS === 'ios' ? 'Times New Roman' : 'Roboto', color:'#776666', marginBottom:5}}>2:25 PM</Text>
             <QuotesIcon name="quotes" size={30} color={'#000'}/>
@@ -22,7 +26,7 @@ export default class Quotes extends Component {
             <View style={{marginTop:10, borderBottomColor:'#fff', borderBottomWidth:1}}>
             <Text style={{fontSize:18, marginBottom:10, flexWrap:'wrap',fontFamily:Platform.OS === 'ios' ? 'Times New Roman' : 'Roboto'}}>
             {/* The fun part about doing our movies is that you're creating something using the talents of people rather than finding these pathetic people who are thrust into these situations. That, to me, is completely <Text style={{fontWeight:'bold'}}>artless.</Text>. */}
-            {this.props.saying}
+{this.props.saying}
             </Text>
             </View>
             
@@ -33,6 +37,7 @@ export default class Quotes extends Component {
 
 
             </View>
+            
 			)
 	}
 }
@@ -43,4 +48,12 @@ const mapStateToProps = (store) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        
+    }
+}
+
+
+export default Qoutes = connect(mapStateToProps, mapDispatchToProps)(Quote);
 

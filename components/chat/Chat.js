@@ -79,7 +79,7 @@ class ChatScreen extends Component {
             // this.props.onAddNewContent({type: 'definition',  options:['Ys','No'], answer:2})
         }, 200)
         setTimeout(() => {
-            // this.props.onAddNewContent({type: 'definition',  options:['Yes','No'], answer:2})
+            this.props.onAddNewContent({type: 'definition',  options:['Yes','No'], answer:2})
         }, 1500)
         setTimeout(() => {
             this.props.onAddNewContent({type: 'bot', data: 'Hey Yasharth'})
@@ -92,6 +92,7 @@ class ChatScreen extends Component {
              <NewsModal/>
                 <TitleBar/>
                     <ScrollView contentContainerStyle={{flexGrow:20, marginBottom:5, backgroundColor:'#fff'}}
+                    scrollEventThrottle={16}
                     onScroll={
                         () => this.props.onShowExampleType(false)
                     }
