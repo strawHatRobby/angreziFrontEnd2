@@ -76,7 +76,14 @@ class ChatBarComponent extends Component {
                                <ExampleOptions/>
                             }
                         <TouchableOpacity onPress= {()=> {
-                            this.props.onShowExampleType(true);
+                            {
+                                if(this.props.showExamplesType){
+                                    this.props.onShowExampleType(false);
+                                }
+                                else {
+                                    this.props.onShowExampleType(true);
+                                }
+                            }
                             this.setState({
                             activeIcon: 'example'
                             })}} 
@@ -87,8 +94,8 @@ class ChatBarComponent extends Component {
                          onPress={() => {
                              this.props.onShowModal(false);
                              this.props.getQuotes();
-
                              this.props.onShowExampleType(false);
+                             
                              this.props.onAddNewContent({ type:'quotes', data:this.props.quotes})
                             this.setState({
                                 activeIcon: 'quotes',
