@@ -49,7 +49,7 @@ borderBottomColor: 'white'}}/>
         <TouchableOpacity 
         onPress={() => {
             this.props.setUserResponseTo(option);
-            this.props.onAddNewContent(<UserTextBox said={option}/>)
+            this.props.onAddNewContent({type:'user', data:option})
             this.props.onShowExampleType(false),
             this.props.onShowModal(false)
         }}

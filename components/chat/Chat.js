@@ -32,7 +32,7 @@ import BotQuestions from '../chatQuestions/BotQuestions';
 import Sentence from '../chatQuestions/Sentence';
 import Synonym from '../chatQuestions/Synonym';
 import Definition from '../chatQuestions/Definition';
-
+import Quotes from './Quotes';
 const {height, width} = Dimensions.get('window');
 
 class ChatScreen extends Component {
@@ -121,7 +121,9 @@ class ChatScreen extends Component {
                                         case 'sentence':
                                             return <Sentence key={index} answer={item.answer} options={item.options}/>
                                         case 'synonym':
-                                        return <Synonym key={index} answer={item.answer} options={item.options}/>
+                                            return <Synonym key={index} answer={item.answer} options={item.options}/>
+                                        case 'quotes':
+                                                return <Quotes key={index} saying={item.data}/>
                                         default:
                                             return <BotView key={index} say={"Not Working"}/>
                                     }
