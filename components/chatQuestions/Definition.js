@@ -11,6 +11,7 @@ class DefinitionComponent extends Component {
     state = {
         options: ['Guileless','Spectacular','Cold','Emotionless'],
         answerSelected: false,
+        answer:'',
         shouldShowBotImage : this.props.chatScreenContent[this.props.chatScreenContent.length -2] && this.props.chatScreenContent[this.props.chatScreenContent.length -2].type !== 'user' ? false : true
     }
     showImage = () => {
@@ -50,6 +51,9 @@ for 'Artless'?
                         onPress={() => {
                             this.props.setUserResponseTo(item);
                             this.props.onAddNewContent({type:'user', data:item});
+                            if(this.props.answer === index){
+                                this.props.onAddNewContent({type:'bot', data:'that is correct'});
+                            }
                             this.setState({
                                 answerSelected: true
                             })

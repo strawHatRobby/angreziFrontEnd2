@@ -73,10 +73,10 @@ class ChatScreen extends Component {
         }, 1000)
 
         setTimeout(() => {
-            // this.props.onAddNewContent({type: 'definition',  options:['Yes','No'], answer:2})
+            this.props.onAddNewContent({type: 'sentence',  options:['Yes','No'], answer:2})
         }, 1500)
         setTimeout(() => {
-            // this.props.onAddNewContent({type: 'definition',  options:['Ys','No'], answer:2})
+            this.props.onAddNewContent({type: 'synonym',  options:['Ys','No'], answer:2})
         }, 200)
         setTimeout(() => {
             this.props.onAddNewContent({type: 'definition',  options:['Yes','No'], answer:2})

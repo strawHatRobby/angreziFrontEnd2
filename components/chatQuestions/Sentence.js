@@ -47,6 +47,9 @@ for 'Artless'?
                         onPress={() => {
                             this.props.setUserResponseTo(item);
                             this.props.onAddNewContent({type:'user', data:item});
+                            if(this.props.answer === index){
+                                this.props.onAddNewContent({type:'bot', data:'that is correct'});
+                            }
                             this.setState({
                                 answerSelected: true
                             })
