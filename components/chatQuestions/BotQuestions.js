@@ -8,7 +8,18 @@ import UserTextBox from '../chat/UserTextBox';
 class BotQuestionsComponent extends Component {
   
     state = {
-        answerSelected: false
+        options: ['Guileless','Spectacular','Cold','Emotionless'],
+        answerSelected: false,
+        shouldShowBotImage : this.props.chatScreenContent[this.props.chatScreenContent.length -2] && this.props.chatScreenContent[this.props.chatScreenContent.length -2].type !== 'user' ? false : true
+    }
+    showImage = () => {
+        if(this.state.shouldShowBotImage){
+        return (
+            <View style={{marginLeft:15}} >
+            <Image source={{uri: 'https://cdn-images-1.medium.com/max/1200/0*oz2e-hQtsHOWzoB4.'}} style={{height:40, width:40, borderRadius:20}}/>
+            </View>
+        )
+    }
     }
   
     getDate = () => {
@@ -20,6 +31,8 @@ class BotQuestionsComponent extends Component {
     }
 	render(){
 		return(
+            <View style={{marginTop:5}}>
+            {this.showImage()}
             <View style={{margin:15, marginBottom:5, marginTop:0, alignItems:'flex-start'}}>
             <View style={{ borderRadius:8, borderTopStartRadius:0, backgroundColor:'#F6DCBE'}}>
             <View style={{padding:10,  paddingLeft:20}}>
@@ -59,6 +72,7 @@ class BotQuestionsComponent extends Component {
 
             
 
+        </View>
         </View>
         </View>
 			)

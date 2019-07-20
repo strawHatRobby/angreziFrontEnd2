@@ -67,19 +67,22 @@ class ChatScreen extends Component {
             this.props.onAddNewContent({type: 'bot', data: 'Hey Yasharth'})
         }, 500);
 
-        // setTimeout(() => {
-        //     this.props.onAddNewContent({type: 'botQuestion', data: 'Ready to Play?', options:['Yes','No']})
-        // }, 1000)
+        setTimeout(() => {
+            this.props.onAddNewContent({type: 'botQuestion', data: 'Ready to Play?', options:['Yes','No']})
+        }, 1000)
 
-        // setTimeout(() => {
-        //     this.props.onAddNewContent({type: 'definition',  options:['Yes','No'], answer:2})
-        // }, 1500)
-        // setTimeout(() => {
-        //     this.props.onAddNewContent({type: 'synonym',  options:['Ys','No'], answer:2})
-        // }, 2000)
-        // setTimeout(() => {
-        //     this.props.onAddNewContent({type: 'sentence',  options:['Yes','No'], answer:2})
-        // }, 1500)
+        setTimeout(() => {
+            this.props.onAddNewContent({type: 'definition',  options:['Yes','No'], answer:2})
+        }, 1500)
+        setTimeout(() => {
+            this.props.onAddNewContent({type: 'definition',  options:['Ys','No'], answer:2})
+        }, 200)
+        setTimeout(() => {
+            // this.props.onAddNewContent({type: 'definition',  options:['Yes','No'], answer:2})
+        }, 1500)
+        setTimeout(() => {
+            this.props.onAddNewContent({type: 'bot', data: 'Hey Yasharth'})
+        }, 3000);
        
     } 
 	render(){
@@ -87,7 +90,7 @@ class ChatScreen extends Component {
 			<View style={[styles.container]}>
              <NewsModal/>
                 <TitleBar/>
-                    <ScrollView contentContainerStyle={{flexGrow:20, backgroundColor:'#fff'}}
+                    <ScrollView contentContainerStyle={{flexGrow:20, marginBottom:10, backgroundColor:'#fff'}}
                     ref={ref => this.scrollView = ref}
                     onContentSizeChange={(contentWidth, contentHeight)=>{        
                         this.scrollView.scrollToEnd({animated: true});
@@ -100,12 +103,12 @@ class ChatScreen extends Component {
                         </View>
 
                         
-                       { this.state.showToolTip && <Animated.View style={{zIndex:4, flexDirection:'row', flexWrap:'wrap', position:'absolute', top:this.state.position, left:40, width:200, height:70, backgroundColor:'#f6345d', alignItems:'flex-start', justifyContent:'flex-start', padding:10, borderRadius:10}}>
+                       {/* { this.state.showToolTip && <Animated.View style={{zIndex:4, flexDirection:'row', flexWrap:'wrap', position:'absolute', top:this.state.position, left:40, width:200, height:70, backgroundColor:'#f6345d', alignItems:'flex-start', justifyContent:'flex-start', padding:10, borderRadius:10}}>
                             <Text style={{color:'#fff', fontSize:14}}>
                                 Press Here to see magic
                                 </Text>
 
-                        </Animated.View>}
+                        </Animated.View>} */}
 
                             {
                                 this.props.chatScreenContent.map((item, index) => {

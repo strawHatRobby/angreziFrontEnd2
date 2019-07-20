@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, Text, View, TouchableOpacity } from 'react-native';
 import {connect } from 'react-redux';
 import { userRespondedWith, addToScreen } from '../chat/redux/chatScreenActions';
 import UserTextBox from '../chat/UserTextBox';
@@ -9,14 +9,26 @@ import { getDate } from '../chat/utils/time';
 class DefinitionComponent extends Component {
     
     state = {
-        options: ['Guilels','Spectacular','Cold','Emotionless'],
-        answerSelected: false
-                            
+        options: ['Guileless','Spectacular','Cold','Emotionless'],
+        answerSelected: false,
+        shouldShowBotImage : this.props.chatScreenContent[this.props.chatScreenContent.length -2] && this.props.chatScreenContent[this.props.chatScreenContent.length -2].type !== 'user' ? false : true
+    }
+    showImage = () => {
+        if(this.state.shouldShowBotImage){
+        return (
+            <View style={{marginLeft:15}} >
+            <Image source={{uri: 'https://cdn-images-1.medium.com/max/1200/0*oz2e-hQtsHOWzoB4.'}} style={{height:40, width:40, borderRadius:20}}/>
+            </View>
+        )
+    }
     }
   
     
 	render(){
+        
 		return(
+            <View>
+                    {this.showImage()}
 			<View style={{ borderRadius:8, borderTopStartRadius:0, margin:10, marginRight:50, marginBottom:0, backgroundColor:'#EFEFEF'}}>
                             <View style={{padding:10,  paddingLeft:20}}>
                             <Text style={{fontSize:11,flexWrap:'nowrap', fontFamily:'Times New Roman', color:'#776666', marginBottom:5}}>
@@ -61,6 +73,7 @@ for 'Artless'?
 
                             
 
+                        </View> 
                         </View> 
 			)
 	}

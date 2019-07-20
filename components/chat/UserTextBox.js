@@ -23,9 +23,6 @@ class User extends Component {
                             
 {this.props.said}
                         </Text>
-                        <Text>
-                        {this.props.chatScreen[this.props.chatScreen.length -1].type}
-                        </Text>
                         </View>
 
                         {/* <View style={{ padding:10,  paddingLeft:20, borderRadius:8, borderTopEndRadius:0, backgroundColor:'#BED6F6'}}>
