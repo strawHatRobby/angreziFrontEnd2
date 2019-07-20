@@ -9,7 +9,8 @@ import { getDate } from '../chat/utils/time';
 class SynonymComponent extends Component {
     
     state = {
-        options: ['Guileless','Spectacular','Cold','Emotionless']
+        options: ['Guileless','Spectacular','Cold','Emotionless'],
+        answerSelected: false
     }
   
     
@@ -30,9 +31,13 @@ for 'Artless'?
         return (
 <View  key={index} style={{padding:5, backgroundColor:'rgba(255,255,255,0.77)'}}>
                         <TouchableOpacity 
+                         disabled={this.state.answerSelected ? true : false}
                         onPress={() => {
                             this.props.setUserResponseTo(item);
-                            this.props.onAddNewContent(<UserTextBox said={item}/>)
+                            this.props.onAddNewContent({type:'user', data:item});
+                            this.setState({
+                                answerSelected: true
+                            })
                         }}
                         style={{justifyContent:'center', alignItems:'center', borderBottomColor:'#F6DCBE', borderBottomWidth:1, padding:8}}>
                             

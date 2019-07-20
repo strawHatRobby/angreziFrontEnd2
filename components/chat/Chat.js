@@ -73,10 +73,13 @@ class ChatScreen extends Component {
 
         setTimeout(() => {
             this.props.onAddNewContent({type: 'definition',  options:['Yes','No'], answer:2})
-        }, 1000)
+        }, 1500)
         setTimeout(() => {
-            this.props.onAddNewContent({type: 'definition',  options:['Ys','No'], answer:2})
-        }, 1000)
+            this.props.onAddNewContent({type: 'synonym',  options:['Ys','No'], answer:2})
+        }, 2000)
+        setTimeout(() => {
+            this.props.onAddNewContent({type: 'sentence',  options:['Yes','No'], answer:2})
+        }, 1500)
        
     } 
 	render(){
@@ -114,8 +117,11 @@ class ChatScreen extends Component {
                                         case 'user':
                                                 return <UserTextBox key={index} said={item.data}/>
                                         case 'definition':
-                                                return <Definition key={index} answer={item.answer} options={item.data}/>
-                                        
+                                                return <Definition key={index} answer={item.answer} options={item.options}/>
+                                        case 'sentence':
+                                            return <Sentence key={index} answer={item.answer} options={item.options}/>
+                                        case 'synonym':
+                                        return <Synonym key={index} answer={item.answer} options={item.options}/>
                                         default:
                                             return <BotView key={index} say={"Not Working"}/>
                                     }
