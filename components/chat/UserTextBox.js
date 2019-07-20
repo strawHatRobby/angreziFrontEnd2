@@ -16,7 +16,7 @@ class User extends Component {
         
 		return(
 			<View style={{margin:this.state.shouldShowUserImage ? 15:0, marginBottom:0,  marginRight:15, alignItems:'flex-end'}}>
-                {this.state.shouldShowUserImage && <Image source={{uri: 'https://tinyurl.com/y3jnz86c'}} style={{height:40, width:40, borderRadius:20}}/>}
+                {this.state.shouldShowUserImage && <Image source={{uri: 'https://tinyurl.com/y3jnz86c'}} style={{height:40, width:40, borderRadius:20, marginBottom:10}}/>}
                         <View style={[{margin:3, padding:10, paddingRight:20, marginRight:0, borderRadius:8, borderTopEndRadius:0, backgroundColor:'#BED6F6', alignItems:'flex-end'}]}>
                         <Text style={{fontSize:11,flexWrap:'nowrap', fontFamily:'Times New Roman', color:'#776666', marginBottom:5}}>{getDate()}</Text>
                         <Text style={{fontSize:18,flexWrap:'wrap',fontFamily:'Times New Roman'}}>

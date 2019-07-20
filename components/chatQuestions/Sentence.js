@@ -28,7 +28,7 @@ class SentenceComponent extends Component {
 		return(
             <View>
             {this.showImage()}
-			<View style={{ borderRadius:8, borderTopStartRadius:0, margin:10, marginRight:50, marginBottom:0,backgroundColor:'#E5F6BE'}}>
+			<View style={{ borderRadius:8, borderTopStartRadius:0, margin:10, marginRight:50, marginLeft:10, marginBottom:0, marginTop:this.state.shouldShowBotImage ? 10: 0,backgroundColor:'#E5F6BE'}}>
                             <View style={{padding:10,  paddingLeft:20}}>
                             <Text style={{fontSize:11,flexWrap:'nowrap', fontFamily:'Times New Roman', color:'#776666', marginBottom:5}}>{getDate()}</Text>
                                 <Text style={{fontSize:18,flexWrap:'wrap',fontFamily:'Times New Roman'}}>

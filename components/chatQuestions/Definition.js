@@ -16,7 +16,7 @@ class DefinitionComponent extends Component {
     showImage = () => {
         if(this.state.shouldShowBotImage){
         return (
-            <View style={{marginLeft:15}} >
+            <View style={{marginLeft:10}} >
             <Image source={{uri: 'https://cdn-images-1.medium.com/max/1200/0*oz2e-hQtsHOWzoB4.'}} style={{height:40, width:40, borderRadius:20}}/>
             </View>
         )
@@ -29,7 +29,7 @@ class DefinitionComponent extends Component {
 		return(
             <View>
                     {this.showImage()}
-			<View style={{ borderRadius:8, borderTopStartRadius:0, margin:10, marginRight:50, marginBottom:0, backgroundColor:'#EFEFEF'}}>
+			<View style={{ borderRadius:8, borderTopStartRadius:0, margin:10, marginRight:50, marginLeft:10, marginBottom:0, marginTop:this.state.shouldShowBotImage ? 10: 0, backgroundColor:'#EFEFEF'}}>
                             <View style={{padding:10,  paddingLeft:20}}>
                             <Text style={{fontSize:11,flexWrap:'nowrap', fontFamily:'Times New Roman', color:'#776666', marginBottom:5}}>
                             {getDate()}
