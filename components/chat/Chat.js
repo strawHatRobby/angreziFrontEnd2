@@ -34,58 +34,64 @@ import Sentence from '../chatQuestions/Sentence';
 import Synonym from '../chatQuestions/Synonym';
 import Definition from '../chatQuestions/Definition';
 import Quotes from './Quotes';
+import { startConvo } from '../../Tutorial/Initiate';
+
 const {height, width} = Dimensions.get('window');
 
 class ChatScreen extends Component {
-    
-    state = {
-        position: new Animated.Value(0),
-        showToolTip: false
-    }
-    onComponentDidMount = () => {
-        this.springAction()
-    }
-    springAction = () => {
-        Animated.timing(this.state.position, {
-            toValue:50,
-            duration:300
-        }).start(() => {
-            Animated.timing(this.state.position, {
-                toValue:0,
-                duration:300
-            }).start(() => this.springAction);
-        });
-    }
-    moveUp = {
-        top: this.state.position
-    }
     getPresentDate = () => {
         const date = new Date();
         return date.toDateString();
     }
+
+    state = {
+        isTyping : true
+    }
+
+    botTyping = (type, data, options = [], answer='') =>{
+        this.setState({
+            isTyping: false
+        })
+        this.props.onAddNewContent({type, data, options, answer})
+    }
+
     componentDidMount(){ 
         setTimeout(() => {
-            this.props.onAddNewContent({type: 'bot', data: 'Hey Yasharth'})
-        }, 500);
+           this.botTyping('bot','Hey you!');
+           this.setState({
+            isTyping: false
+        })
+        }, 1500);
 
         setTimeout(() => {
-            // this.props.onAddNewContent({type: 'botQuestion', data: 'Ready to Play?', options:['Yes','No']})
-        }, 1000)
+            this.botTyping('bot','Welcome to this tutorial');
+            this.setState({
+             isTyping: false
+         })
+         }, 2500);
+         
+        setTimeout(() => {
+            this.botTyping('botQuestion','Are you ready to begin?',['Yes','No'], answer=0);
+            this.setState({
+                isTyping: false
+            })
+        }, 3500)
 
         setTimeout(() => {
-            this.props.onAddNewContent({type: 'sentence',  options:['Yes','No'], answer:2})
+            // this.props.onAddNewContent({type: 'sentence',  options:['Yes','No'], answer:2})
         }, 1500)
         setTimeout(() => {
-            this.props.onAddNewContent({type: 'synonym',  options:['Ys','No'], answer:2})
+            // this.props.onAddNewContent({type: 'synonym',  options:['Ys','No'], answer:2})
         }, 200)
-        setTimeout(() => {
-            this.props.onAddNewContent({type: 'definition',  options:['Yes','No'], answer:2})
-        }, 1500)
-        setTimeout(() => {
-            this.props.onAddNewContent({type: 'bot', data: 'Hey Yasharth'})
-        }, 3000);
+        // setTimeout(() => {
+        //     this.props.onAddNewContent({type: 'definition',  options:['Yes','No'], answer:2})
+        // }, 1500)
+        // setTimeout(() => {
+        //     this.props.onAddNewContent({type: 'bot', data: 'Hey Yasharth'})
+        // }, 3000); 
        
     } 
+
 	render(){
 		return(
 			<View style={[styles.container]}>
@@ -114,14 +120,19 @@ class ChatScreen extends Component {
                                 </Text>
 
                         </Animated.View>} */}
-
+                        {
+                            this.state.isTyping ?
+                            <Text>typing....</Text>
+                            :
+                            null
+                        }
                             {
                                 this.props.chatScreenContent.map((item, index) => {
                                     switch(item.type){
                                         case 'bot':
                                             return <BotView key={index} say={item.data} />
                                         case 'botQuestion':
-                                            return <BotQuestions key={index} say={item.data} options={item.options}/>
+                                            return <BotQuestions key={index} say={item.data} options={item.options} answer={item.answer}/>
                                         case 'user':
                                                 return <UserTextBox key={index} said={item.data}/>
                                         case 'definition':

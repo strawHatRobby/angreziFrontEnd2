@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { userRespondedWith, addToScreen } from '../chat/redux/chatScreenActions';
+import { StyleSheet, Text, Image,Platform, View, TouchableOpacity } from 'react-native';
+import { userRespondedWith, addToScreen, incrementProgressBar } from '../chat/redux/chatScreenActions';
 import { connect } from 'react-redux';
 import UserTextBox from '../chat/UserTextBox';
+
 
 
 class BotQuestionsComponent extends Component {
@@ -52,6 +53,21 @@ class BotQuestionsComponent extends Component {
                             onPress={() => {
                             this.props.setUserResponseTo(item);
                             this.props.onAddNewContent({type:'user', data: item})
+                            console.log(this.props.answer)
+                            if(this.props.answer === index){
+                                setTimeout(() => this.props.onAddNewContent({type:'bot', data:'Let us begin'}),2000)
+                                setTimeout(() => this.props.onAddNewContent({type:'bot', data:"This app will help you new words in ways you haven't even thought about"}),3000)
+                                setTimeout(() => {this.props.onAddNewContent({type:'bot', data:'Lets give it a shot'}); this.props.increaseProgressBar();},4500)
+                                setTimeout(() => this.props.onAddNewContent({type:'bot', data:'Capricious'}),5500)
+                                setTimeout(() => this.props.onAddNewContent({type:'bot', data:'Capricious means changing unpredicatably, like moodswings'}),6500);
+                                setTimeout(() => this.props.onAddNewContent({type:'bot', data:'To learn more about caprcious click on the middle button in the bottom bar'}),8500);
+                                this.props.increaseProgressBar();
+                            }else {
+                                setTimeout(() => this.props.onAddNewContent({type:'botQuestion', data:'Let me know when ready', options:['Ready'], answer:0}));
+                            }
+                                
+                            
+                            
                             this.setState({
                                 answerSelected: true
                             })
@@ -82,14 +98,16 @@ class BotQuestionsComponent extends Component {
 const mapStateToProps = (store) => {
   return   {
     userSelected: store.chatScreen.userSelected,
-    chatScreenContent: store.chatScreen.chatScreenContent
+    chatScreenContent: store.chatScreen.chatScreenContent,
+    progress: store.chatScreen.progress
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         setUserResponseTo: (answer) => dispatch(userRespondedWith(answer)),
-        onAddNewContent: (data) => dispatch(addToScreen(data))
+        onAddNewContent: (data) => dispatch(addToScreen(data)),
+        increaseProgressBar: () => dispatch(incrementProgressBar())
     }
 
 }

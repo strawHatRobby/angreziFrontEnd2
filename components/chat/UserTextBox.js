@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 class User extends Component {
     
     state = {
-        shouldShowUserImage : this.props.chatScreen[this.props.chatScreen.length -1].type !== 'user'
+        shouldShowUserImage : this.props.chatScreen[this.props.chatScreen.length -1].type !== 'user' || this.props.chatScreen[this.props.chatScreen.length -2].type !== 'user' 
     }
   
     

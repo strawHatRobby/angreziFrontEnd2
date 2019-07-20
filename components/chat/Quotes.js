@@ -3,6 +3,7 @@ import { StyleSheet, Platform, Text, View, TouchableOpacity } from 'react-native
 import QuotesIcon from '../../QuotesIcon';
 import { connect } from 'react-redux';
 
+import { getDate } from './utils/time';
 
 class Quote extends Component {
     
@@ -18,9 +19,9 @@ class Quote extends Component {
 	render(){
         
 		return(
-
+            this.props.saying ?
             <View style={{ padding:10, marginTop:5,marginLeft:10, marginRight:30,marginBottom:0, borderRadius:8, borderTopStartRadius:0, backgroundColor:'#BEDBE9'}}>
-            <Text style={{fontSize:11,flexWrap:'nowrap', fontFamily:Platform.OS === 'ios' ? 'Times New Roman' : 'Roboto', color:'#776666', marginBottom:5}}>2:25 PM</Text>
+            <Text style={{fontSize:11,flexWrap:'nowrap', fontFamily:Platform.OS === 'ios' ? 'Times New Roman' : 'Roboto', color:'#776666', marginBottom:5}}>{getDate()}</Text>
             <QuotesIcon name="quotes" size={30} color={'#000'}/>
             
             <View style={{marginTop:10, borderBottomColor:'#fff', borderBottomWidth:1}}>
@@ -37,7 +38,8 @@ class Quote extends Component {
 
 
             </View>
-            
+            :
+            <Text>Loading..</Text>
 			)
 	}
 }
@@ -55,5 +57,5 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default Qoutes = connect(mapStateToProps, mapDispatchToProps)(Quote);
+export default Quotes = connect(mapStateToProps, mapDispatchToProps)(Quote);
 
