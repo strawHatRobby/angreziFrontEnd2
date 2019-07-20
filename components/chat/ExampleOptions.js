@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, Platform, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import UserTextBox from './UserTextBox';
 import { userRespondedWith, addToScreen, showExampleType } from './redux/chatScreenActions';
@@ -15,7 +15,7 @@ class ExampleOptionsComponent extends Component {
     
 	render(){
 		return(
-            <View style={{position:'absolute'}} >
+            <View style={{position:'absolute', zIndex:0}} >
             <View style={{ width: 0,
 height: 0,
 top:-10,
@@ -36,7 +36,7 @@ borderLeftColor: 'transparent',
 borderRightColor: 'transparent',
 borderBottomColor: 'white'}}/>
 
-           <View style={{ position:'absolute', zIndex:0, 
+           <View style={{ position:'absolute', zIndex:15, 
            shadowOffset:{  width: -1,  height: -1  },
            shadowColor: '#000',
            shadowOpacity: 0.75,

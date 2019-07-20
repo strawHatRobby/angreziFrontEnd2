@@ -8,6 +8,7 @@ import {
     Button,
     Animated,
     Dimensions,
+    Platform,
     Text,
     TextInput,
     View,
@@ -161,7 +162,8 @@ const Chat = connect(mapStateToProps, mapDispatchToProps)(ChatScreen);
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      paddingTop: Constants.statusBarHeight,
+      zIndex:1,
+    paddingTop: Constants.statusBarHeight,
     },
     notBlurred: {
         ...StyleSheet.absoluteFill,

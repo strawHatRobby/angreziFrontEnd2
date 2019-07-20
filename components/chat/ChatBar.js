@@ -41,6 +41,7 @@ class ChatBarComponent extends Component {
                     position:'absolute',
                     top:-55,
                     left:0,
+                    zIndex:3,
                 borderBottomColor:'#a5a5a5',
                 borderBottomWidth:0.5,
                 width: Dimensions.get('window').width} : {}]}>

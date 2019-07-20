@@ -59,7 +59,7 @@ class News extends Component {
                     onClosed={(alsef) => this.props.onShowModal(false)}
                     backdrop={true}
                     backdropOpacity={0.51}
-                    style={{backgroundColor:'transparent'}}
+                    style={{backgroundColor:'transparent', zIndex:2}}
                     swipeToClose={true}
                     swipeArea={(height/2)+100}
                     useNativeDriver={true}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, Image, Platform, View, TouchableOpacity } from 'react-native';
 import { getDate } from './utils/time';
 import {connect} from 'react-redux';
 
