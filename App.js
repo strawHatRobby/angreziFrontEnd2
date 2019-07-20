@@ -16,7 +16,7 @@ function* hello(){
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(actionWatcher);
-store.subscribe(() => console.log(store.getState()));
+// store.subscribe(() => console.log(store.getState()));
 export default function App() {
   return (
     <Provider store={store}>

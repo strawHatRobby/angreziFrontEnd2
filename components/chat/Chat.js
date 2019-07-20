@@ -67,19 +67,19 @@ class ChatScreen extends Component {
             this.props.onAddNewContent({type: 'bot', data: 'Hey Yasharth'})
         }, 500);
 
-        setTimeout(() => {
-            this.props.onAddNewContent({type: 'botQuestion', data: 'Ready to Play?', options:['Yes','No']})
-        }, 1000)
+        // setTimeout(() => {
+        //     this.props.onAddNewContent({type: 'botQuestion', data: 'Ready to Play?', options:['Yes','No']})
+        // }, 1000)
 
-        setTimeout(() => {
-            this.props.onAddNewContent({type: 'definition',  options:['Yes','No'], answer:2})
-        }, 1500)
-        setTimeout(() => {
-            this.props.onAddNewContent({type: 'synonym',  options:['Ys','No'], answer:2})
-        }, 2000)
-        setTimeout(() => {
-            this.props.onAddNewContent({type: 'sentence',  options:['Yes','No'], answer:2})
-        }, 1500)
+        // setTimeout(() => {
+        //     this.props.onAddNewContent({type: 'definition',  options:['Yes','No'], answer:2})
+        // }, 1500)
+        // setTimeout(() => {
+        //     this.props.onAddNewContent({type: 'synonym',  options:['Ys','No'], answer:2})
+        // }, 2000)
+        // setTimeout(() => {
+        //     this.props.onAddNewContent({type: 'sentence',  options:['Yes','No'], answer:2})
+        // }, 1500)
        
     } 
 	render(){
