@@ -13,6 +13,13 @@ export const setWord = (payload) => {
         payload
     }
 }
+export const removeQuote = (payload) => {
+    return {
+        type: 'REMOVE_QUOTE',
+        payload
+    }
+}
+
 
 export const getWordData = (word) => {
     return {

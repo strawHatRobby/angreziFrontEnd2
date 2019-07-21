@@ -19,6 +19,7 @@ export default chatScreenReducer = (state = initialState, action ) => {
             return {
                 ...state
             }
+        
         case 'SET_WORD':
             return {
                 ...state,
@@ -31,6 +32,14 @@ export default chatScreenReducer = (state = initialState, action ) => {
         case 'GET_QUOTE':
             return {
                 ...state
+            }
+        case 'REMOVE_QUOTE':
+            let currentQuotes = state.currentWordQuotes
+            currentQuotes.splice(action.payload,1)
+            console.log(currentQuotes);
+            return {
+                ...state,
+                currentWordQuotes: currentQuotes
             }
         case 'ADD_TO_SCREEN':
             return {
