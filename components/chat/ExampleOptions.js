@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, Platform, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import UserTextBox from './UserTextBox';
-import { userRespondedWith, addToScreen, showExampleType } from './redux/chatScreenActions';
+import { userRespondedWith, removeSentence, addToScreen, showExampleType } from './redux/chatScreenActions';
 import { showModal } from './redux/action';
 
 
@@ -59,7 +59,8 @@ borderBottomColor: 'white'}}/>
             this.props.onShowModal(false)
             switch(index){
                 case 0:
-                    this.props.onAddNewContent({type:'bot', data:this.props.wordData.sentences[0]})
+                    this.props.onAddNewContent({type:'bot', data:this.props.wordData.sentences[0]});
+                    this.props.onRemoveSentence()
                     break;
                 case 1:
                         setTimeout(() => {this.props.onAddNewContent({type:'bot', data:this.props.wordData.synonyms[0]})},2000)
@@ -112,6 +113,7 @@ const mapStateToProps = (store) => {
           onAddNewContent: (data) => dispatch(addToScreen(data)),
           onShowExampleType: (val) => dispatch(showExampleType(val)),
           onShowModal: (show) => dispatch(showModal(show)),
+          onRemoveSentence: () => dispatch(removeSentence())
       }
   
   }

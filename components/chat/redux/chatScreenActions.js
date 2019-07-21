@@ -7,6 +7,12 @@ const GET_QUOTE = 'GET_QUOTE';
 const GET_WORD = 'GET_WORD';
 const SET_WORD = 'SET_WORD';
 
+export const removeSentence = () => {
+    return {
+        type: 'REMOVE_SENTENCE'
+    }
+}
+
 export const setWord = (payload) => {
     return {
         type: SET_WORD,

@@ -110,7 +110,9 @@ class ChatBarComponent extends Component {
                             this.props.incrementProgress()
                             this.props.onShowModal(false);
                             this.props.onShowExampleType(false);
-                            this.props.getWord('capricious')
+                            x = ['capricious', 'alacrity'];
+                            x = x[Math.floor(Math.random() * 2)]
+                            this.props.getWord(x)
                             this.setState({
                                 activeIcon: 'skip'
                             })

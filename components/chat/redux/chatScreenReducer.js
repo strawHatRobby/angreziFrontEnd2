@@ -11,6 +11,8 @@ const initialState = {
     currentWordVideos: [],
     currentWordNews: [],
     currentWordQuotes: [],
+    currentWordSynonyms: [],
+    currentWordSentences: [],
 }
 
 export default chatScreenReducer = (state = initialState, action ) => {
@@ -36,11 +38,24 @@ export default chatScreenReducer = (state = initialState, action ) => {
         case 'REMOVE_QUOTE':
             let currentQuotes = state.currentWordQuotes
             currentQuotes.splice(action.payload,1)
-            console.log(currentQuotes);
             return {
                 ...state,
                 currentWordQuotes: currentQuotes
             }
+        case 'REMOVE_SENTENCE':
+                let currentSentence = state.wordData.sentences
+                currentSentence.splice(0,1)
+                return {
+                    ...state,
+                    currentWordData: {...state.currentWordData, sentences:currentSentence}
+                }
+        case 'REMOVE_SYNONYM':
+                let currentSynonym = state.currentWordSynonyms
+                currentSynonym.splice(action.payload,1)
+                return {
+                    ...state,
+                    currentWordQuotes: currentSynonym
+                }
         case 'ADD_TO_SCREEN':
             return {
                 ...state,
