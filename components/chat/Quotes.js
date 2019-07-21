@@ -47,6 +47,8 @@ class Quote extends Component {
 const mapStateToProps = (store) => {
     return {
         quotes: store.chatScreen.quotes,
+        currentWord: store.chatScreen.currentWord,
+        currentWordQuotes: store.chatScreen.currentWordQuotes
     }
 }
 

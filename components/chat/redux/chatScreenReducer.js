@@ -6,10 +6,11 @@ const initialState = {
     progress: 0,
     userSelected: '',
     showExamplesType: false,
-    currentWordData: null,
+    wordData: null,
     currentWord: null,
     currentWordVideos: [],
-    currentWordNews: []
+    currentWordNews: [],
+    currentWordQuotes: [],
 }
 
 export default chatScreenReducer = (state = initialState, action ) => {
@@ -21,10 +22,11 @@ export default chatScreenReducer = (state = initialState, action ) => {
         case 'SET_WORD':
             return {
                 ...state,
-                currentWord: action.payload,
+                wordData: action.payload,
                 currentWord: action.payload.word,
                 currentWordNews: action.payload.news,
-                currentWordVideos: action.payload.videos
+                currentWordVideos: action.payload.videos,
+                currentWordQuotes: action.payload.quotes
             }
         case 'GET_QUOTE':
             return {

@@ -9,6 +9,7 @@ import QuotesIcon from '../../QuotesIcon';
 import ChatBar from './ChatBar';
 import {showVideo, showModal} from './redux/action';
 import {connect} from 'react-redux';
+import VideoContent from './VideoContent';
 
 
 
@@ -78,18 +79,9 @@ class Video extends Component {
                         >
   
 
-
+<VideoContent/>
                            
-        <View style={{height:250, margin:20, width:350, borderRadius:50}}>
- 
- <WebView
-         style={ { overflow: 'hidden',  height:250, borderRadius:25}}
-         javaScriptEnabled={true}
-         domStorageEnabled={true}
-         source={{uri: 'https://www.youtube.com/embed/HdPzOWlLrbE?start=225&end=268&cc_load_policy=1&loop=1' }}
- />
-
-</View>
+        
                             
                             
 
