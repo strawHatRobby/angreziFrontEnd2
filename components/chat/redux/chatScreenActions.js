@@ -4,6 +4,14 @@ const INCREMENT_PROGRESS_BAR = 'INCREMENT_PROGRESS_BAR';
 const USER_RESPONDED_WITH = 'USER_RESPONDED_WITH';
 const SHOW_EXAMPLE_TYPES = 'SHOW_EXAMPLE_TYPES'
 const GET_QUOTE = 'GET_QUOTE';
+const GET_WORD = 'GET_WORD';
+
+export const getWordData = (word) => {
+    return {
+        type: GET_WORD,
+        word
+    }
+}
 export const showExampleType = (payload) => {
     return {
         type: SHOW_EXAMPLE_TYPES,

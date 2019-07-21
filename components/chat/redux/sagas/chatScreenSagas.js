@@ -1,6 +1,5 @@
 import { call, put, delay, takeEvery, takeLatest } from 'redux-saga/effects';
-import quotes from '../../../assets/quotes.json';
-import { addQuoteToScreen, addToScreen } from './chatScreenActions';
+import { addQuoteToScreen, addToScreen } from '../chatScreenActions';
 function fetchStuff(){
     const json = fetch('http://api.icndb.com/jokes/random')
           .then(response => response.json(), )
