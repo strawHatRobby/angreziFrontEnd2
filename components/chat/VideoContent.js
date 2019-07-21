@@ -15,9 +15,9 @@ class Video extends Component {
 
                            
 {this.props.currentWord ?
- this.props.currentWordVideos.map((video) => {
+ this.props.currentWordVideos.map((video, index) => {
      return (
-        <View style={{height:250, margin:20, width:350, borderRadius:50}}>
+        <View key={`video_${index}`}style={{height:250, margin:20, width:350, borderRadius:50}}>
         <WebView
         style={ { overflow: 'hidden',  height:250, borderRadius:25}}
         javaScriptEnabled={true}

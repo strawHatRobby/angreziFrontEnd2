@@ -13,6 +13,12 @@ export const removeSentence = () => {
     }
 }
 
+export const removeSynonym = () => {
+    return {
+        type: 'REMOVE_SYNONYM'
+    }
+}
+
 export const setWord = (payload) => {
     return {
         type: SET_WORD,

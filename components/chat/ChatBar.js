@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { showNews, showVideo, showModal } from './redux/action';
 
 import Quotes from './Quotes';
-import { addQuoteToScreen, addToScreen, incrementProgressBar, showExampleType, getQuote, getWordData } from './redux/chatScreenActions';
+import { addQuoteToScreen,removeQuote, addToScreen, incrementProgressBar, showExampleType, getQuote, getWordData } from './redux/chatScreenActions';
 
 
 class ChatBarComponent extends Component {
@@ -94,9 +94,9 @@ class ChatBarComponent extends Component {
                         <TouchableOpacity 
                          onPress={() => {
                              this.props.onShowModal(false);
-                             this.props.getQuotes();
                              this.props.onShowExampleType(false);
-                             
+                             this.props.onAddNewContent({type:'quotes', data: this.props.currentWordData})
+                             this.props.onRemoveQuotes();
                             this.setState({
                                 activeIcon: 'quotes',
                                 showExamplesType: false
@@ -135,7 +135,8 @@ const mapStateToProps = (store) => {
         showModal: store.chatBar.showModal,
         quotes: store.chatScreen.quotes,
         chatScreenContent: store.chatScreen.chatScreenContent,
-        showExamplesType: store.chatScreen.showExamplesType
+        showExamplesType: store.chatScreen.showExamplesType,
+        currentWordData: store.chatScreen.wordData
     }
 }
 
@@ -149,7 +150,9 @@ const mapDispatchToProps = (dispatch) => {
         incrementProgress: () => dispatch(incrementProgressBar()),
         onShowExampleType: (val) => dispatch(showExampleType(val)),
         getQuotes: () => dispatch(getQuote()),
-        getWord: (val) => dispatch(getWordData(val))
+        getWord: (val) => dispatch(getWordData(val)),
+        onRemoveQuotes: () => dispatch(removeQuote())
+
     }
 }
 

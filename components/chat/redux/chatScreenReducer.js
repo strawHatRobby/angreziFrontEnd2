@@ -10,7 +10,6 @@ const initialState = {
     currentWord: null,
     currentWordVideos: [],
     currentWordNews: [],
-    currentWordQuotes: [],
     currentWordSynonyms: [],
     currentWordSentences: [],
 }
@@ -28,19 +27,18 @@ export default chatScreenReducer = (state = initialState, action ) => {
                 wordData: action.payload,
                 currentWord: action.payload.word,
                 currentWordNews: action.payload.news,
-                currentWordVideos: action.payload.videos,
-                currentWordQuotes: action.payload.quotes
+                currentWordVideos: action.payload.videos
             }
         case 'GET_QUOTE':
             return {
-                ...state
+            ...state
             }
         case 'REMOVE_QUOTE':
-            let currentQuotes = state.currentWordQuotes
-            currentQuotes.splice(action.payload,1)
+            let currentQuotes = state.wordData.quotes
+            currentQuotes.splice(0,1)
             return {
                 ...state,
-                currentWordQuotes: currentQuotes
+                currentWordData: {...state.currentWordData, quotes:currentQuotes}
             }
         case 'REMOVE_SENTENCE':
                 let currentSentence = state.wordData.sentences
@@ -50,11 +48,11 @@ export default chatScreenReducer = (state = initialState, action ) => {
                     currentWordData: {...state.currentWordData, sentences:currentSentence}
                 }
         case 'REMOVE_SYNONYM':
-                let currentSynonym = state.currentWordSynonyms
-                currentSynonym.splice(action.payload,1)
+                let currentSynonym = state.wordData.synonyms
+                currentSynonym.splice(0,1)
                 return {
                     ...state,
-                    currentWordQuotes: currentSynonym
+                    currentWordData: {...state.currentWordData, synonyms:currentSynonyms}
                 }
         case 'ADD_TO_SCREEN':
             return {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, Platform, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import UserTextBox from './UserTextBox';
-import { userRespondedWith, removeSentence, addToScreen, showExampleType } from './redux/chatScreenActions';
+import { userRespondedWith, removeSynonym, removeSentence, addToScreen, showExampleType } from './redux/chatScreenActions';
 import { showModal } from './redux/action';
 
 
@@ -113,7 +113,9 @@ const mapStateToProps = (store) => {
           onAddNewContent: (data) => dispatch(addToScreen(data)),
           onShowExampleType: (val) => dispatch(showExampleType(val)),
           onShowModal: (show) => dispatch(showModal(show)),
-          onRemoveSentence: () => dispatch(removeSentence())
+          onRemoveSentence: () => dispatch(removeSentence()),
+          onRemoveSynonym: () => dispatch(removeSynonym())
+
       }
   
   }
