@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { showNews, showVideo, showModal } from './redux/action';
 
 import Quotes from './Quotes';
-import { addQuoteToScreen, addToScreen, incrementProgressBar , showExampleType, getQuote} from './redux/chatScreenActions';
+import { addQuoteToScreen, addToScreen, incrementProgressBar, showExampleType, getQuote, getWordData } from './redux/chatScreenActions';
 
 
 class ChatBarComponent extends Component {
@@ -110,6 +110,7 @@ class ChatBarComponent extends Component {
                             this.props.incrementProgress()
                             this.props.onShowModal(false);
                             this.props.onShowExampleType(false);
+                            this.props.getWord('capricious')
                             this.setState({
                                 activeIcon: 'skip'
                             })
@@ -145,7 +146,8 @@ const mapDispatchToProps = (dispatch) => {
         onAddNewContent: (data) => dispatch(addToScreen(data)),
         incrementProgress: () => dispatch(incrementProgressBar()),
         onShowExampleType: (val) => dispatch(showExampleType(val)),
-        getQuotes: () => dispatch(getQuote())
+        getQuotes: () => dispatch(getQuote()),
+        getWord: (val) => dispatch(getWordData(val))
     }
 }
 
