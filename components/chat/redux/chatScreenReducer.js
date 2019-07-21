@@ -5,7 +5,9 @@ const initialState = {
     chatScreenContent: [],
     progress: 0,
     userSelected: '',
-    showExamplesType: false
+    showExamplesType: false,
+    currentWordData: null,
+    currentWord: null
 }
 
 export default chatScreenReducer = (state = initialState, action ) => {
@@ -13,6 +15,12 @@ export default chatScreenReducer = (state = initialState, action ) => {
         case 'GET_WORD':
             return {
                 ...state
+            }
+        case 'SET_WORD':
+            return {
+                ...state,
+                currentWord: action.payload,
+                currentWord: action.payload.word
             }
         case 'GET_QUOTE':
             return {

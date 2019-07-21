@@ -4,7 +4,7 @@ import {actionWatcher} from './chatScreenSagas';
 export default function* rootSaga() {
     yield all([
       getWord(),
-        actionWatcher()
+      actionWatcher()
     ])
     // code after all-effect
   }

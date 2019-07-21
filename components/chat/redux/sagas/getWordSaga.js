@@ -1,5 +1,5 @@
 import { call, put, delay, takeEvery, takeLatest } from 'redux-saga/effects';
-import { addQuoteToScreen, addToScreen } from '../chatScreenActions';
+import { addQuoteToScreen, addToScreen, setWord } from '../chatScreenActions';
 
 function fetchWordData(word){
     console.log(JSON.stringify(word));
@@ -12,10 +12,10 @@ function fetchWordData(word){
 function* fetchWord(word){
     try{
         const json = yield call(fetchWordData, word.word);
-        yield put(addToScreen({type:'bot', data:json.synonyms[0]}))
+        yield put(setWord(word))
+        yield put(addToScreen({type:'bot', data:json.word}))
     }
     catch(err){
-        yield put(addToScreen({type:'bot', data:JSON.stringify(word)}))
         yield put (addToScreen({type:'bot', data:"Couldn't fetch the file, saga not working"}))
     }
 }

@@ -13,6 +13,9 @@ class ExampleOptionsComponent extends Component {
         
     }
   
+    delayedAnswer = () => {
+        setTimeout(() => {this.props.onAddNewContent({type:'bot', data:`Your word is ${this.props.word}`})},2000)
+    }
     
 	render(){
 		return(
@@ -51,6 +54,7 @@ borderBottomColor: 'white'}}/>
         onPress={() => {
             this.props.setUserResponseTo(option);
             this.props.onAddNewContent({type:'user', data:option})
+            this.delayedAnswer();
             this.props.onShowExampleType(false),
             this.props.onShowModal(false)
         }}
@@ -79,6 +83,7 @@ const mapStateToProps = (store) => {
       chatScreenContent: store.chatScreen.chatScreenContent,
       showExamplesType: store.chatScreen.showExamplesType,
       showModal: store.chatBar.showModal,
+      word: store.chatScreen.currentWord
       }
   }
   

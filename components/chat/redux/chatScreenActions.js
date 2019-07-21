@@ -5,6 +5,14 @@ const USER_RESPONDED_WITH = 'USER_RESPONDED_WITH';
 const SHOW_EXAMPLE_TYPES = 'SHOW_EXAMPLE_TYPES'
 const GET_QUOTE = 'GET_QUOTE';
 const GET_WORD = 'GET_WORD';
+const SET_WORD = 'SET_WORD';
+
+export const setWord = (payload) => {
+    return {
+        type: SET_WORD,
+        payload
+    }
+}
 
 export const getWordData = (word) => {
     return {
