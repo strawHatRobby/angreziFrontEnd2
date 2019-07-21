@@ -7,7 +7,9 @@ const initialState = {
     userSelected: '',
     showExamplesType: false,
     currentWordData: null,
-    currentWord: null
+    currentWord: null,
+    currentWordVideos: [],
+    currentWordNews: []
 }
 
 export default chatScreenReducer = (state = initialState, action ) => {
@@ -20,7 +22,9 @@ export default chatScreenReducer = (state = initialState, action ) => {
             return {
                 ...state,
                 currentWord: action.payload,
-                currentWord: action.payload.word
+                currentWord: action.payload.word,
+                currentWordNews: action.payload.news,
+                currentWordVideos: action.payload.videos
             }
         case 'GET_QUOTE':
             return {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, WebView, View } from 'react-native';
 import Chat from './components/chat/Chat';
 import Levels from './components/Levels';
 import YouTubeWindow from './components/YouTube';
@@ -10,6 +10,9 @@ import createSagaMiddleware from 'redux-saga';
 import reducer from './components/chat/redux/reducer';
 import {actionWatcher} from './components/chat/redux/sagas/chatScreenSagas';
 import rootSaga from './components/chat/redux/sagas/rootSaga';
+
+import AppContainer from './screens/Navigation';
+
 function* hello(){
   console.log('hello');
 }
@@ -20,7 +23,7 @@ sagaMiddleware.run(rootSaga);
 export default function App() {
   return (
     <Provider store={store}>
-<Chat/>
+<AppContainer/>
 </Provider>
   );
 }

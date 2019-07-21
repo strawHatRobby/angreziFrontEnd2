@@ -39,6 +39,10 @@ import { startConvo } from '../../Tutorial/Initiate';
 const {height, width} = Dimensions.get('window');
 
 class ChatScreen extends Component {
+
+    static navigationOptions = {
+        header: null
+    }
     getPresentDate = () => {
         const date = new Date();
         return date.toDateString();

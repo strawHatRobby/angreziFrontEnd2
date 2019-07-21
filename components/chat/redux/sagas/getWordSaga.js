@@ -12,8 +12,8 @@ function fetchWordData(word){
 function* fetchWord(word){
     try{
         const json = yield call(fetchWordData, word.word);
-        yield put(setWord(word))
-        yield put(addToScreen({type:'bot', data:json.word}))
+        yield put(setWord(json))
+        yield put(addToScreen({type:'bot', data:json.news[0].title}))
     }
     catch(err){
         yield put (addToScreen({type:'bot', data:"Couldn't fetch the file, saga not working"}))

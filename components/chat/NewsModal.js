@@ -78,7 +78,7 @@ class News extends Component {
                         <View
                         style={{paddingTop:10, borderBottomColor:'##707070', borderBottomWidth:1, paddingBottom:5}}>
                             <Text style={{fontFamily:Platform.OS === 'ios' ? 'Times New Roman' : 'Roboto', fontWeight:'bold', fontSize:30}}>
-                                {`Cacophony' in ${this.props.showNewsModal ? 'News': 'Videos'}`}
+                                {this.props.currentWord && `'${this.props.currentWord}' in ${this.props.showNewsModal ? 'News': 'Videos'}`}
                             </Text>
                         </View>
                         
@@ -101,7 +101,8 @@ const mapStateToProps = (store) => {
         showVideoModal: store.chatBar.showVideoModal,
         showModal: store.chatBar.showModal,
         quotes: store.chatScreen.quotes,
-        chatScreenContent: store.chatScreen.chatScreenContent
+        chatScreenContent: store.chatScreen.chatScreenContent,
+        currentWord: store.chatScreen.currentWord
     }
 }
 
