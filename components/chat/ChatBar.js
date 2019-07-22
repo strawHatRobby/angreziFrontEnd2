@@ -11,7 +11,8 @@ import { connect } from 'react-redux';
 import { showNews, showVideo, showModal } from './redux/action';
 
 import Quotes from './Quotes';
-import { addQuoteToScreen,removeQuote, addToScreen, incrementProgressBar, showExampleType, getQuote, getWordData } from './redux/chatScreenActions';
+import { addQuoteToScreen, removeQuote, addToScreen, incrementProgressBar, showExampleType, getQuote, getWordData, setTutorialModeTo } from './redux/chatScreenActions';
+
 
 
 class ChatBarComponent extends Component {
@@ -101,6 +102,11 @@ class ChatBarComponent extends Component {
                                 activeIcon: 'quotes',
                                 showExamplesType: false
                             })
+                            this.props.setTutorialModeTo('news');
+                            console.log(this.props.tutorialMode)
+                            if (this.props.tutorialMode === null){
+                                this.props.onAddNewContent({type:'bot', data:`now click on the first icon, the globe icon to find news on ${this.props.currentWordData.word}`})
+                            }
                     }}
                         style={{padding:5, justifyContent:'center', alignItems:'center'}}>
                         <QuotesIcon name='quotes' size={40} color={this.state.activeIcon === 'quotes' ? '#000': '#a5a5a5'}/> 
@@ -116,6 +122,7 @@ class ChatBarComponent extends Component {
                             this.setState({
                                 activeIcon: 'skip'
                             })
+                            
                     }}
                         style={{padding:5, justifyContent:'center', alignItems:'center'}}>
                         <SkipIcon name='skip' size={40} color={this.state.activeIcon === 'skip' ? '#000': '#a5a5a5'}/> 
@@ -136,7 +143,8 @@ const mapStateToProps = (store) => {
         quotes: store.chatScreen.quotes,
         chatScreenContent: store.chatScreen.chatScreenContent,
         showExamplesType: store.chatScreen.showExamplesType,
-        currentWordData: store.chatScreen.wordData
+        currentWordData: store.chatScreen.wordData,
+        tutorialMode: store.chatScreen.tutorialMode
     }
 }
 
@@ -151,7 +159,8 @@ const mapDispatchToProps = (dispatch) => {
         onShowExampleType: (val) => dispatch(showExampleType(val)),
         getQuotes: () => dispatch(getQuote()),
         getWord: (val) => dispatch(getWordData(val)),
-        onRemoveQuotes: () => dispatch(removeQuote())
+        onRemoveQuotes: () => dispatch(removeQuote()),
+        setTutorialModeTo: (val) => dispatch(setTutorialModeTo(val))
 
     }
 }

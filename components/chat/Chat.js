@@ -25,7 +25,7 @@ import VideoModal from './VideoModal';
 import { BlurView } from 'expo-blur';
 import {connect} from 'react-redux';
 import ChatBar from './ChatBar';
-import {addToScreen, showExampleType} from './redux/chatScreenActions';
+import {addToScreen, getWordData, showExampleType} from './redux/chatScreenActions';
 
 
 {/* Chat Components Imported after this line, TODO: move to index.js later */}
@@ -35,6 +35,7 @@ import Synonym from '../chatQuestions/Synonym';
 import Definition from '../chatQuestions/Definition';
 import Quotes from './Quotes';
 import { startConvo } from '../../Tutorial/Initiate';
+import { getWord } from './redux/sagas/getWordSaga';
 
 const {height, width} = Dimensions.get('window');
 
@@ -60,6 +61,7 @@ class ChatScreen extends Component {
     }
 
     componentDidMount(){ 
+        this.props.getWordData('capricious');
         setTimeout(() => {
            this.botTyping('bot','Hey you!');
            this.setState({
@@ -169,7 +171,8 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onAddNewContent: (data) => dispatch(addToScreen(data)),
-        onShowExampleType: (val) => dispatch(showExampleType(val))
+        onShowExampleType: (val) => dispatch(showExampleType(val)),
+        getWordData: (dataFor) => dispatch(getWordData(dataFor))
     }
 }
 

@@ -56,8 +56,9 @@ class BotQuestionsComponent extends Component {
                             console.log(this.props.answer)
                             if(this.props.answer === index){
                                 setTimeout(() => this.props.onAddNewContent({type:'bot', data:'Let us begin'}),2000)
-                                setTimeout(() => this.props.onAddNewContent({type:'bot', data:"This app will help you new words in ways you haven't even thought about"}),3000)
-                                setTimeout(() => {this.props.onAddNewContent({type:'bot', data:'Lets give it a shot'}); this.props.increaseProgressBar();},4500)
+                                setTimeout(() => this.props.onAddNewContent({type:'bot', data:"This app will help you new words in ways you in new exciting ways"}),3000)
+                                setTimeout(() => {this.props.onAddNewContent({type:'bot', data:'Lets give it a shot'}); this.props.increaseProgressBar();},4500);
+                                setTimeout(() => {this.props.onAddNewContent({type:'bot', data:'Lets start with the word'})},5000);
                                 setTimeout(() => this.props.onAddNewContent({type:'bot', data:'Capricious'}),5500)
                                 setTimeout(() => this.props.onAddNewContent({type:'bot', data:'Capricious means changing unpredicatably, like moodswings'}),6500);
                                 setTimeout(() => this.props.onAddNewContent({type:'bot', data:'To learn more about caprcious click on the middle button in the bottom bar'}),8500);

@@ -41,11 +41,6 @@ class Quote extends Component {
                 <Text style={{fontWeight:'500', fontSize:15}}> -{  this.props.saying.quotes[0].author}</Text>
                 <Text style={{fontStyle:'italic'}}> source: {  this.props.saying.quotes[0].source}</Text> 
             </View>
-
-            <TouchableOpacity onPress={() => {
-                    this.props.onRemoveQuote(0);
-            }}>
-            </TouchableOpacity>
             </View>
             :
             this.outOfQuotes()

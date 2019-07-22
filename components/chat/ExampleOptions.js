@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, Platform, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import UserTextBox from './UserTextBox';
-import { userRespondedWith, removeSynonym, removeSentence, addToScreen, showExampleType } from './redux/chatScreenActions';
+import { userRespondedWith, increaseTouchCounter, removeSynonym, removeSentence, addToScreen, showExampleType, setTutorialModeTo } from './redux/chatScreenActions';
 import { showModal } from './redux/action';
 
 
@@ -10,7 +10,7 @@ import { showModal } from './redux/action';
 class ExampleOptionsComponent extends Component {
     
     state = {
-        
+        touched: 0
     }
   
     delayedAnswer = () => {
@@ -52,30 +52,40 @@ borderBottomColor: 'white'}}/>
         <View key={index} style={{flexDirection:'row', justifyContent:'center', alignItems:'center', flexWrap:'nowrap', borderBottomColor:'#E3E3E3', borderBottomWidth:1}}>
         <TouchableOpacity 
         onPress={() => {
+           this.props.increaseCounter();
+            console.log('touched value is ' + this.props.touchedCount);
             this.props.setUserResponseTo(option);
             this.props.onAddNewContent({type:'user', data:option})
             // this.delayedAnswer();
             this.props.onShowExampleType(false),
             this.props.onShowModal(false)
-            switch(index){
-                case 0:
-                    this.props.onAddNewContent({type:'bot', data:this.props.wordData.sentences[0]});
-                    this.props.onRemoveSentence()
-                    break;
-                case 1:
-                        setTimeout(() => {this.props.onAddNewContent({type:'bot', data:this.props.wordData.synonyms[0]})},2000)
+            
+                switch(index){
+                    case 0:
+                        this.props.onAddNewContent({type:'bot', data:this.props.wordData.sentences[0]});
+                        this.props.onRemoveSentence()
                         break;
-                case 2: 
-                setTimeout(() => {this.props.onAddNewContent({type:'bot', data:this.props.wordData.description})},2000) 
-                break;
-                default:
-                    return null
+                    case 1:
+                            setTimeout(() => {this.props.onAddNewContent({type:'bot', data:this.props.wordData.synonyms[0]})},2000)
+                            break;
+                    case 2: 
+                    setTimeout(() => {this.props.onAddNewContent({type:'bot', data:this.props.wordData.description})},2000) 
                     break;
+                    default:
+                        return null
+                        break;
+                }
                 
+                
+                if(this.props.touchedCount >= 2)  {
+
+                    setTimeout(() => {this.props.onAddNewContent({type:'bot', data:'Cool'});
+                    this.props.onAddNewContent({type:'bot', data:'Now click on the quotes icon in the below bar'})
+                },3000)
+                }
+                  
             
             
-            
-            }
         }}
         style={{ justifyContent:'center', alignItems:'center', padding:5}}>
 <Text style={{color:'#4F83B6', fontWeight:'700', fontSize:15}}>
@@ -103,7 +113,9 @@ const mapStateToProps = (store) => {
       showExamplesType: store.chatScreen.showExamplesType,
       showModal: store.chatBar.showModal,
       word: store.chatScreen.currentWord,
-      wordData: store.chatScreen.wordData
+      wordData: store.chatScreen.wordData,
+      touchedCount: store.chatScreen.exampleCounter,
+      inTutorial: store.chatScreen.inTutorial
       }
   }
   
@@ -114,8 +126,9 @@ const mapStateToProps = (store) => {
           onShowExampleType: (val) => dispatch(showExampleType(val)),
           onShowModal: (show) => dispatch(showModal(show)),
           onRemoveSentence: () => dispatch(removeSentence()),
-          onRemoveSynonym: () => dispatch(removeSynonym())
-
+          onRemoveSynonym: () => dispatch(removeSynonym()),
+          increaseCounter: () => dispatch(increaseTouchCounter()),
+          setTutorialModeTo: (val) => dispatch(setTutorialModeTo(val))
       }
   
   }

@@ -7,12 +7,14 @@ import ExampleIcon from '../../Examples';
 import SkipIcon from '../../SkipIcon';
 import QuotesIcon from '../../QuotesIcon';
 import ChatBar from './ChatBar';
+
 import {showNews, showModal} from './redux/action';
 import {connect} from 'react-redux';
 import NewsContent from './NewsContent';
 import VideoContent from './VideoContent';
 
 import Modal from 'react-native-modalbox';
+import { addToScreen } from './redux/chatScreenActions';
 const {width, height} = Dimensions.get('window');
 class News extends Component {
     componentDidMount(){
@@ -56,7 +58,9 @@ class News extends Component {
                     animationType="slide"
                     transparent={true}
                     isOpen={this.props.showModal}
-                    onClosed={(alsef) => this.props.onShowModal(false)}
+                    onClosed={() => {this.props.onShowModal(false)
+                        this.props.onAddNewContent({type:'bot', data:'now click on the play icon next to news to see relevant videos'});
+                    }}
                     backdrop={true}
                     backdropOpacity={0.51}
                     style={{backgroundColor:'transparent', zIndex:2}}

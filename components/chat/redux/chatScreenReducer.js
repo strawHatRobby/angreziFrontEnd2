@@ -12,15 +12,33 @@ const initialState = {
     currentWordNews: [],
     currentWordSynonyms: [],
     currentWordSentences: [],
+    inTutorial: true,
+    exampleCounter: 0,
+    tutorialMode: null
 }
 
 export default chatScreenReducer = (state = initialState, action ) => {
     switch(action.type){
+        case 'SET_TUTORIAL_TO':
+            return {
+                ...state,
+                tutorialMode: action.payload
+            }
+        case 'INCREMENT_OPTION_COUNTER':
+            newCounter = state.exampleCounter + 1
+        return {
+                ...state,
+                exampleCounter: newCounter
+            }
         case 'GET_WORD':
             return {
                 ...state
             }
-        
+        case 'IN_TUTORIAL':
+            return {
+                ...state,
+                inTutorial: action.done
+            }
         case 'SET_WORD':
             return {
                 ...state,

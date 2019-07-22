@@ -6,7 +6,26 @@ const SHOW_EXAMPLE_TYPES = 'SHOW_EXAMPLE_TYPES'
 const GET_QUOTE = 'GET_QUOTE';
 const GET_WORD = 'GET_WORD';
 const SET_WORD = 'SET_WORD';
+const IN_TUTORIAL = 'IN_TUTORIAL';
 
+export const setTutorialModeTo = (payload) => {
+    return {
+        type: 'SET_TUTORIAL_TO',
+        payload
+    }
+}
+
+export const tutorialOver = (done) => {
+    return {
+        type: 'IN_TUTORIAL',
+        done
+    }
+}
+export const increaseTouchCounter = () => {
+    return {
+        type: 'INCREMENT_OPTION_COUNTER'
+    }
+}
 export const removeSentence = () => {
     return {
         type: 'REMOVE_SENTENCE'
