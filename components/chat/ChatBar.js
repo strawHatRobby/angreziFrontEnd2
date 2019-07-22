@@ -105,7 +105,10 @@ class ChatBarComponent extends Component {
                             this.props.setTutorialModeTo('news');
                             console.log(this.props.tutorialMode)
                             if (this.props.tutorialMode === null){
-                                this.props.onAddNewContent({type:'bot', data:`now click on the first icon, the globe icon to find news on ${this.props.currentWordData.word}`})
+                                this.props.setTutorialModeTo('news');
+                                this.props.onAddNewContent({type:'bot', data:`now click on the first icon, the globe icon to find news on ${this.props.currentWordData.word}`});
+                                
+
                             }
                     }}
                         style={{padding:5, justifyContent:'center', alignItems:'center'}}>

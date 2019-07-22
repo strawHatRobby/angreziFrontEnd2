@@ -14,7 +14,7 @@ import NewsContent from './NewsContent';
 import VideoContent from './VideoContent';
 
 import Modal from 'react-native-modalbox';
-import { addToScreen } from './redux/chatScreenActions';
+import { addToScreen, setTutorialModeTo } from './redux/chatScreenActions';
 const {width, height} = Dimensions.get('window');
 class News extends Component {
     componentDidMount(){
@@ -59,7 +59,19 @@ class News extends Component {
                     transparent={true}
                     isOpen={this.props.showModal}
                     onClosed={() => {this.props.onShowModal(false)
-                        this.props.onAddNewContent({type:'bot', data:'now click on the play icon next to news to see relevant videos'});
+                        switch(this.props.tutorialMode){
+                        case 'news':
+                                this.props.onAddNewContent({type:'bot', data:'now click on the last icon to move to the next word'});
+                           
+                            break;
+                        case 'video':
+                            this.props.onAddNewContent({type:'bot', data:'now click on the last icon to move to the next word'});
+                            break;
+                        default:
+                                this.props.onAddNewContent({type:'bot', data:'now click on the play icon next to news to see relevant videos'});
+                                this.props.setTutorialModeTo('video');
+                                console.log(this.props.tutorialMode)
+                        }
                     }}
                     backdrop={true}
                     backdropOpacity={0.51}
@@ -106,7 +118,8 @@ const mapStateToProps = (store) => {
         showModal: store.chatBar.showModal,
         quotes: store.chatScreen.quotes,
         chatScreenContent: store.chatScreen.chatScreenContent,
-        currentWord: store.chatScreen.currentWord
+        currentWord: store.chatScreen.currentWord,
+        tutorialMode: store.chatScreen.tutorialMode
     }
 }
 
@@ -116,7 +129,8 @@ const mapDispatchToProps = (dispatch) => {
         onShowVideoModal: (show) => dispatch(showVideo(show)),
         onShowModal: (show) => dispatch(showModal(show)),
         onAddQuotes: (quote) => dispatch(quote),
-        onAddNewContent: (data) => dispatch(addToScreen(data))
+        onAddNewContent: (data) => dispatch(addToScreen(data)),
+        setTutorialModeTo: (val) => dispatch(setTutorialModeTo(val))
     }
 }
 
