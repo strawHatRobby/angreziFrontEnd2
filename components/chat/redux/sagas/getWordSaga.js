@@ -3,7 +3,7 @@ import { addQuoteToScreen, addToScreen, setWord } from '../chatScreenActions';
 
 function fetchWordData(word){
     console.log(JSON.stringify(word));
-    const json = fetch(`http://localhost:8080/api/word/${word}`)
+    const json = fetch(`https://peaceful-wildwood-85560.herokuapp.com/api/word/${word}`)
                 .then(response => response.json())
                 .catch(err => console.warn(err))
     return json;

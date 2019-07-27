@@ -19,12 +19,12 @@ class ExampleOptionsComponent extends Component {
     
 	render(){
 		return(
-            <View style={{position:'absolute', zIndex:0}} >
+            <View style={{position:'absolute', zIndex:10}} >
             <View style={{ width: 0,
 height: 0,
 top:-10,
 left: 175,
-zIndex:1,
+zIndex:10,
 backgroundColor: 'transparent',
 borderStyle: 'solid',
 borderLeftWidth: 8,

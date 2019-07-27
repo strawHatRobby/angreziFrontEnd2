@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight,
     },
     notBlurred: {
-        ...StyleSheet.absoluteFill,
+        // ...StyleSheet.absoluteFill,
         top: Constants.statusBarHeight,
       }
   });
