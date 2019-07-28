@@ -61,17 +61,19 @@ class News extends Component {
                     onClosed={() => {this.props.onShowModal(false)
                         switch(this.props.tutorialMode){
                         case 'news':
-                                this.props.onAddNewContent({type:'bot', data:'now click on the last icon to move to the next word'});
-                                this.props.setActiveIconTo('skip');
+                                this.props.onAddNewContent({type:'bot', data:'now click on the play icon next to news to see relevant videos'});
+                                this.props.setActiveIconTo('video');
+                                this.props.setTutorialModeTo('video');
                             break;
                         case 'video':
                             this.props.onAddNewContent({type:'bot', data:'now click on the last icon to move to the next word'});
                             this.props.setActiveIconTo('skip');
+                            this.props.setTutorialModeTo(null);
                             break;
                         default:
-                                this.props.onAddNewContent({type:'bot', data:'now click on the play icon next to news to see relevant videos'});
-                                this.props.setTutorialModeTo('video');
-                                console.log(this.props.tutorialMode)
+                                this.props.setActiveIconTo('all')
+
+                                
                         }
                     }}
                     backdrop={true}
