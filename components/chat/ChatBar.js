@@ -46,6 +46,7 @@ class ChatBarComponent extends Component {
                 borderBottomWidth:0.5,
                 width: Dimensions.get('window').width} : {}]}>
                     <TouchableOpacity 
+                    disabled={(this.props.activeIcon !== 'news' && this.props.activeIcon !== 'all') ? true : false }
                     onPress={() => {
                             this.props.onShowModal(true);
                             this.props.onShowNewsModal(true);
@@ -58,6 +59,7 @@ class ChatBarComponent extends Component {
                     <NewsIcon name='news' color={this.props.activeIcon === 'news' || this.props.activeIcon === 'all'? '#000': '#a5a5a5'} size={40} /> 
                         </TouchableOpacity>
                         <TouchableOpacity 
+                        disabled={(this.props.activeIcon !== 'video' && this.props.activeIcon !== 'all') ? true : false }
                         onPress={() => {
                             this.props.onShowModal(true);
                             this.props.onShowVideoModal(true);
@@ -73,7 +75,9 @@ class ChatBarComponent extends Component {
 
                                <ExampleOptions/>
                             }
-                        <TouchableOpacity onPress= {()=> {
+                        <TouchableOpacity 
+                        disabled={(this.props.activeIcon !== 'example' && this.props.activeIcon !== 'all') ? true : false }
+                        onPress= {()=> {
                             {
                                 if(this.props.showExamplesType){
                                     this.props.onShowExampleType(false);
@@ -88,6 +92,7 @@ class ChatBarComponent extends Component {
                         <ExampleIcon name='example' size={40} color={this.props.activeIcon === 'example' || this.props.activeIcon === 'all'  ? '#000': '#a5a5a5'}/> 
                         </TouchableOpacity>
                         <TouchableOpacity 
+                        disabled={(this.props.activeIcon !== 'quotes' && this.props.activeIcon !== 'all') ? true : false }
                          onPress={() => {
                              this.props.onShowModal(false);
                              this.props.onShowExampleType(false);
@@ -110,6 +115,7 @@ class ChatBarComponent extends Component {
                         <QuotesIcon name='quotes' size={40} color={this.props.activeIcon === 'quotes' || this.props.activeIcon === 'all' ? '#000': '#a5a5a5'}/> 
                         </TouchableOpacity>
                         <TouchableOpacity 
+                       disabled={(this.props.activeIcon !== 'skip' && this.props.activeIcon !== 'all') ? true : false }
                          onPress={() => {
                             this.props.incrementProgress()
                             this.props.onShowModal(false);
