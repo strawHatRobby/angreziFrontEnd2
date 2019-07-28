@@ -19,8 +19,8 @@ class ExampleOptionsComponent extends Component {
     
 	render(){
 		return(
-            <View style={{position:'absolute', zIndex:10}} >
-            <View style={{ width: 0,
+            <TouchableOpacity style={{position:'absolute', zIndex:20}} >
+            <View onPress={() => {}} style={{ width: 0,
 height: 0,
 top:-10,
 left: 175,
@@ -40,11 +40,11 @@ borderLeftColor: 'transparent',
 borderRightColor: 'transparent',
 borderBottomColor: 'white'}}/>
 
-           <View style={{ position:'absolute', zIndex:15, 
+           <View style={{ position:'absolute', 
            shadowOffset:{  width: -1,  height: -1  },
            shadowColor: '#000',
            shadowOpacity: 0.75,
-           top:-110, left:90, width:180, height:100, backgroundColor:'#fff', borderRadius:10}}>
+           top:0, left:0, width:180, height:100, backgroundColor:'#fff', borderRadius:10}}>
 
 {
     ['Use it in a sentence', 'Synonyms', 'Explain it more'].map((option, index) => {
@@ -101,7 +101,7 @@ borderBottomColor: 'white'}}/>
 
                    
        </View>
-</View>
+</TouchableOpacity>
 			)
 	}
 }

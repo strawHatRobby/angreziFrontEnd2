@@ -154,6 +154,10 @@ class ChatScreen extends Component {
                                     }
                                 })
                             }
+                           
+
+                               <ExampleOptions/>
+                            
                     </ScrollView>
                 <ChatBar modalEnabled={false}/>
             </View>

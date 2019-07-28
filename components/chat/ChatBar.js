@@ -70,13 +70,9 @@ class ChatBarComponent extends Component {
                         style={{padding:5, justifyContent:'center', alignItems:'center'}}>
                         <VideoIcon name='video' size={40} color={this.props.activeIcon === 'video' || this.props.activeIcon === 'all' ? '#000': '#a5a5a5'}/> 
                         </TouchableOpacity>
-                        {
-                                this.props.showExamplesType && 
-
-                               <ExampleOptions/>
-                            }
+                        
                         <TouchableOpacity 
-                        disabled={(this.props.activeIcon !== 'example' && this.props.activeIcon !== 'all') ? true : false }
+                        // disabled={(this.props.activeIcon !== 'example' && this.props.activeIcon !== 'all') ? true : false }
                         onPress= {()=> {
                             {
                                 if(this.props.showExamplesType){
