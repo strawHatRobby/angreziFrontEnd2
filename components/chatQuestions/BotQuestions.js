@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, Image,Platform, View, TouchableOpacity } from 'react-native';
-import { userRespondedWith, addToScreen, incrementProgressBar } from '../chat/redux/chatScreenActions';
+import { userRespondedWith, setActiveIconTo, addToScreen, incrementProgressBar } from '../chat/redux/chatScreenActions';
 import { connect } from 'react-redux';
 import UserTextBox from '../chat/UserTextBox';
 
@@ -61,7 +61,8 @@ class BotQuestionsComponent extends Component {
                                 setTimeout(() => {this.props.onAddNewContent({type:'bot', data:'Lets start with the word'})},5000);
                                 setTimeout(() => this.props.onAddNewContent({type:'bot', data:'Capricious'}),5500)
                                 setTimeout(() => this.props.onAddNewContent({type:'bot', data:'Capricious means changing unpredicatably, like moodswings'}),6500);
-                                setTimeout(() => this.props.onAddNewContent({type:'bot', data:'To learn more about caprcious click on the middle button in the bottom bar'}),8500);
+                                setTimeout(() => {this.props.onAddNewContent({type:'bot', data:'To learn more about caprcious click on the middle button in the bottom bar'}); 
+                                this.props.setActiveIconTo('example')},8500);
                                 this.props.increaseProgressBar();
                             }else {
                                 setTimeout(() => this.props.onAddNewContent({type:'botQuestion', data:'Let me know when ready', options:['Ready'], answer:0}));
@@ -100,7 +101,8 @@ const mapStateToProps = (store) => {
   return   {
     userSelected: store.chatScreen.userSelected,
     chatScreenContent: store.chatScreen.chatScreenContent,
-    progress: store.chatScreen.progress
+    progress: store.chatScreen.progress,
+    activeIcon: store.chatScreen.activeIcon
     }
 }
 
@@ -108,7 +110,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setUserResponseTo: (answer) => dispatch(userRespondedWith(answer)),
         onAddNewContent: (data) => dispatch(addToScreen(data)),
-        increaseProgressBar: () => dispatch(incrementProgressBar())
+        increaseProgressBar: () => dispatch(incrementProgressBar()),
+        setActiveIconTo: (val) => dispatch(setActiveIconTo(val))
+
     }
 
 }

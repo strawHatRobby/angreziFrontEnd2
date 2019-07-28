@@ -14,7 +14,7 @@ import NewsContent from './NewsContent';
 import VideoContent from './VideoContent';
 
 import Modal from 'react-native-modalbox';
-import { addToScreen, setTutorialModeTo } from './redux/chatScreenActions';
+import { addToScreen, setTutorialModeTo, setActiveIconTo } from './redux/chatScreenActions';
 const {width, height} = Dimensions.get('window');
 class News extends Component {
     componentDidMount(){
@@ -62,10 +62,11 @@ class News extends Component {
                         switch(this.props.tutorialMode){
                         case 'news':
                                 this.props.onAddNewContent({type:'bot', data:'now click on the last icon to move to the next word'});
-                           
+                                this.props.setActiveIconTo('skip');
                             break;
                         case 'video':
                             this.props.onAddNewContent({type:'bot', data:'now click on the last icon to move to the next word'});
+                            this.props.setActiveIconTo('skip');
                             break;
                         default:
                                 this.props.onAddNewContent({type:'bot', data:'now click on the play icon next to news to see relevant videos'});
@@ -119,7 +120,8 @@ const mapStateToProps = (store) => {
         quotes: store.chatScreen.quotes,
         chatScreenContent: store.chatScreen.chatScreenContent,
         currentWord: store.chatScreen.currentWord,
-        tutorialMode: store.chatScreen.tutorialMode
+        tutorialMode: store.chatScreen.tutorialMode,
+        activeIcon: store.chatScreen.activeIcon
     }
 }
 
@@ -130,7 +132,8 @@ const mapDispatchToProps = (dispatch) => {
         onShowModal: (show) => dispatch(showModal(show)),
         onAddQuotes: (quote) => dispatch(quote),
         onAddNewContent: (data) => dispatch(addToScreen(data)),
-        setTutorialModeTo: (val) => dispatch(setTutorialModeTo(val))
+        setTutorialModeTo: (val) => dispatch(setTutorialModeTo(val)),
+        setActiveIconTo: (val) => dispatch(setActiveIconTo(val))
     }
 }
 

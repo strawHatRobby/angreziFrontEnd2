@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, Platform, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import UserTextBox from './UserTextBox';
-import { userRespondedWith, increaseTouchCounter, removeSynonym, removeSentence, addToScreen, showExampleType, setTutorialModeTo } from './redux/chatScreenActions';
+import { userRespondedWith, increaseTouchCounter, removeSynonym, removeSentence, addToScreen, showExampleType, setTutorialModeTo, setActiveIconTo } from './redux/chatScreenActions';
 import { showModal } from './redux/action';
 
 
@@ -80,7 +80,8 @@ borderBottomColor: 'white'}}/>
                 if(this.props.touchedCount >= 2)  {
 
                     setTimeout(() => {this.props.onAddNewContent({type:'bot', data:'Cool'});
-                    this.props.onAddNewContent({type:'bot', data:'Now click on the quotes icon in the below bar'})
+                    this.props.onAddNewContent({type:'bot', data:'Now click on the quotes icon in the below bar'});
+                    this.props.setActiveIconTo('quotes');
                 },3000)
                 }
                   
@@ -115,7 +116,8 @@ const mapStateToProps = (store) => {
       word: store.chatScreen.currentWord,
       wordData: store.chatScreen.wordData,
       touchedCount: store.chatScreen.exampleCounter,
-      inTutorial: store.chatScreen.inTutorial
+      inTutorial: store.chatScreen.inTutorial,
+      activeIcon: store.chatScreen.activeIcon
       }
   }
   
@@ -128,7 +130,8 @@ const mapStateToProps = (store) => {
           onRemoveSentence: () => dispatch(removeSentence()),
           onRemoveSynonym: () => dispatch(removeSynonym()),
           increaseCounter: () => dispatch(increaseTouchCounter()),
-          setTutorialModeTo: (val) => dispatch(setTutorialModeTo(val))
+          setTutorialModeTo: (val) => dispatch(setTutorialModeTo(val)),
+          setActiveIconTo: (val) => dispatch(setActiveIconTo(val))
       }
   
   }

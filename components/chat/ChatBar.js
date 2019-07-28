@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { showNews, showVideo, showModal } from './redux/action';
 
 import Quotes from './Quotes';
-import { addQuoteToScreen, removeQuote, addToScreen, incrementProgressBar, showExampleType, getQuote, getWordData, setTutorialModeTo } from './redux/chatScreenActions';
+import { addQuoteToScreen, removeQuote, addToScreen, incrementProgressBar, showExampleType, getQuote, getWordData, setTutorialModeTo, setActiveIconTo } from './redux/chatScreenActions';
 
 
 
@@ -20,7 +20,6 @@ class ChatBarComponent extends Component {
     state = {
         modalEnabled: false,
         showExamplesType: false,
-        activeIcon: null
     }
   
     
@@ -52,12 +51,11 @@ class ChatBarComponent extends Component {
                             this.props.onShowNewsModal(true);
                             this.props.onShowVideoModal(false);
                             this.props.onShowExampleType(false);
-                            this.setState({
-                                activeIcon: 'news'
-                            })
-                    }} 
+                            this.props.setActiveIconTo('news');
+                        }
+                    } 
                      style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-                    <NewsIcon name='news' color={this.state.activeIcon === 'news' ? '#000': '#a5a5a5'} size={40} /> 
+                    <NewsIcon name='news' color={this.props.activeIcon === 'news' || this.props.activeIcon === 'all'? '#000': '#a5a5a5'} size={40} /> 
                         </TouchableOpacity>
                         <TouchableOpacity 
                         onPress={() => {
@@ -65,12 +63,10 @@ class ChatBarComponent extends Component {
                             this.props.onShowVideoModal(true);
                             this.props.onShowNewsModal(false);
                             this.props.onShowExampleType(false);
-                            this.setState({
-                                activeIcon: 'video'
-                            })
+                            this.props.setActiveIconTo('video');
                     }} 
                         style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-                        <VideoIcon name='video' size={40} color={this.state.activeIcon === 'video' ? '#000': '#a5a5a5'}/> 
+                        <VideoIcon name='video' size={40} color={this.props.activeIcon === 'video' || this.props.activeIcon === 'all' ? '#000': '#a5a5a5'}/> 
                         </TouchableOpacity>
                         {
                                 this.props.showExamplesType && 
@@ -86,11 +82,10 @@ class ChatBarComponent extends Component {
                                     this.props.onShowExampleType(true);
                                 }
                             }
-                            this.setState({
-                            activeIcon: 'example'
-                            })}} 
+                           
+                        }} 
                             style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-                        <ExampleIcon name='example' size={40} color={this.state.activeIcon === 'example' && this.state.showExamplesType ? '#000': '#a5a5a5'}/> 
+                        <ExampleIcon name='example' size={40} color={this.props.activeIcon === 'example' || this.props.activeIcon === 'all'  ? '#000': '#a5a5a5'}/> 
                         </TouchableOpacity>
                         <TouchableOpacity 
                          onPress={() => {
@@ -98,8 +93,8 @@ class ChatBarComponent extends Component {
                              this.props.onShowExampleType(false);
                              this.props.onAddNewContent({type:'quotes', data: this.props.currentWordData})
                              this.props.onRemoveQuotes();
+                             this.props.setActiveIconTo('quotes');
                             this.setState({
-                                activeIcon: 'quotes',
                                 showExamplesType: false
                             })
                             this.props.setTutorialModeTo('news');
@@ -107,12 +102,12 @@ class ChatBarComponent extends Component {
                             if (this.props.tutorialMode === null){
                                 this.props.setTutorialModeTo('news');
                                 this.props.onAddNewContent({type:'bot', data:`now click on the first icon, the globe icon to find news on ${this.props.currentWordData.word}`});
-                                
+                                this.props.setActiveIconTo('news');
 
                             }
                     }}
                         style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-                        <QuotesIcon name='quotes' size={40} color={this.state.activeIcon === 'quotes' ? '#000': '#a5a5a5'}/> 
+                        <QuotesIcon name='quotes' size={40} color={this.props.activeIcon === 'quotes' || this.props.activeIcon === 'all' ? '#000': '#a5a5a5'}/> 
                         </TouchableOpacity>
                         <TouchableOpacity 
                          onPress={() => {
@@ -122,13 +117,11 @@ class ChatBarComponent extends Component {
                             x = ['capricious', 'alacrity'];
                             x = x[Math.floor(Math.random() * 2)]
                             this.props.getWord(x)
-                            this.setState({
-                                activeIcon: 'skip'
-                            })
+                            this.props.setActiveIconTo('all');
                             
                     }}
                         style={{padding:5, justifyContent:'center', alignItems:'center'}}>
-                        <SkipIcon name='skip' size={40} color={this.state.activeIcon === 'skip' ? '#000': '#a5a5a5'}/> 
+                        <SkipIcon name='skip' size={40} color={this.props.activeIcon === 'skip' || this.props.activeIcon === 'all' ? '#000': '#a5a5a5'}/> 
                         </TouchableOpacity>
             
             </View>
@@ -147,7 +140,8 @@ const mapStateToProps = (store) => {
         chatScreenContent: store.chatScreen.chatScreenContent,
         showExamplesType: store.chatScreen.showExamplesType,
         currentWordData: store.chatScreen.wordData,
-        tutorialMode: store.chatScreen.tutorialMode
+        tutorialMode: store.chatScreen.tutorialMode,
+        activeIcon: store.chatScreen.activeIcon
     }
 }
 
@@ -163,7 +157,8 @@ const mapDispatchToProps = (dispatch) => {
         getQuotes: () => dispatch(getQuote()),
         getWord: (val) => dispatch(getWordData(val)),
         onRemoveQuotes: () => dispatch(removeQuote()),
-        setTutorialModeTo: (val) => dispatch(setTutorialModeTo(val))
+        setTutorialModeTo: (val) => dispatch(setTutorialModeTo(val)),
+        setActiveIconTo: (val) => dispatch(setActiveIconTo(val))
 
     }
 }

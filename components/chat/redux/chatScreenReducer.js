@@ -14,11 +14,17 @@ const initialState = {
     currentWordSentences: [],
     inTutorial: true,
     exampleCounter: 0,
-    tutorialMode: null
+    tutorialMode: null,
+    activeIcon: ''
 }
 
 export default chatScreenReducer = (state = initialState, action ) => {
     switch(action.type){
+        case 'SET_ACTIVE_ICON':
+            return {
+                ...state,
+                activeIcon: action.payload
+            }
         case 'SET_TUTORIAL_TO':
             return {
                 ...state,

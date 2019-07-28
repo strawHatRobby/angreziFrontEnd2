@@ -8,6 +8,13 @@ const GET_WORD = 'GET_WORD';
 const SET_WORD = 'SET_WORD';
 const IN_TUTORIAL = 'IN_TUTORIAL';
 
+export const setActiveIconTo = (payload) => {
+    return {
+        type: 'SET_ACTIVE_ICON',
+        payload
+    }
+}
+
 export const setTutorialModeTo = (payload) => {
     return {
         type: 'SET_TUTORIAL_TO',
