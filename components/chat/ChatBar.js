@@ -52,7 +52,7 @@ class ChatBarComponent extends Component {
                             this.props.onShowNewsModal(true);
                             this.props.onShowVideoModal(false);
                             this.props.onShowExampleType(false);
-                            this.props.setActiveIconTo('news');
+
                         }
                     } 
                      style={{padding:5, justifyContent:'center', alignItems:'center'}}>
@@ -65,7 +65,7 @@ class ChatBarComponent extends Component {
                             this.props.onShowVideoModal(true);
                             this.props.onShowNewsModal(false);
                             this.props.onShowExampleType(false);
-                            this.props.setActiveIconTo('video');
+
                     }} 
                         style={{padding:5, justifyContent:'center', alignItems:'center'}}>
                         <VideoIcon name='video' size={40} color={this.props.activeIcon === 'video' || this.props.activeIcon === 'all' ? '#000': '#a5a5a5'}/> 
@@ -98,11 +98,10 @@ class ChatBarComponent extends Component {
                              this.props.onShowExampleType(false);
                              this.props.onAddNewContent({type:'quotes', data: this.props.currentWordData})
                              this.props.onRemoveQuotes();
-                             this.props.setActiveIconTo('quotes');
                             this.setState({
                                 showExamplesType: false
                             })
-                            this.props.setTutorialModeTo('news');
+
                             console.log(this.props.tutorialMode)
                             if (this.props.tutorialMode === null){
                                 this.props.setTutorialModeTo('news');
@@ -121,9 +120,19 @@ class ChatBarComponent extends Component {
                             this.props.onShowModal(false);
                             this.props.onShowExampleType(false);
                             x = ['capricious', 'alacrity'];
-                            x = x[Math.floor(Math.random() * 2)]
-                            this.props.getWord(x)
+                            y = x.pop()
+                            this.props.getWord(y)
+                            this.props.onAddNewContent({type:'bot', data:'Your next word is ' + y});
+                            {
+                                if(this.props.activeIcon === 'skip' ){
+                                this.props.onAddNewContent({type:'bot', data:'You are now free to explore this word with all the different moeds mentioned before'});
+                                }
+                            }
                             this.props.setActiveIconTo('all');
+
+                           
+
+
                             
                     }}
                         style={{padding:5, justifyContent:'center', alignItems:'center'}}>

@@ -30,6 +30,11 @@ export default chatScreenReducer = (state = initialState, action ) => {
                 ...state,
                 tutorialMode: action.payload
             }
+        case 'RESET_OPTION_COUNTER':
+            return {
+                ...state,
+                exampleCounter: -99
+            }
         case 'INCREMENT_OPTION_COUNTER':
             newCounter = state.exampleCounter + 1
         return {

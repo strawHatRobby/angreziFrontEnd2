@@ -68,7 +68,7 @@ class News extends Component {
                         case 'video':
                             this.props.onAddNewContent({type:'bot', data:'now click on the last icon to move to the next word'});
                             this.props.setActiveIconTo('skip');
-                            this.props.setTutorialModeTo(null);
+                            this.props.setTutorialModeTo('over');
                             break;
                         default:
                                 this.props.setActiveIconTo('all')

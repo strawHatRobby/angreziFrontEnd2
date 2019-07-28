@@ -15,6 +15,8 @@ export const setActiveIconTo = (payload) => {
     }
 }
 
+
+
 export const setTutorialModeTo = (payload) => {
     return {
         type: 'SET_TUTORIAL_TO',
@@ -28,6 +30,13 @@ export const tutorialOver = (done) => {
         done
     }
 }
+
+export const resetTouchCounter = () => {
+    return {
+        type: 'RESET_OPTION_COUNTER'
+    }
+}
+
 export const increaseTouchCounter = () => {
     return {
         type: 'INCREMENT_OPTION_COUNTER'

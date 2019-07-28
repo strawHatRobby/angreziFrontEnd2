@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, Platform, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import UserTextBox from './UserTextBox';
-import { userRespondedWith, increaseTouchCounter, removeSynonym, removeSentence, addToScreen, showExampleType, setTutorialModeTo, setActiveIconTo } from './redux/chatScreenActions';
+import { userRespondedWith, increaseTouchCounter, resetTouchCounter, removeSynonym, removeSentence, addToScreen, showExampleType, setTutorialModeTo, setActiveIconTo } from './redux/chatScreenActions';
 import { showModal } from './redux/action';
 
 
@@ -82,6 +82,7 @@ borderBottomColor: 'white'}}/>
                     setTimeout(() => {this.props.onAddNewContent({type:'bot', data:'Cool'});
                     this.props.onAddNewContent({type:'bot', data:'Now click on the quotes icon in the below bar'});
                     this.props.setActiveIconTo('quotes');
+                    this.props.resetTouchCounter()
                 },3000)
                 }
                   
@@ -131,7 +132,8 @@ const mapStateToProps = (store) => {
           onRemoveSynonym: () => dispatch(removeSynonym()),
           increaseCounter: () => dispatch(increaseTouchCounter()),
           setTutorialModeTo: (val) => dispatch(setTutorialModeTo(val)),
-          setActiveIconTo: (val) => dispatch(setActiveIconTo(val))
+          setActiveIconTo: (val) => dispatch(setActiveIconTo(val)),
+          resetTouchCounter: () => dispatch(resetTouchCounter())
       }
   
   }
